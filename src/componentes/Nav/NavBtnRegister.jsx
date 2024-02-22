@@ -10,7 +10,7 @@ export default function NavBtnRegister() {
 
   return (
     <button
-      className="flex items-center gap-1.5 py-1.5 px-6 rounded font-medium uppercase bg-orange-500 hover:bg-orange-600 hover:text-orange-50 duration-300 text-gray-50 text-lg"
+      className="flex gap-x-2 px-7 items-center bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold w-full py-3 rounded-md uppercase"
       onClick={HandleClick}
     >
       <BiUser size="1rem" /> Register
