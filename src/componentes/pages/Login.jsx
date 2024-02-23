@@ -15,6 +15,7 @@ export default function Login() {
     const res= await loginHandler(username, password);
     setUserData(res)
     console.log(res)
+    navigate('/empleados')
   }
 
   function HandleClick(){

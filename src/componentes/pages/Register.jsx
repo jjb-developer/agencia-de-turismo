@@ -8,7 +8,6 @@ export default function Register() {
   const [lastname, setLastname] = useState("");
   const [adress, setAdress] = useState("");
   const [dni, setDni] = useState("");
-  const [date, setDate] = useState("");
   const [nationality, setNationality] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -16,6 +15,7 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [sueldo, setSueldo] = useState("");
+
   const [send,setSend]=useState(false);
 
   const navigate=useNavigate();
@@ -27,7 +27,7 @@ export default function Register() {
   async function handleSubmit(e) {
     e.preventDefault();
     //llamo a login.js
-    const res = await registerHandler(name, lastname, adress, dni, date, nationality, phone, email, rol, username, password, sueldo);
+    const res = await registerHandler(name, lastname, adress, dni, nationality, phone, email, rol, username, password, sueldo);
     setSend(true)
     console.log(res)
   }
@@ -68,7 +68,7 @@ export default function Register() {
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
               name=""
-              id="0"
+              id="1"
               value={lastname}
               onChange={(e) => {
                 setLastname(e.target.value);
@@ -81,7 +81,7 @@ export default function Register() {
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
               name=""
-              id="0"
+              id="2"
               value={adress}
               onChange={(e) => {
                 setAdress(e.target.value);
@@ -94,23 +94,10 @@ export default function Register() {
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
               name=""
-              id="0"
+              id="3"
               value={dni}
               onChange={(e) => {
                 setDni(e.target.value);
-              }}
-            />
-          </div>
-          <div className="flex flex-col mt-5">
-            <label className='uppercase text-xs text-zinc-500 font-bold'>date</label>
-            <input
-              className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
-              type="date"
-              name=""
-              id="0"
-              value={date}
-              onChange={(e) => {
-                setDate(e.target.value);
               }}
             />
           </div>
@@ -120,7 +107,7 @@ export default function Register() {
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
               name=""
-              id="0"
+              id="5"
               value={nationality}
               onChange={(e) => {
                 setNationality(e.target.value);
@@ -133,7 +120,7 @@ export default function Register() {
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
               name=""
-              id="0"
+              id="6"
               value={phone}
               onChange={(e) => {
                 setPhone(e.target.value);
@@ -146,7 +133,7 @@ export default function Register() {
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="email"
               name=""
-              id="0"
+              id="7"
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -155,16 +142,15 @@ export default function Register() {
           </div>
           <div className="flex flex-col mt-5">
             <label className='uppercase text-xs text-zinc-500 font-bold'>rol</label>
-            <input
-              className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
-              type="text"
-              name=""
-              id="0"
+            <select
+              className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 bg-zinc-100"
+              name="rol"
+              id='8'
               value={rol}
-              onChange={(e) => {
-                setRol(e.target.value);
-              }}
-            />
+              onChange={(e)=> setRol(e.target.value)}>
+              <option className="" value="empleado">Empleado</option>
+              <option value="cliente">Cliente</option>
+            </select>
           </div>
           <div className="flex flex-col mt-5">
             <label className='uppercase text-xs text-zinc-500 font-bold'>username</label>
@@ -172,7 +158,7 @@ export default function Register() {
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
               name=""
-              id="0"
+              id="9"
               value={username}
               onChange={(e) => {
                 setUsername(e.target.value);
@@ -183,9 +169,9 @@ export default function Register() {
             <label className='uppercase text-xs text-zinc-500 font-bold'>password</label>
             <input
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
-              type="text"
+              type="password"
               name=""
-              id="0"
+              id="10"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
@@ -198,7 +184,7 @@ export default function Register() {
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
               name=""
-              id="0"
+              id="11"
               value={sueldo}
               onChange={(e) => {
                 setSueldo(e.target.value);
