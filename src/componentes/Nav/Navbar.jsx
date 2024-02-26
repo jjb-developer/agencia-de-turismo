@@ -1,12 +1,16 @@
 import NavButtons from "./NavButtons";
+import { useNavigate } from "react-router-dom"
 
 export default function Navbar() {
-  return (
-    <nav className="w-full h-20 flex items-center justify-between px-10 shadow">
-      <div className="text-xl uppercase font-bold text-sky-600 tracking-tight">
-        agencia de turismo
-      </div>
-      <NavButtons/>
-    </nav>
-  );
+
+	const navigate = useNavigate()
+
+	return (
+		<nav className="w-full h-20 flex items-center justify-between px-10 shadow">
+			<div className="text-xl uppercase font-bold text-sky-600 tracking-tight">
+				<span onClick={()=> navigate('/')} className='cursor-pointer'>agencia de turismo</span>
+			</div>
+			<NavButtons/>
+		</nav>
+	);
 }

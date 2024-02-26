@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { agregarServicioHandler } from '../../utils/agregarServicio.js'
 import { BiCalendar, BiImage } from 'react-icons/bi'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 export default function agregarServicio({status}) {
 
@@ -8,7 +10,7 @@ export default function agregarServicio({status}) {
 	const [servicio, setServicio] = useState('')
 	const [descripcion, setDescripcion] = useState('')
 	const [destino, setDestino] = useState('')
-	const [fecha, setFecha] = useState('')
+	const [fecha, setFecha] = useState(new Date("2024","02","24"))
 	const [costo, setCosto] = useState('')
 
 	async function handleSubmit(e){
@@ -79,18 +81,13 @@ export default function agregarServicio({status}) {
 		              onChange={(e)=>setDestino(e.target.value)}
 		            />
 					</div>
+
+
 					<div className='flex gap-x-5 items-center w-full'>
 		            <label className='w-32 uppercase text-xs text-zinc-500 font-bold'>fecha</label>
-		            <label htmlFor='calendario' className="outline-none py-2.5 px-2.5 border-2 focus:border-orange-500 text-zinc-400 text-[0.98rem] duration-300 w-full cursor-pointer flex gap-x-2 items-center"><BiCalendar size='24'/> Calendario</label>
-		            <input
-		              className="hidden"
-		              type="date"
-		              name="fecha"
-		              id="fecha"
-		              value={fecha}
-		              onChange={(e)=>setFecha(e.target.value)}
-		            />
+		            <DatePicker value={fecha} className='outline-none py-2.5 px-2.5 border-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-[275px]' selected={fecha} onChange={(fecha)=>setFecha(fecha)}/>
 					</div>
+
 					<div className='flex gap-x-5 items-center w-full'>
 		            <label className='w-32 uppercase text-xs text-zinc-500 font-bold'>costo del servicio</label>
 		            <input

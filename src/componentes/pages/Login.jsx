@@ -2,19 +2,23 @@ import Navbar from "../Nav/Navbar";
 import { useEffect, useState } from "react";
 import { loginHandler } from "../../utils/login.js";
 import { useNavigate } from "react-router-dom";
+import useStorage from '../../utils/store'
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userData,setUserData]=useState(null);
-
+  const { getInfo } = useStorage()
+  
   const navigate=useNavigate();
+
   async function handleSubmit(e) {
     e.preventDefault();
+    getInfo(username,password)
     //llamo a login.js
-    const res= await loginHandler(username, password);
-    setUserData(res)
-    console.log(res)
+    //const res = await loginHandler(username, password);
+    //setUserData(res)
+    //console.log(res)
     navigate('/empleados')
   }
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BiCalendar, BiImage } from 'react-icons/bi'
 import { registerHandler } from '../../utils/register.js'
+import useStorage from '../../utils/store'
 
 export default function infoPersonal({status}) {
 
@@ -18,6 +19,7 @@ export default function infoPersonal({status}) {
 
 	const [editar,setEditar] = useState(false)
 	const [send,setSend] = useState(false)
+	const { info } = useStorage()
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -40,11 +42,11 @@ export default function infoPersonal({status}) {
 		              type="text"
 		              name=""
 		              id="nombre"
-		              value={name}
+		              value={info[0].nombre}
 		              onChange={(e) => setName(e.target.value) }
 		            />:<p className="text-xl capitalize py-2.5 px-2.5 border-2 border-zinc-100 focus:border-orange-500 text-zinc-900 text-[0.98rem] duration-300 w-full"
 		            >
-		            	{name}
+		            	{info[0].nombre}
 		            </p>
 		         	}
 					</div>
@@ -57,11 +59,11 @@ export default function infoPersonal({status}) {
 		              type="text"
 		              name=""
 		              id="nombre"
-		              value={lastname}
+		              value={info[0].apellido}
 		              onChange={(e) => setLastname(e.target.value) }
 		            />:<p className="text-xl capitalize py-2.5 px-2.5 border-2 border-zinc-100 focus:border-orange-500 text-zinc-900 text-[0.98rem] duration-300 w-full"
 		            >
-		            	{lastname}
+		            	{info[0].apellido}
 		            </p>
 		         	}
 					</div>
@@ -74,11 +76,11 @@ export default function infoPersonal({status}) {
 		              type="text"
 		              name=""
 		              id="nombre"
-		              value={adress}
+		              value={info[0].direccion}
 		              onChange={(e) => setAdress(e.target.value) }
 		            />:<p className="text-xl capitalize py-2.5 px-2.5 border-2 border-zinc-100 focus:border-orange-500 text-zinc-900 text-[0.98rem] duration-300 w-full"
 		            >
-		            	{adress}
+		            	{info[0].direccion}
 		            </p>
 		         	}
 					</div>

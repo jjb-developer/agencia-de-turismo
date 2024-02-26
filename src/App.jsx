@@ -3,6 +3,7 @@ import Home from "./componentes/pages/Home.jsx"
 import Empleados from './componentes/pages/Empleados.jsx'
 import Register from './componentes/pages/Register.jsx'
 import Login from './componentes/pages/Login.jsx'
+
 function App() {
   return (<div className='w-full h-screen'>
       <Routes>
