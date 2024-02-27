@@ -12,7 +12,7 @@ export function registerHandler(name, lastname, adress, dni, nationality, phone,
     headers: {
       "content-type": "application/json",
     },
-    body: JSON.stringify({ name, lastname, adress, dni, fecha_registro, nationality, phone, email, rol, "baja": false, username, password, "cargo": "vendedor", sueldo }),
+    body: JSON.stringify({ name, lastname, adress, dni, fecha_registro, nationality, phone, email, rol, baja: false, username, password, cargo: "vendedor", sueldo }),
   })
     .then((res) => res.json())
     .then((data) => {

@@ -12,10 +12,10 @@ export default function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
     //llamo a login.js
-    const res= await loginHandler(username, password);
-    setUserData(res)
-    console.log(res)
-    navigate('/empleados')
+    loginHandler(username, password);
+    //setUserData(res)
+    
+    //navigate('/home')
   }
 
   function HandleClick(){

@@ -7,7 +7,7 @@ function App() {
   return (<div className='w-full h-screen'>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/empleados" element={<Empleados/>}/>
+        <Route path="/seller" element={<Empleados/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/login" element={<Login/>}/>
       </Routes>
