@@ -1,16 +1,19 @@
-import NavButtons from "./NavButtons";
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
+import Boton from './Boton'
 
 export default function Navbar() {
-
-	const navigate = useNavigate()
 
 	return (
 		<nav className="w-full h-20 flex items-center justify-between px-10 shadow">
 			<div className="text-xl uppercase font-bold text-sky-600 tracking-tight">
-				<span onClick={()=> navigate('/')} className='cursor-pointer'>agencia de turismo</span>
+				<Link to='/' className='cursor-pointer'>agencia de turismo</Link>
 			</div>
-			<NavButtons/>
+			<div className='flex gap-2'>
+				<Boton ruta='/empleados' name='empleados'/>
+				<Boton ruta='/register' name='register'/>
+				<Boton ruta='/login' name='login'/>
+			</div>
 		</nav>
 	);
+
 }

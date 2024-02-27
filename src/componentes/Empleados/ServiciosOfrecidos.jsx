@@ -1,20 +1,21 @@
-import useStorage from '../../utils/store.jsx'
+export default function ServiciosOfrecidos({status}) {
 
-export default function serviciosOfrecidos({status}) {
+	async function handleSubmit(e) {
+		e.preventDefault();
+		console.info('obtener servicios ofrecidos de vendedor en construccion')
+	}
 
-	const { oferta } = useStorage()
 	return (
-		<section className={`w-full ${status === 1 ? '':'hidden'}`}>
-		{ oferta.map((of,i)=>
-			<div key={i} className='flex'>
-				<img className='w-24 h-24' src={of.imagen}/>
-				<div>
-					<p>destino: {of.destino}</p>				
-					<p>precio: {of.precio}</p>				
-					<p>fecha: {of.fecha}</p>
-				</div>				
+		<section className={`${status === 1 ? '':'hidden'} py-5`}>
+			<div className='mt-6'>
+				<form onSubmit={ handleSubmit } className='w-96 flex flex-col gap-y-2 mx-auto'>
+					<button type='submit'
+						className={`w-full mt-10 px-7 text-sm font-bold py-3 rounded-md uppercase bg-zinc-500 hover:bg-rose-500 text-white`}
+						>
+						obtener
+					</button>
+				</form>
 			</div>
-		)}
 		</section>
 	)
 }

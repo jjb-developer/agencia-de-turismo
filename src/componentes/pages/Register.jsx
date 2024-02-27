@@ -24,6 +24,91 @@ export default function Register() {
     navigate("/login");
   }
 
+  function crearUsuario(){
+    const user = {
+      "name":"mario",
+      "lastname":"garcia",
+      "address":"barinas",
+      "dni":"14567126",
+      "birthdate":"1990-05-01",
+      "country":"venezuela",
+      "phone":"580345678",
+      "email":"mario@garcia.com",
+      "role":"cliente",
+      "user_state":true,
+      "username":"garma",
+      "password":"garma"
+    }
+
+    const vendedor = {
+      "name":"astrid",
+      "lastname":"meza",
+      "address":"madrid",
+      "dni":"34217890",
+      "birthdate":"1999-09-02",
+      "country":"españa",
+      "phone":"453888221",
+      "email":"astrid@meza.com",
+      "role":"vendedor",
+      "user_state":true,
+      "username":"astza",
+      "password":"astza",
+      "job":"developer web",
+      "salary": 5000
+    }
+
+
+    fetch('https://agencia-de-turismo.onrender.com/user', {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(vendedor)
+      })
+        .then(res => res.text())
+        .then(data => console.info(data))
+  }
+
+
+  function probarClient(){
+    fetch('https://agencia-de-turismo.onrender.com/client/7', {
+      method: "GET",
+      headers: {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo0OSwiaWF0IjoxNzA4OTYyNDMyLCJleHAiOjE3MDg5NjYwMzJ9.lOkVdjWuR6OnE7CFZ6UZnKVt7TYHNYFvGnJbUDQQW2g",
+      }
+    }).then(res => res.text()).then(data => console.info(data))
+  }
+
+
+  function probar(){
+    fetch('https://agencia-de-turismo.onrender.com/private', {
+      method: "GET",
+      headers: {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo0OSwiaWF0IjoxNzA4OTYyNDMyLCJleHAiOjE3MDg5NjYwMzJ9.lOkVdjWuR6OnE7CFZ6UZnKVt7TYHNYFvGnJbUDQQW2g",
+      }
+    }).then(res => res.text()).then(data => console.info(data))
+  }
+
+  function login(){
+    fetch('https://agencia-de-turismo.onrender.com/login', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ "username":"astza","password":"astza" })
+    }).then(res => res.text()).then(data => console.info(data))
+  }
+
+  function updateUser(){
+    fetch('https://agencia-de-turismo.onrender.com/client/7', {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ "password":"nuevapasword" })
+    }).then(res => res.text()).then(data => console.info(data))
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     //llamo a login.js
@@ -193,6 +278,7 @@ export default function Register() {
           </div>
           <div className="flex items-center justify-center w-full h-auto mt-7">
             <button
+              onClick={ ()=> crearUsuario() }
               type="submit"
               className="bg-orange-500 duration-300 hover:bg-orange-600 text-white text-sm font-bold w-full py-3 rounded-md uppercase"
             >
@@ -201,7 +287,7 @@ export default function Register() {
           </div>
           <div className="mt-4 text-xs text-zinc-500 text-center">
             <span>Ya estas registrado?</span>
-            <button onClick={ HandleClick } className='ml-2 font-medium text-sky-600'>Iniciar sesión</button>
+            <button onClick={()=> login()} className='ml-2 font-medium text-sky-600'>Iniciar sesión</button>
           </div>
         </form>
       </section>
