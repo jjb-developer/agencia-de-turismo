@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import Boton from './Boton'
+import Boton from './componentes/Boton'
 
 export default function Navbar() {
 
@@ -9,7 +9,6 @@ export default function Navbar() {
 				<Link to='/' className='cursor-pointer'>agencia de turismo</Link>
 			</div>
 			<div className='flex gap-2'>
-				<Boton ruta='/empleados' name='empleados'/>
 				<Boton ruta='/register' name='register'/>
 				<Boton ruta='/login' name='login'/>
 			</div>

@@ -1,15 +1,15 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./componentes/pages/Home"
-import Empleados from './componentes/pages/Empleados'
-import Register from './componentes/pages/Register'
-import Login from './componentes/pages/Login'
+import Home from "./componentes/Pages/Home"
+import Vendedor from './componentes/Pages/Vendedor'
+import Register from './componentes/Pages/Register'
+import Login from './componentes/Pages/Login'
 
 function App() {
 	return (
 		<div className='w-full h-screen'>
 		   <Routes>
 				<Route path="/" element={<Home/>} />
-				<Route path="/empleados" element={<Empleados/>}/>
+				<Route path="/vendedor" element={<Vendedor/>}/>
 				<Route path="/register" element={<Register/>}/>
 				<Route path="/login" element={<Login/>}/>
 		   </Routes>

@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
 import Navbar from '../Nav/Navbar'
-import InfoPersonal from '../Empleados/InfoPersonal'
-import ServiciosOfrecidos from '../Empleados/ServiciosOfrecidos'
-import AgregarServicio from '../Empleados/AgregarServicio'
+import InfoPersonal from './Vendedor/InfoPersonal'
+import ServiciosOfrecidos from './Vendedor/ServiciosOfrecidos'
+import AgregarServicio from './Vendedor/AgregarServicio'
 
 export default function empleados() {
 
-	const [vista,setVista] = useState([0,0,1])
+	const [vista,setVista] = useState([1,0,0])
 
 	return (
 

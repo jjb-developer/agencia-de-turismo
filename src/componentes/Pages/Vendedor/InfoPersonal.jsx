@@ -1,4 +1,4 @@
-import { registerHandler } from '../../utils/register.js'
+import { registerHandler } from '../../../utils/register.js'
 
 export default function infoPersonal({status}) {
 
