@@ -1,20 +1,19 @@
-const url = "http://localhost:3001/login";
-import useStorage from '../utils/store.jsx'
+// LOGIN DE USUARIO
+export function loginHandler(url) {
 
-export function loginHandler(username, password) {
+  const vendedor = {
+    "username":"username",
+    "password":"1234"
+  }
 
-  const { getInfo, get } = useStorage()
-  getInfo(username,password)
-  //const local = `http://localhost:3001/vendedores?username=${username}&?password=${password}`;
-/*
-  return fetch(`${local}`, {
-    method: "GET",
+  return fetch(`${url}/login`, {
+    method: "POST",
     headers: {
       "content-type": "application/json",
     },
-    //body: JSON.stringify({ username, password }),
+    body: JSON.stringify({ username: "cristobal", password: "cristobal" }),
   })
-    .then((res) => res.json())
-    .then((data) => update(data))
-    .catch((error) => console.error("Error al procesar la solicitud", error)); */
+    .then((res) => res.text())
+    .then((data) => data.results )
+    .catch((error) => console.error("No tienes permisos. Error en username o password: ", error))
 }

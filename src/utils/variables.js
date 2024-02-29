@@ -90,3 +90,80 @@ export const datosDePrueba = [
     "service_code": 4
   }
 ]
+
+
+export const servicios = [
+  {
+    "code": 1,
+    "image": "https://images.pexels.com/photos/594077/pexels-photo-594077.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "name": "hotel por noche",
+    "description": "Experimenta el lujo y la comodidad en nuestro hotel, donde cada noche se convierte en una experiencia inolvidable de descanso y hospitalidad."
+  },
+  {
+    "code": 2,
+    "image": "https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "name": "alquiler de auto",
+    "description": "Vive la libertad de explorar a tu propio ritmo con nuestro servicio de alquiler de autos, donde cada viaje se convierte en una oportunidad para descubrir nuevos destinos."
+  },
+  {
+    "code": 3,
+    "image": "https://images.pexels.com/photos/385997/pexels-photo-385997.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "name": "pasaje de colectivo",
+    "description": "Viaja con comodidad y seguridad en nuestros servicios de pasaje en colectivo, donde cada trayecto se transforma en un recorrido placentero y sin preocupaciones."
+  },
+  {
+    "code": 4,
+    "image": "https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "name": "pasaje de avión",
+    "description": "Descubre la libertad de volar con nuestro servicio de pasaje aéreo, donde cada viaje es una aventura que te acerca a tus destinos soñados."
+  },
+  {
+    "code": 5,
+    "image": "https://images.pexels.com/photos/15536055/pexels-photo-15536055/free-photo-of-edificios-entrenar-tren-vehiculo.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "name": "pasaje de tren",
+    "description": "Embárcate en una travesía única con nuestro servicio de pasaje en tren, donde cada viaje es una experiencia pintoresca y llena de encanto que te conecta con destinos fascinantes."
+  },
+  {
+    "code": 6,
+    "image": "https://images.pexels.com/photos/15710357/pexels-photo-15710357/free-photo-of-paisaje-montanas-cielo-hombre.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "name": "excursiones",
+    "description": "Sumérgete en la emoción y la exploración con nuestras excursiones, donde cada paso te lleva a descubrir nuevos horizontes y experiencias inolvidables."
+  },
+  {
+    "code": 7,
+    "image": "https://images.pexels.com/photos/433452/pexels-photo-433452.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "name": "entrada a eventos",
+    "description": "Sumérgete en la emoción y la diversión con nuestro servicio de entrada a eventos, donde cada acceso te brinda la oportunidad de disfrutar momentos inolvidables llenos de entretenimiento y cultura."
+  }
+]
+
+const imgExcursion = "https://images.pexels.com/photos/15700862/pexels-photo-15700862/free-photo-of-glaciar-de-svartisen-en-noruega.jpeg?auto=compress&cs=tinysrgb&w=600"
+
+const imgExcursion2 = "https://images.pexels.com/photos/15710357/pexels-photo-15710357/free-photo-of-paisaje-montanas-cielo-hombre.jpeg?auto=compress&cs=tinysrgb&w=600"
+
+const imgHotel = "https://images.pexels.com/photos/96444/pexels-photo-96444.jpeg?auto=compress&cs=tinysrgb&w=600"
+
+const imgHotel1 = "https://images.pexels.com/photos/70441/pexels-photo-70441.jpeg?auto=compress&cs=tinysrgb&w=600"
+
+const imgHotel2 = "https://images.pexels.com/photos/594077/pexels-photo-594077.jpeg?auto=compress&cs=tinysrgb&w=600"
+
+
+const imgAvion = "https://images.pexels.com/photos/333525/pexels-photo-333525.jpeg?auto=compress&cs=tinysrgb&w=600"
+
+const imgAvion2 = "https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg?auto=compress&cs=tinysrgb&w=600"
+
+const imgColectivo = "https://images.pexels.com/photos/385997/pexels-photo-385997.jpeg?auto=compress&cs=tinysrgb&w=600"
+
+const imgColectivo1 = "https://images.pexels.com/photos/15527051/pexels-photo-15527051/free-photo-of-ciudad-calle-verano-vehiculo.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+
+const imgTren = "https://images.pexels.com/photos/15536055/pexels-photo-15536055/free-photo-of-edificios-entrenar-tren-vehiculo.jpeg?auto=compress&cs=tinysrgb&w=600"
+
+const imgTren1 = "https://images.pexels.com/photos/15799941/pexels-photo-15799941/free-photo-of-ciudad-entrenar-tren-esperando.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+
+const imgAuto = "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=600"
+
+const imgAuto1 = "https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=600"
+
+const imgEventos = "https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=600"
+
+const imgEventos1 = "https://images.pexels.com/photos/433452/pexels-photo-433452.jpeg?auto=compress&cs=tinysrgb&w=600"

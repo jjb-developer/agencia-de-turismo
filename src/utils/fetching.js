@@ -9,7 +9,13 @@ export function loadServiceHandler(url) {
 
 
 // LOGIN DE USUARIO
-export function loginHandler() {
+export function loginHandler(url) {
+
+  const vendedor = {
+    "username":"username",
+    "password":"1234"
+  }
+
   return fetch(`${url}/login`, {
     method: "POST",
     headers: {
@@ -18,10 +24,8 @@ export function loginHandler() {
     body: JSON.stringify({ username: "cristobal", password: "cristobal" }),
   })
     .then((res) => res.text())
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => console.error("Error (username o password) en intento de login: ", error))
+    .then((data) => data.results )
+    .catch((error) => console.error("No tienes permisos. Error en username o password: ", error))
 }
 
 

@@ -1,36 +1,33 @@
 import Navbar from "../Nav/Navbar";
 import { useEffect, useState } from "react";
-import { loginHandler } from "../../utils/login.js";
 import { useNavigate } from "react-router-dom";
-import useStorage from '../../utils/store'
+import store from './../../utils/store'
+
 
 export default function Login() {
+  const { isLogin } = store()
+  const { login, play } = store()
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [userData,setUserData]=useState(null);
-  const { getInfo } = useStorage()
-  
-  const navigate=useNavigate();
+
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
-    getInfo(username,password)
-    //llamo a login.js
-    //const res = await loginHandler(username, password);
-    //setUserData(res)
-    //console.log(res)
-    navigate('/empleados')
+    console.info(`username = ${username}`)
+    console.info(`password = ${password}`)
+    //login();
+    play()
+    setTimeout(()=> {
+      if(isLogin) navigate('/vendedor')
+    },2000)
+    
   }
 
-  function HandleClick(){
+  function registerHandleClick(){
     navigate("/register");
   }
-
-  useEffect(()=>{
-    if(userData){
-        navigate('/')
-    }
-  },[userData])
 
   return (
     <>
@@ -43,10 +40,10 @@ export default function Login() {
           onSubmit={handleSubmit}
           action=""
         >
-          <div className="flex flex-col gap-y-1">
+          <div className="flex flex-col gap-y-2">
             <label className='uppercase text-xs text-zinc-500 font-bold'>Username</label>
             <input
-              className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
+              className="outline-none py-2.5 px-2.5 border-none rounded focus:ring-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
               name=""
               id="0"
@@ -57,10 +54,10 @@ export default function Login() {
               }}
             />
           </div>
-          <div className="flex flex-col mt-5 gap-y-1">
+          <div className="flex flex-col mt-7 gap-y-2">
             <label className='uppercase text-xs text-zinc-500 font-bold'>Password</label>
             <input
-              className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
+              className="outline-none py-2.5 px-2.5 border-none rounded focus:ring-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="password"
               name=""
               id="1"
@@ -81,7 +78,7 @@ export default function Login() {
           </div>
           <div className="mt-4 text-xs text-zinc-500 text-center">
             <span>No estas registrado?</span>
-            <button onClick={ HandleClick } className='ml-2 font-medium text-sky-600'>Registrarse</button>
+            <a onClick={ registerHandleClick } className='cursor-pointer ml-2 font-medium text-sky-600'>Registrarse</a>
           </div>
         </form>
       </section>
