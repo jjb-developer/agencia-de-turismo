@@ -10,7 +10,7 @@ export async function loginHandler(user,pass) {
     },
     body: JSON.stringify({ username: user, password: pass }),
   })
-    .then((res) => res.json())
-    .then((data) => data )
+    .then((res) => res.text())
+    .then((data) => localStorage.setItem('user', data))
     .catch((error) => console.error("No tienes permisos. Error en username o password: ", error))
 }

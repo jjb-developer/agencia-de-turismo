@@ -6,14 +6,7 @@ export default function infoPersonal({status}) {
 
 	async function handleSubmit(e) {
 		e.preventDefault();
-		//const res = await registerHandler(name, lastname, adress, dni, nationality, phone, email, rol, username, password, sueldo);
-		console.info('obtener y actualizar info personal en construccion')
 	}
-/*
-	const user = { "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo1MiwiaWF0IjoxNzA5MjIzNzU3LCJleHAiOjE3MDkyMjczNTd9.eSEGspbVvAqyMmlCRATUtWMLKUkDM2QXz7YVDIKlNBk", "id_usuario": 52}
-
-	const user2 = {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo1MiwiaWF0IjoxNzA5MjI0MzIxLCJleHAiOjE3MDkyMjc5MjF9.fhjQDTOqKddYnBhpx1P9SRbY9Sne0u8UoUM4fTJCFM8","id_usuario":52}
-*/
 
 	const { isLogin } = store()
 
@@ -23,7 +16,9 @@ export default function infoPersonal({status}) {
 			headers: {
 				"Authorization": `Bearer ${user.token}`,
 			}
-		}).then(res => res.text()).then(data => console.info(data))
+		})
+		.then(res => res.json())
+		.then(data => data )
 	}
 
 	return (
@@ -36,8 +31,6 @@ export default function infoPersonal({status}) {
 						>
 						show/update
 					</button>
-					{ isLogin && <p>`${JSON.stringify(isLogin)}`</p>}
-					{ !isLogin && <p>Loading...</p>}
 				</form>
 			</div>
 		</section>
