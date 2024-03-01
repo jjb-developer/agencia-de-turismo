@@ -1,12 +1,12 @@
 import Navbar from "../Nav/Navbar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import store from './../../utils/store'
 
 
 export default function Login() {
   const { isLogin } = store()
-  const { login, play } = store()
+  const { login } = store()
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -15,14 +15,8 @@ export default function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.info(`username = ${username}`)
-    console.info(`password = ${password}`)
-    //login();
-    play()
-    setTimeout(()=> {
-      if(isLogin) navigate('/vendedor')
-    },2000)
-    
+    login(username,username);
+    navigate('/vendedor')
   }
 
   function registerHandleClick(){

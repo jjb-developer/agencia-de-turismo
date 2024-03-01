@@ -8,13 +8,15 @@ export default function Register() {
   const [lastname, setLastname] = useState("");
   const [adress, setAdress] = useState("");
   const [dni, setDni] = useState("");
-  const [nationality, setNationality] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+  const [country, setCountry] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [rol, setRol] = useState("");
+  const [role, setRole] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [sueldo, setSueldo] = useState("");
+  const [job, setJob] = useState("");
+  const [salary, setSalary] = useState("");
 
   const [send,setSend]=useState(false);
 

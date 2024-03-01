@@ -1,5 +1,5 @@
 // OBTENER TODOS LOS SERVICIOS OFRECIDOS
-export function loadServiceHandler(url) {
+export async function loadServiceHandler(url) {
   return fetch(url)
     .then((res) => res.json())
     .then((data) => data.results )

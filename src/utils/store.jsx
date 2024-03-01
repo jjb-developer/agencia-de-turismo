@@ -1,16 +1,12 @@
 import { create } from 'zustand';
 import { loadServiceHandler } from './services.js'
 import { loginHandler } from './login.js'
-import { url } from './variables.js'
 
 
 const store = create((set) => ({
-	isLogin: false,
-	play: ()=> {
-		set((state)=> ({...state, isLogin: true}))
-	},
-	login: async ()=> {
-		const data = await loginHandler(url)
+	isLogin: null,
+	login: async (username,password)=> {
+		const data = await loginHandler(username,password)
 		set((state) => ({ ...state, isLogin: data }))
 	},
 	getService: null,

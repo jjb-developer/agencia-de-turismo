@@ -1,6 +1,6 @@
 const url = "http://localhost:3001/agregar_servicio";
 
-export function agregarServicioHandler(image, servicio, descripcion, destino, fecha, costo) {
+export async function agregarServicioHandler(image, servicio, descripcion, destino, fecha, costo) {
 
   const uuid = Date().replaceAll(':','').split(' ').splice(0,5).join('').toLowerCase()
 

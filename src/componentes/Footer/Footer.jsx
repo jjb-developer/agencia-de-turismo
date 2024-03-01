@@ -13,7 +13,7 @@ export default function Footer(){
 			</div>
 			<div className='mt-4'>
 				<p className='text-[15px] capitalize'>&#9400; copyright - febrero 2024</p>
-				<small className='mt-1.5'>Elaborado por  [ Julia Rodriguez, Sebastian Olivares, José Pereira ]</small>
+				<small className='mt-1.5'>Elaborado por  [ Julia Rodriguez, Sebastian Oliveto, José Pereira ]</small>
 			</div>
 		</footer>
 	)
