@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { registerHandler } from '../../../utils/register.js'
-import store from '../../../utils/store.jsx'
 
 export default function infoPersonal({status}) {
 
@@ -8,9 +7,9 @@ export default function infoPersonal({status}) {
 		e.preventDefault();
 	}
 
-	const { isLogin } = store()
+	function probarClient(){
+		const user = JSON.parse(localStorage.getItem('user'))
 
-	function probarClient(user){
 		fetch(`https://agencia-de-turismo.onrender.com/client/${user.id_usuario}`, {
 			method: "GET",
 			headers: {
@@ -18,7 +17,7 @@ export default function infoPersonal({status}) {
 			}
 		})
 		.then(res => res.json())
-		.then(data => data )
+		.then(data => console.info(data))
 	}
 
 	return (
@@ -27,7 +26,7 @@ export default function infoPersonal({status}) {
 				<form onSubmit={ handleSubmit } className='w-96 flex flex-col gap-y-2 mx-auto'>
 					<button type='submit'
 						className={`w-full mt-10 px-7 text-sm font-bold py-3 rounded-md uppercase bg-zinc-500 hover:bg-rose-500 text-white`}
-						onClick={ ()=> probarClient(user2) }
+						onClick={ ()=> probarClient() }
 						>
 						show/update
 					</button>
