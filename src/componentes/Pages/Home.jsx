@@ -11,6 +11,7 @@ export default function Home(){
 		<div className='h-screen w-auto'>
 			<Navbar/>
 			<Header/>
+			<h1 className='text-8xl my-8 text-center font-zeyada font-bold text-orange-800'>Nuestros Servicios</h1>
 			<Main servicios={servicios}/>
 			<Footer/>
 		</div>

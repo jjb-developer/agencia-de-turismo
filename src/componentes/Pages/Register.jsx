@@ -78,106 +78,106 @@ export default function Register() {
         }}
       >
         <form
-          className="bg-white p-10 rounded-md shadow-md max-w-xl mx-auto"
+          className="bg-white p-10 rounded shadow-md max-w-xl mx-auto"
           onSubmit={handleSubmit}
         >
           <div className="flex flex-wrap -mx-4">
             <div className="w-full md:w-1/2 px-4">
-              <label className="uppercase text-xs text-zinc-500 font-bold">
+              <label className="uppercase text-xs text-zinc-800 font-bold">
                 Name
               </label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
               />
             </div>
             <div className="w-full md:w-1/2 px-4">
-              <label className="uppercase text-xs text-zinc-500 font-bold">
+              <label className="uppercase text-xs text-zinc-800 font-bold">
                 Lastname
               </label>
               <input
                 type="text"
                 value={lastname}
                 onChange={(e) => setLastname(e.target.value)}
-                className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
               />
             </div>
             <div className="w-full md:w-1/2 px-4">
-              <label className="uppercase text-xs text-zinc-500 font-bold">
+              <label className="uppercase text-xs text-zinc-800 font-bold">
                 Address
               </label>
               <input
                 type="text"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
               />
             </div>
             <div className="w-full md:w-1/2 px-4">
-              <label className="uppercase text-xs text-zinc-500 font-bold">
+              <label className="uppercase text-xs text-zinc-800 font-bold">
                 DNI
               </label>
               <input
                 type="text"
                 value={dni}
                 onChange={(e) => setDni(e.target.value)}
-                className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
               />
             </div>
             <div className="w-full md:w-1/2 px-4">
-              <label className="uppercase text-xs text-zinc-500 font-bold">
+              <label className="uppercase text-xs text-zinc-800 font-bold">
                 Birthdate
               </label>
               <input
                 type="date"
                 value={birthdate}
                 onChange={(e) => setBirthdate(e.target.value)}
-                className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
               />
             </div>
             <div className="w-full md:w-1/2 px-4">
-              <label className="uppercase text-xs text-zinc-500 font-bold">
+              <label className="uppercase text-xs text-zinc-800 font-bold">
                 Country
               </label>
               <input
                 type="text"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
-                className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
               />
             </div>
             <div className="w-full md:w-1/2 px-4">
-              <label className="uppercase text-xs text-zinc-500 font-bold">
+              <label className="uppercase text-xs text-zinc-800 font-bold">
                 Phone
               </label>
               <input
                 type="text"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
               />
             </div>
             <div className="w-full md:w-1/2 px-4">
-              <label className="uppercase text-xs text-zinc-500 font-bold">
+              <label className="uppercase text-xs text-zinc-800 font-bold">
                 Email
               </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
               />
             </div>
             <div className="w-full md:w-1/2 px-4">
-              <label className="uppercase text-xs text-zinc-500 font-bold">
+              <label className="uppercase text-xs text-zinc-800 font-bold">
                 Role
               </label>
               <select
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
-                className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
               >
                 <option value="vendedor">Vendedor</option>
                 <option value="cliente">Cliente</option>
@@ -186,49 +186,49 @@ export default function Register() {
             {role === "vendedor" && (
               <>
                 <div className="w-full md:w-1/2 px-4">
-                  <label className="uppercase text-xs text-zinc-500 font-bold">
+                  <label className="uppercase text-xs text-zinc-800 font-bold">
                     Job
                   </label>
                   <input
                     type="text"
                     value={job}
                     onChange={(e) => setJob(e.target.value)}
-                    className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                    className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
                   />
                 </div>
                 <div className="w-full md:w-1/2 px-4">
-                  <label className="uppercase text-xs text-zinc-500 font-bold">
+                  <label className="uppercase text-xs text-zinc-800 font-bold">
                     Salary
                   </label>
                   <input
                     type="text"
                     value={salary}
                     onChange={(e) => setSalary(e.target.value)}
-                    className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                    className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
                   />
                 </div>
               </>
             )}
             <div className="w-full px-4 mt-5">
-              <label className="uppercase text-xs text-zinc-500 font-bold">
+              <label className="uppercase text-xs text-zinc-800 font-bold">
                 Username
               </label>
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
               />
             </div>
             <div className="w-full px-4 mt-5">
-              <label className="uppercase text-xs text-zinc-500 font-bold">
+              <label className="uppercase text-xs text-zinc-800 font-bold">
                 Password
               </label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
               />
             </div>
           </div>
@@ -236,15 +236,15 @@ export default function Register() {
           <div className="flex items-center justify-center w-full h-auto mt-7">
             <button
               type="submit"
-              className="bg-orange-500 duration-300 hover:bg-orange-600 text-white text-sm font-bold w-full py-3 rounded-md uppercase"
+              className="bg-orange-800 duration-300 hover:bg-orange-600 text-white hover:text-slate-900 text-md font-playfair font-bold w-full py-3 rounded-md uppercase"
             >
               Registrarse
             </button>
           </div>
 
-          <div className="mt-4 text-xs text-zinc-500 text-center">
+          <div className="mt-4 text-xs text-zinc-900 font-bold text-center">
             <span>¿Ya estás registrado?</span>
-            <a onClick={HandleClick} className="ml-2 font-medium text-sky-600 cursor-pointer">
+            <a onClick={HandleClick} className="ml-2 font-roboto text-lg font-semibold hover:font-bold hover:text-orange-600 duration-1000 text-sky-700 cursor-pointer">
               Iniciar sesión
             </a>
           </div>
