@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { registerHandler } from '../../../utils/register.js'
-
+//borrar import que no se utilicen
 export default function infoPersonal({status}) {
 
 	async function handleSubmit(e) {
@@ -10,8 +10,7 @@ export default function infoPersonal({status}) {
 	function probarClient(){
 		const user = JSON.parse(localStorage.getItem('user'))
 
-		fetch(`https://agencia-de-turismo.onrender.com/client/${user.id_usuario}`, {
-			method: "GET",
+		fetch(`https://agencia-de-turismo.onrender.com/client`, {
 			headers: {
 				"Authorization": `Bearer ${user.token}`,
 			}
