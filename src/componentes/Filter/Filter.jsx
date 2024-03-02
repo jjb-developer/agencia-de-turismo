@@ -10,7 +10,7 @@ export default function Search(){
 	}
 
 	return (
-		<section className='w-full pt-10 px-16 flex items-center gap-x-5 px-10'>
+		<section className='w-full pt-10 px-16 flex items-center gap-x-5'>
 			<div className='flex flex-col'>
 				<label className='uppercase text-xs mb-2'>servicios
 				</label>
