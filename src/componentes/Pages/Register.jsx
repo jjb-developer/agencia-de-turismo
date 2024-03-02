@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function Register() {
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
-  const [adress, setAdress] = useState("");
+  const [address, setAddress] = useState("");
   const [dni, setDni] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [country, setCountry] = useState("");
@@ -30,14 +30,25 @@ export default function Register() {
     e.preventDefault();
     let data = null
     if(role==='vendedor'){
-      data = { name, lastname, adress, dni, birthdate, country, phone, email, role, username, password, job, salary }
+      data = { name, lastname, address, dni, birthdate, country, phone, email, role, username, password, job, salary }
     } else {
-      data = { name, lastname, adress, dni, birthdate, country, phone, email, role, username, password }
+      data = { name, lastname, address, dni, birthdate, country, phone, email, role, username, password }
     }
 
-    const response = await registerHandler(data);
-    setSend(true)
-    console.log(response)
+    try {
+      const response = await registerHandler(data);
+      console.log("Código de estado:", response.statusCode);
+      console.log("Datos de respuesta:", response.data);
+     
+      if(response.statusCode==200){
+        navigate('/')
+      }else{
+        console.log("Error en el registro:", response.statusCode);
+      }
+      
+    } catch (error) {
+      console.log("Error en la petición register:", error)
+    }
   }
 
   useEffect(()=>{
@@ -84,9 +95,9 @@ export default function Register() {
             <input
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
-              value={adress}
+              value={address}
               onChange={(e) => {
-                setAdress(e.target.value);
+                setAddress(e.target.value);
               }}
             />
           </div>

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { registerHandler } from '../../../utils/register.js'
-
+//borrar import que no se utilicen
 export default function infoPersonal({status}) {
 
 	async function handleSubmit(e) {
