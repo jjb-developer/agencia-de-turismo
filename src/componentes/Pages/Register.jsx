@@ -12,7 +12,7 @@ export default function Register() {
   const [country, setCountry] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("cliente");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [job, setJob] = useState("");
@@ -26,97 +26,18 @@ export default function Register() {
     navigate("/login");
   }
 
-  function crearUsuario(){
-    const user = {
-      "name":"mario",
-      "lastname":"garcia",
-      "address":"barinas",
-      "dni":"14567126",
-      "birthdate":"1990-05-01",
-      "country":"venezuela",
-      "phone":"580345678",
-      "email":"mario@garcia.com",
-      "role":"cliente",
-      "user_state":true,
-      "username":"garma",
-      "password":"garma"
-    }
-
-    const vendedor = {
-      "name":"astrid",
-      "lastname":"meza",
-      "address":"madrid",
-      "dni":"34217890",
-      "birthdate":"1999-09-02",
-      "country":"españa",
-      "phone":"453888221",
-      "email":"astrid@meza.com",
-      "role":"vendedor",
-      "user_state":true,
-      "username":"astza",
-      "password":"astza",
-      "job":"developer web",
-      "salary": 5000
-    }
-
-
-    fetch('https://agencia-de-turismo.onrender.com/user', {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(vendedor)
-      })
-        .then(res => res.text())
-        .then(data => console.info(data))
-  }
-
-
-  function probarClient(){
-    fetch('https://agencia-de-turismo.onrender.com/client/7', {
-      method: "GET",
-      headers: {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo0OSwiaWF0IjoxNzA4OTYyNDMyLCJleHAiOjE3MDg5NjYwMzJ9.lOkVdjWuR6OnE7CFZ6UZnKVt7TYHNYFvGnJbUDQQW2g",
-      }
-    }).then(res => res.text()).then(data => console.info(data))
-  }
-
-
-  function probar(){
-    fetch('https://agencia-de-turismo.onrender.com/private', {
-      method: "GET",
-      headers: {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo0OSwiaWF0IjoxNzA4OTYyNDMyLCJleHAiOjE3MDg5NjYwMzJ9.lOkVdjWuR6OnE7CFZ6UZnKVt7TYHNYFvGnJbUDQQW2g",
-      }
-    }).then(res => res.text()).then(data => console.info(data))
-  }
-
-  function login(){
-    fetch('https://agencia-de-turismo.onrender.com/login', {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ "username":"astza","password":"astza" })
-    }).then(res => res.text()).then(data => console.info(data))
-  }
-
-  function updateUser(){
-    fetch('https://agencia-de-turismo.onrender.com/client/7', {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ "password":"nuevapasword" })
-    }).then(res => res.text()).then(data => console.info(data))
-  }
-
   async function handleSubmit(e) {
     e.preventDefault();
-    //llamo a login.js
-    const res = await registerHandler(name, lastname, adress, dni, nationality, phone, email, rol, username, password, sueldo);
+    let data = null
+    if(role==='vendedor'){
+      data = { name, lastname, adress, dni, birthdate, country, phone, email, role, username, password, job, salary }
+    } else {
+      data = { name, lastname, adress, dni, birthdate, country, phone, email, role, username, password }
+    }
+
+    const response = await registerHandler(data);
     setSend(true)
-    console.log(res)
+    console.log(response)
   }
 
   useEffect(()=>{
@@ -141,8 +62,6 @@ export default function Register() {
             <input
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
-              name=""
-              id="0"
               value={name}
               onChange={(e) => {
                 setName(e.target.value);
@@ -154,8 +73,6 @@ export default function Register() {
             <input
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
-              name=""
-              id="1"
               value={lastname}
               onChange={(e) => {
                 setLastname(e.target.value);
@@ -167,8 +84,6 @@ export default function Register() {
             <input
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
-              name=""
-              id="2"
               value={adress}
               onChange={(e) => {
                 setAdress(e.target.value);
@@ -180,8 +95,6 @@ export default function Register() {
             <input
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
-              name=""
-              id="3"
               value={dni}
               onChange={(e) => {
                 setDni(e.target.value);
@@ -189,15 +102,24 @@ export default function Register() {
             />
           </div>
           <div className="flex flex-col mt-5">
-            <label className='uppercase text-xs text-zinc-500 font-bold'>nationality</label>
+            <label className='uppercase text-xs text-zinc-500 font-bold'>birthdate</label>
+            <input
+              className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
+              type="date"
+              value={birthdate}
+              onChange={(e) => {
+                setBirthdate(e.target.value);
+              }}
+            />
+          </div>
+          <div className="flex flex-col mt-5">
+            <label className='uppercase text-xs text-zinc-500 font-bold'>country</label>
             <input
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
-              name=""
-              id="5"
-              value={nationality}
+              value={country}
               onChange={(e) => {
-                setNationality(e.target.value);
+                setCountry(e.target.value);
               }}
             />
           </div>
@@ -206,8 +128,6 @@ export default function Register() {
             <input
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
-              name=""
-              id="6"
               value={phone}
               onChange={(e) => {
                 setPhone(e.target.value);
@@ -219,8 +139,6 @@ export default function Register() {
             <input
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="email"
-              name=""
-              id="7"
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -228,15 +146,13 @@ export default function Register() {
             />
           </div>
           <div className="flex flex-col mt-5">
-            <label className='uppercase text-xs text-zinc-500 font-bold'>rol</label>
+            <label className='uppercase text-xs text-zinc-500 font-bold'>role</label>
             <select
+              defaultValue={role}
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 bg-zinc-100"
-              name="rol"
-              id='8'
-              value={rol}
-              onChange={(e)=> setRol(e.target.value)}>
-              <option className="" value="empleado">Empleado</option>
-              <option value="cliente">Cliente</option>
+              onChange={(e)=> setRole(e.target.value)}>
+              <option className="" value="vendedor">vendedor</option>
+              <option value="cliente">cliente</option>
             </select>
           </div>
           <div className="flex flex-col mt-5">
@@ -244,8 +160,6 @@ export default function Register() {
             <input
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
-              name=""
-              id="9"
               value={username}
               onChange={(e) => {
                 setUsername(e.target.value);
@@ -257,30 +171,39 @@ export default function Register() {
             <input
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="password"
-              name=""
-              id="10"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
             />
           </div>
-          <div className="flex flex-col mt-5">
-            <label className='uppercase text-xs text-zinc-500 font-bold'>sueldo</label>
+          { role === 'vendedor' &&
+          (<div className="flex flex-col mt-5">
+            <label className='uppercase text-xs text-zinc-500 font-bold'>job</label>
             <input
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
               type="text"
-              name=""
-              id="11"
-              value={sueldo}
+              value={job}
               onChange={(e) => {
-                setSueldo(e.target.value);
+                setJob(e.target.value);
               }}
             />
-          </div>
+          </div>)}
+          { role === 'vendedor' && (<div className="flex flex-col mt-5">
+            <label className='uppercase text-xs text-zinc-500 font-bold'>salary</label>
+            <input
+              className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300"
+              type="text"
+              value={salary}
+              onChange={(e) => {
+                setSalary(e.target.value);
+              }}
+            />
+          </div>)}
+
           <div className="flex items-center justify-center w-full h-auto mt-7">
             <button
-              onClick={ ()=> crearUsuario() }
+              onClick={ handleSubmit }
               type="submit"
               className="bg-orange-500 duration-300 hover:bg-orange-600 text-white text-sm font-bold w-full py-3 rounded-md uppercase"
             >
@@ -289,7 +212,7 @@ export default function Register() {
           </div>
           <div className="mt-4 text-xs text-zinc-500 text-center">
             <span>Ya estas registrado?</span>
-            <button onClick={()=> login()} className='ml-2 font-medium text-sky-600'>Iniciar sesión</button>
+            <a onClick={ HandleClick } className='ml-2 font-medium text-sky-600'>Iniciar sesión</a>
           </div>
         </form>
       </section>

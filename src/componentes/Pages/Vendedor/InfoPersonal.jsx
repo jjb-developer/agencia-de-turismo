@@ -10,8 +10,7 @@ export default function infoPersonal({status}) {
 	function probarClient(){
 		const user = JSON.parse(localStorage.getItem('user'))
 
-		fetch(`https://agencia-de-turismo.onrender.com/client/${user.id_usuario}`, {
-			method: "GET",
+		fetch(`https://agencia-de-turismo.onrender.com/client`, {
 			headers: {
 				"Authorization": `Bearer ${user.token}`,
 			}
