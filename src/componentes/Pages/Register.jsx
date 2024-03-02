@@ -114,7 +114,7 @@ export default function Register() {
   async function handleSubmit(e) {
     e.preventDefault();
     //llamo a login.js
-    const res = await registerHandler(name, lastname, adress, dni, nationality, phone, email, rol, username, password, sueldo);
+    const res = await registerHandler(name, lastname, adress, dni, country, phone, email, role, username, password, salary);
     setSend(true)
     console.log(res)
   }
@@ -195,7 +195,7 @@ export default function Register() {
               type="text"
               name=""
               id="5"
-              value={nationality}
+              value={country}
               onChange={(e) => {
                 setNationality(e.target.value);
               }}
@@ -233,7 +233,7 @@ export default function Register() {
               className="outline-none py-2.5 px-2.5 border-b-2 focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 bg-zinc-100"
               name="rol"
               id='8'
-              value={rol}
+              value={role}
               onChange={(e)=> setRol(e.target.value)}>
               <option className="" value="empleado">Empleado</option>
               <option value="cliente">Cliente</option>
@@ -272,7 +272,7 @@ export default function Register() {
               type="text"
               name=""
               id="11"
-              value={sueldo}
+              value={salary}
               onChange={(e) => {
                 setSueldo(e.target.value);
               }}
