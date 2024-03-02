@@ -9,7 +9,7 @@ export default function Header(){
 	}
 	return (
 		<header style={fondo} className='bg-center bg-cover relative flex items-center justify-center w-full bg-[#ddd] h-80'>
-			<h2 className='absolute bottom-7 left-10 text-8xl font-medium tracking-tighter text-white capitalize'>desert</h2>
+			<h3 className='absolute bottom-7 left-10 text-8xl font-medium tracking-tighter text-white capitalize'>desert</h3>
 		</header>
 	)
 }

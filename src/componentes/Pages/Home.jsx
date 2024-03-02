@@ -8,7 +8,7 @@ import { servicios } from '../../utils/variables.js'
 export default function Home(){
 
 	return(
-		<div className='h-screen w-full'>
+		<div className='h-screen w-auto'>
 			<Navbar/>
 			<Header/>
 			<Main servicios={servicios}/>
