@@ -32,9 +32,7 @@ export default function Login() {
         .then(data => {
           const usuario = data.results[0].usuario
           setUser(usuario);
-          console.info(usuario);
-          if(usuario.role === 'vendedor') navigate('/vendedor')
-          else navigate('/cliente')
+          navigate('/')
         })
       } else {
         console.log("Error en el username o en el password.");
