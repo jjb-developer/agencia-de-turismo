@@ -28,8 +28,8 @@ export default function Login() {
       if (user.statusCode != 403) {
         
         try {
-          //const urlD = "http://localhost:3001";
-          fetch(`${url}/user`, {
+          const urlD = "http://localhost:3001";
+          fetch(`${urlD}/user`, {
             headers: {
               "content-type": "application/json",
               authorization: `Bearer ${user.token}`,
@@ -40,23 +40,6 @@ export default function Login() {
         } catch (error) {
           console.log(error.message)
         }
-
-      if (user.status === 200) {
-        await fetch(`${url}/client`, {
-          headers: {
-            "Authorization": `Bearer ${user.token}`
-          }
-        })
-        .then(res => res.json())
-        .then(data => {
-          const usuario = data.results[0].usuario
-          setUser(usuario);
-          navigate('/')
-        })
-
-      } else {
-        console.log(user.message);
-      }
     }
   }catch (error) {
     console.log("Error en la petición login:", error);
