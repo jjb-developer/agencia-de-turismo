@@ -1,7 +1,7 @@
-import Slider from "react-slick";
+/*import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+*/
 export default function Main({ servicios }) {
   const settings = {
     dots: true,
@@ -41,9 +41,9 @@ export default function Main({ servicios }) {
 
   return (
     <main className="mt-8 mb-8">
-      <Slider {...settings} className="gap-x-4">
+     {/* <Slider {...settings} className="gap-x-4">
         {servicios?.map((servicio) => (
-          <div key={servicio.code} className="px-2"> {/* Agregar margen horizontal */}
+          <div key={servicio.code} className="px-2"> 
             <article
               className="border-2 rounded p-5 cursor-pointer border-gray-300 shadow-2xl hover:border-orange-300 duration-300"
               style={{ height: "50rem" }}
@@ -68,7 +68,7 @@ export default function Main({ servicios }) {
             </article>
           </div>
         ))}
-      </Slider>
+        </Slider>*/}
     </main>
   );
 }
