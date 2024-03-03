@@ -28,8 +28,8 @@ export default function Login() {
       if (user.statusCode != 403) {
         
         try {
-          const urlD = "http://localhost:3001";
-          fetch(`${urlD}/user`, {
+        
+          fetch(`${url}/user`, {
             headers: {
               "content-type": "application/json",
               authorization: `Bearer ${user.token}`,
@@ -42,7 +42,7 @@ export default function Login() {
         }
     }
   }catch (error) {
-    console.log("Error en la petición login:", error);
+    console.log("Error en la petición login:", error.message);
   }
 }
 

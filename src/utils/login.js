@@ -1,11 +1,10 @@
 import { url } from './variables.js'
-const urlD='http://localhost:3001'
 
 // LOGIN DE USUARIO
 export async function loginHandler(user,pass) {
 
   try {
-    const response = await fetch(`${urlD}/login`, {
+    const response = await fetch(`${url}/login`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
