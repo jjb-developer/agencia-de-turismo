@@ -40,13 +40,28 @@ export default function Login() {
         } catch (error) {
           console.log(error.message)
         }
+
+      if (user.status === 200) {
+        await fetch(`${url}/client`, {
+          headers: {
+            "Authorization": `Bearer ${user.token}`
+          }
+        })
+        .then(res => res.json())
+        .then(data => {
+          const usuario = data.results[0].usuario
+          setUser(usuario);
+          navigate('/')
+        })
+
       } else {
         console.log(user.message);
       }
-    } catch (error) {
-      console.log("Error en la petición login:", error);
     }
+  }catch (error) {
+    console.log("Error en la petición login:", error);
   }
+}
 
   function registerHandleClick() {
     navigate("/register");
