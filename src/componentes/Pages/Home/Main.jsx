@@ -40,7 +40,7 @@ export default function Main({ servicios }) {
   };
 
   return (
-    <div className="mt-8 mb-8">
+    <main className="mt-8 mb-8">
       <Slider {...settings} className="gap-x-4">
         {servicios?.map((servicio) => (
           <div key={servicio.code} className="px-2"> {/* Agregar margen horizontal */}
@@ -69,6 +69,6 @@ export default function Main({ servicios }) {
           </div>
         ))}
       </Slider>
-    </div>
+    </main>
   );
 }

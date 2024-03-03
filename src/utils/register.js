@@ -1,5 +1,8 @@
 import { url } from './variables.js'
+
+
 export async function registerHandler(data) {
+
   try {
     const response = await fetch(`${url}/user`, {
       method: "POST",
@@ -18,6 +21,6 @@ export async function registerHandler(data) {
   } catch (error) {
     console.error("Error al procesar la solicitud", error);
     throw error;
-   }
+  }
 }
 

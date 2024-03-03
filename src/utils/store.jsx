@@ -17,7 +17,9 @@ const store = create((set) => ({
 	getSales: null,
 	setSales: null,
 	getCondicion: 'todos',
-	setCondicion: (condicion)=> set((state)=> ({...state, getCondicion: condicion }))
+	setCondicion: (condicion)=> set((state)=> ({...state, getCondicion: condicion })),
+	getUser: null,
+	setUser: (info)=> set((state)=> ({...state, getUser: info }))
 }));
 
 export default store;

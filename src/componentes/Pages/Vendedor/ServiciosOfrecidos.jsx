@@ -1,4 +1,4 @@
-export default function ServiciosOfrecidos({status}) {
+export default function ServiciosOfrecidos() {
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -6,7 +6,7 @@ export default function ServiciosOfrecidos({status}) {
 	}
 
 	return (
-		<section className={`${status === 1 ? '':'hidden'} py-5`}>
+		<section className={`py-5`}>
 			<div className='mt-6'>
 				<form onSubmit={ handleSubmit } className='w-96 flex flex-col gap-y-2 mx-auto'>
 					<button type='submit'
