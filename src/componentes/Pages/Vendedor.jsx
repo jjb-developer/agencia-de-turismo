@@ -4,23 +4,8 @@ import InfoPersonal from './Vendedor/InfoPersonal'
 import ServiciosOfrecidos from './Vendedor/ServiciosOfrecidos'
 import AgregarServicio from './Vendedor/AgregarServicio'
 import { url } from '../../utils/variables.js'
-import store from '../../utils/store'
 
 export default function vendedor() {
-
-	const { getUser } = store()
-	const { setUser } = store()
-
-	useEffect(()=>{
-		const user = JSON.parse(localStorage.getItem('user'))
-		fetch(`${url}/client`, {
-			headers: {
-				"Authorization": `Bearer ${user.token}`
-			}
-		})
-		.then(res => res.json())
-		.then(data => {setUser(data.results[0].usuario);console.info(data.results[0].usuario)})
-	},[])
 
 	const navigate = useNavigate()
 

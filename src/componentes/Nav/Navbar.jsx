@@ -2,11 +2,20 @@ import { Link } from "react-router-dom";
 import Boton from "./componentes/Boton";
 import { BiUser } from 'react-icons/bi'
 import store from '../../utils/store'
+import { useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
 
+  const navigate = useNavigate()
   const statusLogin = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')):null
   const { getUser } = store()
+  const { setUser } = store()
+
+  function handleLoginOut(){
+    setUser(null)
+    localStorage.removeItem('user')
+    navigate('/')
+  }
 
   return (
     <nav className="w-full h-20 flex items-center justify-between px-10 md: my-6">
@@ -26,6 +35,7 @@ export default function Navbar() {
           <span className='text-right uppercase font-bold text-sm text-orange-500'>{ getUser.role }</span>
         </div>
         <BiUser className='text-white bg-orange-500 rounded-full w-10 h-10 p-1.5'/>
+        <button onClick={ handleLoginOut }className='bg-rose-500 text-rose-50 font-bold text-sm uppercase py-1.5 px-4'>login out</button>
       </div>):(<div className="flex flex-wrap md:flex-nowrap mr-12 md:mr-28 md: w-40 gap-2">
         <Boton ruta="/register" name="register" />
         <Boton ruta="/login" name="login" />

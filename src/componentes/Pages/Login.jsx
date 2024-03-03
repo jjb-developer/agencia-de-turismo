@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import store from './../../utils/store'
+import { url } from '../../utils/variables.js'
 
 
 export default function Login() {
   const { login } = store()
+  const { setUser } = store()
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,11 +19,23 @@ export default function Login() {
 
     try {
       const response = await login(username,username);
-      const code = JSON.parse(localStorage.getItem('user'))
-      console.log("Código de estado:", code.status);
+      const user = JSON.parse(localStorage.getItem('user'))
+      console.log("Código de estado:", user.status);
 
-      if (code.status === 200) {
-        navigate("/vendedor");
+      if (user.status === 200) {
+        await fetch(`${url}/client`, {
+          headers: {
+            "Authorization": `Bearer ${user.token}`
+          }
+        })
+        .then(res => res.json())
+        .then(data => {
+          const usuario = data.results[0].usuario
+          setUser(usuario);
+          console.info(usuario);
+          if(usuario.role === 'vendedor') navigate('/vendedor')
+          else navigate('/cliente')
+        })
       } else {
         console.log("Error en el username o en el password.");
       }
