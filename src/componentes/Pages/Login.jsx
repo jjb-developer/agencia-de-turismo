@@ -13,22 +13,20 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-//ARREGLADO sacalo en una funcion aparte
+  //ARREGLADO sacalo en una funcion aparte
   async function handleSubmit(e) {
     e.preventDefault();
 
     try {
       const response = await login(username, username);
-//user ahora es un objeto con 2 propiedades {statusCode,responseData}
+      //user ahora es un objeto con 2 propiedades {statusCode,responseData}
       const user = JSON.parse(localStorage.getItem("user"));
 
       //cuando te logueas si estas dado de baja responde con 403
       //si estas dado de alta podes buscar la info y redireccionar
 
       if (user.statusCode != 403) {
-        
         try {
-        
           fetch(`${url}/user`, {
             headers: {
               "content-type": "application/json",
@@ -38,18 +36,18 @@ export default function Login() {
             .then((res) => res.json())
             .then((data) => setUser(data.results));
         } catch (error) {
-          console.log(error.message)
+          console.log(error.message);
         }
+      }
+    } catch (error) {
+      console.log("Error en la petición login:", error.message);
     }
-  }catch (error) {
-    console.log("Error en la petición login:", error.message);
   }
-}
 
   function registerHandleClick() {
     navigate("/register");
   }
-//redireccionamiento
+  //redireccionamiento
   useEffect(() => {
     if (user !== null) {
       console.log(user.user_state);
