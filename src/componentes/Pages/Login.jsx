@@ -2,64 +2,37 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import store from "./../../utils/store";
 import { url } from "../../utils/variables.js";
+import { loginGetInfoHandle } from '../../utils/login.js'
 
 export default function Login() {
-  const { login } = store();
-  //const { setUser } = store()
-  //utilize estados por comodida cambialo a zustand
-  const [user, setUser] = useState(null);
-  const [role, setRole] = useState(null);
+  const { getUser } = store()
+  const { setUser } = store()
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+
 //ARREGLADO sacalo en una funcion aparte
   async function handleSubmit(e) {
     e.preventDefault();
-
-    try {
-      const response = await login(username, username);
-//user ahora es un objeto con 2 propiedades {statusCode,responseData}
-      const user = JSON.parse(localStorage.getItem("user"));
-
-      //cuando te logueas si estas dado de baja responde con 403
-      //si estas dado de alta podes buscar la info y redireccionar
-
-      if (user.statusCode != 403) {
-        
-        try {
-        
-          fetch(`${url}/user`, {
-            headers: {
-              "content-type": "application/json",
-              authorization: `Bearer ${user.token}`,
-            },
-          })
-            .then((res) => res.json())
-            .then((data) => setUser(data.results));
-        } catch (error) {
-          console.log(error.message)
-        }
-    }
-  }catch (error) {
-    console.log("Error en la petición login:", error.message);
+    const info = await loginGetInfoHandle(username,password)
+    setUser(info)
   }
-}
 
   function registerHandleClick() {
     navigate("/register");
   }
-//redireccionamiento
+
   useEffect(() => {
-    if (user !== null) {
-      console.log(user.user_state);
-      if (user.role == "cliente" && user.user_state != "false") {
+    if (getUser !== null) {
+      console.log(getUser.user_state);
+      if (getUser.role == "cliente" && getUser.user_state != "false") {
         navigate("/");
-      } else if (user.role == "vendedor" && user.user_state != "false") {
+      } else if (getUser.role == "vendedor" && getUser.user_state != "false") {
         navigate("/vendedor");
       }
     }
-  }, [user]);
+  }, [getUser]);
 
   return (
     <main
@@ -69,7 +42,7 @@ export default function Login() {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        opacity: 0.9, // ajusta este valor según la opacidad deseada
+        opacity: 0.9, //ajusta este valor según la opacidad deseada
       }}
     >
       <form
