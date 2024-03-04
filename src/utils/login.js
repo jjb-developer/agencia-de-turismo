@@ -31,7 +31,6 @@ export async function loginGetInfoHandle(username,password){
     const response = await loginHandler(username, username);
 
     if(response){
-      console.info(localStorage.getItem("user"))
       const user = JSON.parse(localStorage.getItem("user"))
 
       if (user.statusCode != 403){
