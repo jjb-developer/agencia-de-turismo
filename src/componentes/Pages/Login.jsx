@@ -25,7 +25,6 @@ export default function Login() {
 
   useEffect(() => {
     if (getUser !== null) {
-      console.log(getUser.user_state);
       if (getUser.role == "cliente" && getUser.user_state != "false") {
         navigate("/");
       } else if (getUser.role == "vendedor" && getUser.user_state != "false") {
