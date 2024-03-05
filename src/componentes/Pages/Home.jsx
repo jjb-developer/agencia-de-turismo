@@ -11,7 +11,10 @@ export default function Home() {
         Nuestros Servicios
       </h1>
       <Main servicios={servicios} />
-      <Section servicios={servicios} />
+      <h1 className="text-5xl md:text-7xl mb-16 mt-24 text-center font-roboto font-bold text-slate-800">
+        Los más vendidos
+      </h1>
+      <Section />
     </div>
   );
 }
