@@ -1,3 +1,11 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.label_title {
+	@apply w-24 font-bold text-sm tracking-tight text-zinc-500
+}
+
+.label_info {
+	@apply h-11 flex items-center border w-56 text-xl px-3 rounded tracking-tight
+}

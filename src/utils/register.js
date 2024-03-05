@@ -1,10 +1,8 @@
-import { url } from './variables.js'
-
-
+// REGISTER DE USUARIO
 export async function registerHandler(data) {
 
   try {
-    const response = await fetch(`${url}/user`, {
+    const response = await fetch(`${import.meta.env.VITE_REACT_URL}/user`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
