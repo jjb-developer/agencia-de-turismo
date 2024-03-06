@@ -29,7 +29,7 @@ export default function Header() {
       );
 
       setRandomPhrase(phrases[Math.floor(Math.random() * phrases.length)]);
-    }, 10000); 
+    }, 8000); 
 
     return () => clearInterval(interval); 
   }, []);
