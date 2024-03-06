@@ -1,10 +1,7 @@
-import { url } from './variables.js'
-
-
 export async function registerHandler(data) {
 
   try {
-    const response = await fetch(`${url}/user`, {
+    const response = await fetch(`https://agencia-de-turismo.onrender.com/user`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

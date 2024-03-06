@@ -1,10 +1,8 @@
-import { url } from './variables.js'
-
 // LOGIN DE USUARIO
 async function loginHandler(user,pass) {
 
   try {
-    const response = await fetch(`${url}/login`, {
+    const response = await fetch(`https://agencia-de-turismo.onrender.com/login`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,7 +33,7 @@ export async function loginGetInfoHandle(username,password){
 
       if (user.statusCode != 403){
         try {
-          return await fetch(`${url}/user`, {
+          return await fetch(`https://agencia-de-turismo.onrender.com/user`, {
             headers: {
               "content-type": "application/json",
               authorization: `Bearer ${user.token}`,

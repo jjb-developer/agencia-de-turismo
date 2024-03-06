@@ -15,12 +15,6 @@ export const meses =
   }
 
 
-export const url = "https://agencia-de-turismo.onrender.com";
-
-export const tokenC ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo0NywiaWF0IjoxNzA4OTkyNDkyLCJleHAiOjE3MDg5OTYwOTJ9.GGCCeDN50zpeW02T-OP7HtKtRhr9gmjL1hoj9WKuY44";
-
-export const tokenV="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo0OCwiaWF0IjoxNzA5MDAxNjc1LCJleHAiOjE3MDkwMDUyNzV9.mwr5VFqRSwzqi0TyBvx-lLLkG_Yu0vz2idf_GDlAOws"
-
 export const servicios = [
   {
     "code": 1,
@@ -71,34 +65,3 @@ export const servicios = [
     "description": "¡Descubre nuestras ofertas exclusivas y elige el paquete perfecto para tus vacaciones! Desde emocionantes combos de pasaje de avión y hotel hasta opciones adicionales para personalizar tu experiencia."
   }
 ]
-
-const imgExcursion = "https://images.pexels.com/photos/15700862/pexels-photo-15700862/free-photo-of-glaciar-de-svartisen-en-noruega.jpeg?auto=compress&cs=tinysrgb&w=600"
-
-const imgExcursion2 = "https://images.pexels.com/photos/15710357/pexels-photo-15710357/free-photo-of-paisaje-montanas-cielo-hombre.jpeg?auto=compress&cs=tinysrgb&w=600"
-
-const imgHotel = "https://images.pexels.com/photos/96444/pexels-photo-96444.jpeg?auto=compress&cs=tinysrgb&w=600"
-
-const imgHotel1 = "https://images.pexels.com/photos/70441/pexels-photo-70441.jpeg?auto=compress&cs=tinysrgb&w=600"
-
-const imgHotel2 = "https://images.pexels.com/photos/594077/pexels-photo-594077.jpeg?auto=compress&cs=tinysrgb&w=600"
-
-
-const imgAvion = "https://images.pexels.com/photos/333525/pexels-photo-333525.jpeg?auto=compress&cs=tinysrgb&w=600"
-
-const imgAvion2 = "https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg?auto=compress&cs=tinysrgb&w=600"
-
-const imgColectivo = "https://images.pexels.com/photos/385997/pexels-photo-385997.jpeg?auto=compress&cs=tinysrgb&w=600"
-
-const imgColectivo1 = "https://images.pexels.com/photos/15527051/pexels-photo-15527051/free-photo-of-ciudad-calle-verano-vehiculo.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-
-const imgTren = "https://images.pexels.com/photos/15536055/pexels-photo-15536055/free-photo-of-edificios-entrenar-tren-vehiculo.jpeg?auto=compress&cs=tinysrgb&w=600"
-
-const imgTren1 = "https://images.pexels.com/photos/15799941/pexels-photo-15799941/free-photo-of-ciudad-entrenar-tren-esperando.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-
-const imgAuto = "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=600"
-
-const imgAuto1 = "https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=600"
-
-const imgEventos = "https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=600"
-
-const imgEventos1 = "https://images.pexels.com/photos/433452/pexels-photo-433452.jpeg?auto=compress&cs=tinysrgb&w=600"

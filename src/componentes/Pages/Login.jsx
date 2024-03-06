@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import store from "./../../utils/store";
-import { url } from "../../utils/variables.js";
 import { loginGetInfoHandle } from '../../utils/login.js'
 
 export default function Login() {
@@ -11,9 +10,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  //ARREGLADO sacalo en una funcion aparte
 
-//ARREGLADO sacalo en una funcion aparte
   async function handleSubmit(e) {
     e.preventDefault();
     const info = await loginGetInfoHandle(username,password)
@@ -23,8 +20,8 @@ export default function Login() {
   function registerHandleClick() {
     navigate("/register");
   }
-  //redireccionamiento
 
+  //REDIRECCIONAMIENTO
   useEffect(() => {
     if (getUser !== null) {
       if (getUser.role == "cliente" && getUser.user_state != "false") {
@@ -43,7 +40,7 @@ export default function Login() {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        opacity: 0.9, //ajusta este valor según la opacidad deseada
+        opacity: 0.9, //Ajusta este valor según la opacidad deseada
       }}
     >
       <form
