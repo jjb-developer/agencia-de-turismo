@@ -1,7 +1,22 @@
 import { Link } from "react-router-dom";
 import { BsPlusSquareFill } from "react-icons/bs";
+import store from "../../../utils/store";
+import { useNavigate } from 'react-router-dom';
 
 export default function Main({ servicios }) {
+
+  const navigate = useNavigate();
+  const statusLogin = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : null;
+  const { getUser, setUser } = store();
+
+    // Ejemplo de cómo usar setUser para actualizar el estado de autenticación
+    const handleLogin = () => {
+      setUser({ isLoggedIn: true, username: "exampleUser" });
+      navigate('/'); // Redirigir al usuario después de iniciar sesión
+    };
+
   return (
     <main className="mt-8 mb-8 px-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-4 gap-4">
@@ -24,14 +39,16 @@ export default function Main({ servicios }) {
                     {servicio.description}
                   </p>
                 </div>
-                <div className="flex justify-end">
-                  <Link
-                    to={`/ruta/${servicio.name}`} // Cambia "/ruta/" por la ruta deseada
-                    className="text-gray-800 text-xl hover:text-orange-700 translate-y-11 font-semibold flex items-center"
-                  >
-                    <BsPlusSquareFill className="mr-1" />
-                  </Link>
-                </div>
+                {getUser && ( // Verifica si el usuario está logueado
+                  <div className="flex justify-end">
+                    <Link
+                      to={`/ruta/${servicio.name}`} // Cambia "/ruta/" por la ruta deseada
+                      className="text-gray-800 text-xl hover:text-orange-700 translate-y-11 font-semibold flex items-center"
+                    >
+                      <BsPlusSquareFill className="mr-1" />
+                    </Link>
+                  </div>
+                )}
               </div>
             </article>
           </div>
