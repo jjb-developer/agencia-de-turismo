@@ -1,8 +1,7 @@
-// REGISTER DE USUARIO
 export async function registerHandler(data) {
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_REACT_URL}/user`, {
+    const response = await fetch(`https://agencia-de-turismo.onrender.com/user`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

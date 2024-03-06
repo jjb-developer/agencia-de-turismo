@@ -2,7 +2,7 @@
 async function loginHandler(user,pass) {
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_REACT_URL}/login`, {
+    const response = await fetch(`https://agencia-de-turismo.onrender.com/login`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -33,7 +33,7 @@ export async function loginGetInfoHandle(username,password){
 
       if (user.statusCode != 403){
         try {
-          return await fetch(`${import.meta.env.VITE_REACT_URL}/user`, {
+          return await fetch(`https://agencia-de-turismo.onrender.com/user`, {
             headers: {
               "content-type": "application/json",
               authorization: `Bearer ${user.token}`,

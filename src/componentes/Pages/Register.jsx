@@ -58,7 +58,7 @@ export default function Register() {
         console.log("Error en el registro:", response.statusCode);
       }
     } catch (error) {
-      console.log("Error en la petición register:", error);
+      console.log("Error en la petición register:", error.message);
     }
   }
 
