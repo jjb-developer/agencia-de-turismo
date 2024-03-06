@@ -57,5 +57,11 @@ export const servicios = [
     "image": "https://images.pexels.com/photos/433452/pexels-photo-433452.jpeg?auto=compress&cs=tinysrgb&w=600",
     "name": "entrada a eventos",
     "description": "Sumérgete en la emoción y la diversión con nuestro servicio de entrada a eventos, donde cada acceso te brinda la oportunidad de disfrutar momentos inolvidables llenos de entretenimiento y cultura."
+  },
+  {
+    "code": 8,
+    "image":"https://media.istockphoto.com/id/1392494719/es/foto/mujer-con-maleta-rosa-y-pasaporte-con-tarjeta-de-embarque-de-pie-en-la-escalera-de-pasajeros.jpg?s=1024x1024&w=is&k=20&c=Kc8TqNGhW_5BXcdfU-PQD3sC_KY-XkqKms2XIIa80cs=",
+    "name": "paquetes",
+    "description": "¡Descubre nuestras ofertas exclusivas y elige el paquete perfecto para tus vacaciones! Desde emocionantes combos de pasaje de avión y hotel hasta opciones adicionales para personalizar tu experiencia."
   }
 ]
