@@ -21,20 +21,20 @@ export default function Login() {
     navigate("/register");
   }
 
-  /*REDIRECCIONAMIENTO
+  //REDIRECCIONAMIENTO
   useEffect(() => {
     if (getUser !== null) {
       if (getUser.role == "cliente" && getUser.user_state != "false") {
         navigate("/");
       } else if (getUser.role == "vendedor" && getUser.user_state != "false") {
-        navigate("/vendedor");
+        navigate("/vendedor") //navigate("/vendedor");
       }
     }
-  }, [getUser]);*/
+  }, [getUser]);
 
   return (
     <main
-      className="bg-sky-500 w-full h-screen flex flex-col items-center justify-center"
+      className="bg-sky-500 w-full flex flex-col items-center justify-center"
       style={{
         backgroundImage: "url('/13.webp')",
         backgroundSize: "cover",

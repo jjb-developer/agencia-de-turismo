@@ -111,7 +111,7 @@ export default function Register() {
             </label>
             <input
               required
-              pattern="^[a-z]{3,20}$"
+              pattern="^[A-Za-z]{3,20}$"
               placeholder="Minimo 3, Maximo 20 caracteres alfabeticos"
               type="text"
               value={address}
@@ -166,7 +166,7 @@ export default function Register() {
             <input
               required
               pattern="^[0-9]{8,}$"
-              placeholder="+12 123-1234567"
+              placeholder="12345678..."
               type="text"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
