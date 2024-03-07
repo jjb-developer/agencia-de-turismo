@@ -112,9 +112,9 @@ export default function Section() {
 
   return (
     <section className="mt-8 mb-8 px-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6 gap-4">
         {responseService.map((servicio, index) => (
-          <div key={index} className="flex-shrink-0 w-full max-w-sm">
+          <div key={index} className="flex-shrink-0 w-full max-w-md">
             <article className="border-4 rounded-3xl p-2 pb-9 border-gray-700 shadow-lg shadow-slate-900 hover:border-emerald-600 duration-300 flex flex-col max-h-full">
               <div className="flex-grow">
                 <div className="mb-8 h-32">

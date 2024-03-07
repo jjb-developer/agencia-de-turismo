@@ -21,7 +21,7 @@ export default function Login() {
     navigate("/register");
   }
 
-  //REDIRECCIONAMIENTO
+  /*REDIRECCIONAMIENTO
   useEffect(() => {
     if (getUser !== null) {
       if (getUser.role == "cliente" && getUser.user_state != "false") {
@@ -30,7 +30,7 @@ export default function Login() {
         navigate("/vendedor");
       }
     }
-  }, [getUser]);
+  }, [getUser]);*/
 
   return (
     <main
