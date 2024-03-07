@@ -7,7 +7,7 @@ export default function Register() {
   const [lastname, setLastname] = useState("");
   const [address, setAddress] = useState("");
   const [dni, setDni] = useState("");
-  const [birthdate, setBirthdate] = useState("");
+  const [birthdate, setBirthdate] = useState("1990-01-01");
   const [country, setCountry] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -62,6 +62,32 @@ export default function Register() {
     }
   }
 
+
+async function exampleSubmit(e) {
+    e.preventDefault();
+
+    let data = {
+      name,
+      lastname,
+      address,
+      dni,
+      birthdate,
+      country,
+      phone,
+      email,
+      role,
+      username,
+      password,
+    };
+
+    if (role === "vendedor") {
+      data.job = job;
+      data.salary = salary;
+    }
+    console.info(data)
+  }
+
+
   return (
     <section
       className="bg-sky-500 w-full py-20 flex flex-col items-center justify-center"
@@ -74,7 +100,7 @@ export default function Register() {
     >
       <form
         className="bg-white p-10 rounded shadow-md max-w-xl mx-auto"
-        onSubmit={handleSubmit}
+        onSubmit={ exampleSubmit }
       >
         <div className="flex flex-wrap -mx-4">
           <div className="w-full md:w-1/2 px-4">
@@ -82,97 +108,119 @@ export default function Register() {
               Name
             </label>
             <input
+              required
+              pattern="^[a-z]{3,20}$"
+              placeholder="Minimo 3, Maximo 20 caracteres alfabeticos"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
             />
           </div>
-          <div className="w-full md:w-1/2 px-4">
+          <div className="w-full md:w-1/2 px-4 mt-3">
             <label className="uppercase text-xs text-zinc-800 font-bold">
               Lastname
             </label>
             <input
+              required
+              pattern="^[a-z]{3,20}$"
+              placeholder="Minimo 3, Maximo 20 caracteres alfabeticos"
               type="text"
               value={lastname}
               onChange={(e) => setLastname(e.target.value)}
-              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
             />
           </div>
-          <div className="w-full md:w-1/2 px-4">
+          <div className="w-full md:w-1/2 px-4 mt-3">
             <label className="uppercase text-xs text-zinc-800 font-bold">
               Address
             </label>
             <input
+              required
+              pattern="^[a-z]{3,20}$"
+              placeholder="Minimo 3, Maximo 20 caracteres alfabeticos"
               type="text"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
             />
           </div>
-          <div className="w-full md:w-1/2 px-4">
+          <div className="w-full md:w-1/2 px-4 mt-3">
             <label className="uppercase text-xs text-zinc-800 font-bold">
               DNI
             </label>
             <input
+              required
+              pattern="^[0-9]{8,9}$"
+              placeholder="Minimo 8, Maximo 9 caracteres numericos."
               type="text"
               value={dni}
               onChange={(e) => setDni(e.target.value)}
-              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
             />
           </div>
-          <div className="w-full md:w-1/2 px-4">
+          <div className="w-full md:w-1/2 px-4 mt-3">
             <label className="uppercase text-xs text-zinc-800 font-bold">
               Birthdate
             </label>
             <input
+              required
               type="date"
               value={birthdate}
               onChange={(e) => setBirthdate(e.target.value)}
-              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
             />
           </div>
-          <div className="w-full md:w-1/2 px-4">
+          <div className="w-full md:w-1/2 px-4 mt-3">
             <label className="uppercase text-xs text-zinc-800 font-bold">
               Country
             </label>
             <input
+              required
+              pattern="^[a-z]{3,20}$"
+              placeholder="Minimo 3, Maximo 20 caracteres alfabeticos"
               type="text"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
             />
           </div>
-          <div className="w-full md:w-1/2 px-4">
+          <div className="w-full md:w-1/2 px-4 mt-3">
             <label className="uppercase text-xs text-zinc-800 font-bold">
               Phone
             </label>
             <input
+              required
+              pattern="^[+][0-9]{2}\s[0-9]{3}\s?[0-9]{7}$"
+              placeholder="+12 123-1234567"
               type="text"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
             />
           </div>
-          <div className="w-full md:w-1/2 px-4">
+          <div className="w-full md:w-1/2 px-4 mt-3">
             <label className="uppercase text-xs text-zinc-800 font-bold">
               Email
             </label>
             <input
+              required
+              pattern="^[a-z][a-z0-9]{4,16}@[a-z]{4,10}\.com$"
+              placeholder="Email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
             />
           </div>
-          <div className="w-full md:w-1/2 px-4">
+          <div className="w-full md:w-1/2 px-4 mt-3">
             <label className="uppercase text-xs text-zinc-800 font-bold">
               Role
             </label>
             <select
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
             >
               <option value="vendedor">Vendedor</option>
               <option value="cliente">Cliente</option>
@@ -180,50 +228,62 @@ export default function Register() {
           </div>
           {role === "vendedor" && (
             <>
-              <div className="w-full md:w-1/2 px-4">
+              <div className="w-full md:w-1/2 px-4 mt-3">
                 <label className="uppercase text-xs text-zinc-800 font-bold">
                   Job
                 </label>
                 <input
+                  required
+                  pattern="^[a-z]{3,20}$"
+                  placeholder="Minimo 3, Maximo 20 caracteres alfabeticos"
                   type="text"
                   value={job}
                   onChange={(e) => setJob(e.target.value)}
-                  className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                  className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
                 />
               </div>
-              <div className="w-full md:w-1/2 px-4">
+              <div className="w-full md:w-1/2 px-4 mt-3">
                 <label className="uppercase text-xs text-zinc-800 font-bold">
                   Salary
                 </label>
                 <input
+                  required
+                  pattern="^[0-9]{1,12}$"
+                  placeholder="Minimo 1, Maximo 12 caracteres numericos"
                   type="text"
                   value={salary}
                   onChange={(e) => setSalary(e.target.value)}
-                  className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+                  className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
                 />
               </div>
             </>
           )}
-          <div className="w-full px-4 mt-5">
+          <div className="w-full px-4 mt-3">
             <label className="uppercase text-xs text-zinc-800 font-bold">
               Username
             </label>
             <input
+              required
+              pattern="^[A-Za-z][A-Za-z0-9]{4,20}$"
+              placeholder="Minimo 5, Maximo 20 caracteres alfanumericos"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
             />
           </div>
-          <div className="w-full px-4 mt-5">
+          <div className="w-full px-4 mt-3">
             <label className="uppercase text-xs text-zinc-800 font-bold">
               Password
             </label>
             <input
+              required
+              pattern="^[0-9A-Za-z]{8,}$"
+              placeholder="Minimo 8 caracteres alfanumericos"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full"
+              className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
             />
           </div>
         </div>
