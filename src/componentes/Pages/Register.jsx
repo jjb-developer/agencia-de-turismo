@@ -17,7 +17,6 @@ export default function Register() {
   const [job, setJob] = useState("");
   const [salary, setSalary] = useState("");
 
-  const [send, setSend] = useState(false);
   const navigate = useNavigate();
 
   function HandleClick() {
@@ -63,31 +62,6 @@ export default function Register() {
   }
 
 
-async function exampleSubmit(e) {
-    e.preventDefault();
-
-    let data = {
-      name,
-      lastname,
-      address,
-      dni,
-      birthdate,
-      country,
-      phone,
-      email,
-      role,
-      username,
-      password,
-    };
-
-    if (role === "vendedor") {
-      data.job = job;
-      data.salary = salary;
-    }
-    console.info(data)
-  }
-
-
   return (
     <section
       className="bg-sky-500 w-full py-20 flex flex-col items-center justify-center"
@@ -100,7 +74,7 @@ async function exampleSubmit(e) {
     >
       <form
         className="bg-white p-10 rounded shadow-md max-w-xl mx-auto"
-        onSubmit={ exampleSubmit }
+        onSubmit={ handleSubmit }
       >
         <div className="flex flex-wrap -mx-4">
           <div className="w-full md:w-1/2 px-4">
@@ -191,7 +165,7 @@ async function exampleSubmit(e) {
             </label>
             <input
               required
-              pattern="^[+][0-9]{2}\s[0-9]{3}\s?[0-9]{7}$"
+              pattern="^[0-9]{8,}$"
               placeholder="+12 123-1234567"
               type="text"
               value={phone}
