@@ -81,7 +81,7 @@ export default function Navbar() {
       ) : (
         <div className="flex flex-wrap md:flex-nowrap mr-12 md:mr-28 md:w-40 gap-2">
           <Boton ruta="/register" name="register" />
-          <Boton ruta="/login" name="login in" />
+          <Boton ruta="/login" name="login" />
         </div>
       )}
     </nav>

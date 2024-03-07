@@ -21,7 +21,7 @@ export default function Home() {
           <br /> Regístrate y vivi una experiencia única
         </h1>
         <img
-          src="/imagenTurismo.png"
+          src="./imagenTurismo.png"
           alt=""
           className=" w-[600px] h-96 hidden md:hidden lg:hidden 2xl:block bg-cover my-auto mr-64"
         />
@@ -32,7 +32,7 @@ export default function Home() {
       <Section />
       <div className="flex text-center justify-center bg-cover mt-16 mb-10 border-t-4 border-dotted border-slate-300">
         <img
-          src="/contacto.png"
+          src="./contacto.png"
           alt=""
           className="w-[350px] md:w-[700px] h-48  md:h-96 mx-auto "
         />
