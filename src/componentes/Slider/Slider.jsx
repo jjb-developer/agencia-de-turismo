@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const bgImages = [
-  "https://images.pexels.com/photos/15537287/pexels-photo-15537287/free-photo-of-carretera-montanas-arboles-viaje.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  "https://images.pexels.com/photos/1430677/pexels-photo-1430677.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  "https://images.pexels.com/photos/15700862/pexels-photo-15700862/free-photo-of-glaciar-de-svartisen-en-noruega.jpeg",
-  "https://images.pexels.com/photos/15900831/pexels-photo-15900831/free-photo-of-paisaje-punto-de-referencia-puente-arboles.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/358312/pexels-photo-358312.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/6478474/pexels-photo-6478474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/261204/pexels-photo-261204.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-];
+  "0.webp",
+  "1.webp",
+  "2.webp",
+  "3.webp",
+  "4.webp",
+  "5.webp",
+  "6.webp",
+    ];
 
 export default function Slider() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
@@ -40,19 +40,24 @@ export default function Slider() {
         img.onload = null; // Limpiar el evento onload para evitar memory leaks
       });
     };
+    
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      nextImage();
-    }, 2500);
-    return () => {
-      clearInterval(timer);
-    };
+    
+      const timer = setInterval(() => {
+        nextImage();
+      }, 2500);
+      return () => {
+        clearInterval(timer);
+      };
+    
+   
   }, [arr]);
 
   function nextImage() {
-    divAnimadoRef.current.classList.add("animate-wiggle");
+    if(divAnimadoRef.current){divAnimadoRef.current.classList.add("animate-wiggle");}
+    
     setTimeout(() => {
       let copy = arr.map((e) => e);
       let aux = copy.shift();
@@ -112,7 +117,7 @@ export default function Slider() {
                 <div
                   ref={divAnimadoRef}
                   key={index}
-                  className="bg-red-500 divAnimado h-24 w-24 top-1/2 right-1/3 bg-center bg-cover rounded-lg animate-wiggle"
+                  className="bg-red-500 divAnimado h-24 w-24 top-1/2 right-1/3 bg-center bg-cover rounded-lg"
                   style={{ backgroundImage: `url(${image})` }}
                 />
               ) : index == arr.length - 1 ? (
