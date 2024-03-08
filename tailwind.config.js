@@ -15,6 +15,30 @@ const tailwindConfig = {
       textShadow: {
         default: "2px 2px 4px rgba(245, 0, 0, 0.3)", // Ejemplo de sombra de texto
       },
+      keyframes:{
+        wiggle: {
+          '0%': {
+            filter: 'blur(5px)',
+            transform: 'translateY(calc(-10% + 75px))',
+          },
+          '25%': {
+            transform: 'scale(50%)',
+            transform: 'translateY(calc(2% + 75px))',
+          },
+          '80%': {
+            transform: 'translateY(calc(-100% ))',
+            transform: 'scale(300%)',
+          },
+          '100%': {
+            opacity: 1,
+            filter: 'blur(0)',
+            transform: 'scale(400%)'
+          },
+        },
+      },
+      animation: {
+        wiggle: 'wiggle 0.5s ease-in forwards',
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],
