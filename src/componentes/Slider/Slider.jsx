@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 const bgImages = [
   "url(https://images.pexels.com/photos/15537287/pexels-photo-15537287/free-photo-of-carretera-montanas-arboles-viaje.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
   "url(https://images.pexels.com/photos/1430677/pexels-photo-1430677.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
@@ -8,50 +9,45 @@ const bgImages = [
   "url(https://images.pexels.com/photos/6478474/pexels-photo-6478474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)",
   "url(https://images.pexels.com/photos/261204/pexels-photo-261204.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)",
 ];
-const phrases = [
-  "Descubre la belleza natural del mundo: ¡Tu próximo destino te espera!",
-  "Explora paisajes impresionantes y vive nuevas aventuras",
-  "Disfruta de la tranquilidad de la naturaleza en tu próximo viaje",
-  "Déjate sorprender por la diversidad de nuestro planeta",
-  "Conoce lugares únicos y crea recuerdos inolvidables",
-];
-export default function Slider(){
-    const [currentBgIndex, setCurrentBgIndex] = useState(1);
-    const [randomPhrase, setRandomPhrase] = useState("");
-  
 
-    const fondo = {
-        backgroundImage: bgImages[currentBgIndex],
-      };
+export default function Slider() {
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const [arr, setArr] = useState(bgImages);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-          setCurrentBgIndex((prevIndex) =>
-            prevIndex === bgImages.length - 1 ? 0 : prevIndex + 1
-          );
+  function actualizarArr() {
+    let copy = arr.map((e) => e);
+    let aux = copy.shift();
+    copy.push(aux);
+    setArr(copy);
+    if(currentBgIndex<arr.length-1){
+      setCurrentBgIndex(currentBgIndex+1)
+    }else{setCurrentBgIndex(0)}
     
-          setRandomPhrase(phrases[Math.floor(Math.random() * phrases.length)]);
-        }, 3000); 
-    
-        return () => clearInterval(interval); 
-      }, []);
+  }
+  useEffect(() => {
+    const timer = setInterval(() => {
+      actualizarArr();
+    }, 8000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [arr]);
 
-
-    return (
-        <header
-        style={fondo}
-        className="h-96 bg-cover bg-center relative flex items-center justify-center w-full bg-[#ddd]"
-      >
-        <h3
-          className="absolute bottom-7 left-10 text-4xl font-medium tracking-tighter text-emerald-60 capitalize"
-          style={{
-            textShadow: "2px 2px 2px rgba(255,255, 255, 0.8)",
-          }}
-        >
-          {randomPhrase}
-        </h3>
-      </header>
-        
-       
-    );
+  return (
+    <article
+      className="w-full h-80 bg-center bg-cover bg-no-repeat relative p-4 overflow-hidden transition-all shadow-lg"
+      style={{ backgroundImage: bgImages[currentBgIndex] }}
+    >
+      <div className="h-full w-full left-1/2 flex items-end justify-end gap-2 overflow-hidden">
+        {arr.map((image, index) => {
+          if(index>0){
+          return <div
+            key={index}
+            className="bg-red-500 h-24 w-24 top-1/2 right-1/3 bg-center bg-cover rounded-lg"
+            style={{ backgroundImage: image }}
+          />;
+}})}
+      </div>
+    </article>
+  );
 }
