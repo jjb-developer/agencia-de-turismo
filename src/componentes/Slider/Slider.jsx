@@ -14,24 +14,45 @@ export default function Slider() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const [arr, setArr] = useState(bgImages);
 
-  function actualizarArr() {
-    let copy = arr.map((e) => e);
-    let aux = copy.shift();
-    copy.push(aux);
-    setArr(copy);
-    if(currentBgIndex<arr.length-1){
-      setCurrentBgIndex(currentBgIndex+1)
-    }else{setCurrentBgIndex(0)}
-    
-  }
   useEffect(() => {
     const timer = setInterval(() => {
-      actualizarArr();
+      nextImage();
     }, 8000);
     return () => {
       clearInterval(timer);
     };
   }, [arr]);
+
+  function nextImage() {
+    let copy = arr.map((e) => e);
+    let aux = copy.shift();
+    copy.push(aux);
+    setArr(copy);
+    if (currentBgIndex < arr.length - 1) {
+      setCurrentBgIndex(currentBgIndex + 1);
+    } else {
+      setCurrentBgIndex(0);
+    }
+  }
+  function previewImage() {
+    let copy = arr.map((e) => e);
+    let aux = copy.pop();
+    copy.unshift(aux);
+    setArr(copy);
+    if (currentBgIndex == 0) {
+      setCurrentBgIndex(arr.length - 1);
+    } else {
+      setCurrentBgIndex(currentBgIndex - 1);
+    }
+  }
+  function handleClick(e) {
+    if (e.target.id == "next") {
+      nextImage();
+    }
+    if (e.target.id == "preview") {
+      previewImage();
+    }
+  }
 
   return (
     <article
@@ -39,14 +60,31 @@ export default function Slider() {
       style={{ backgroundImage: bgImages[currentBgIndex] }}
     >
       <div className="h-full w-full left-1/2 flex items-end justify-end gap-2 overflow-hidden">
+        <button
+          onClick={handleClick}
+          id="preview"
+          className="px-2 py-1 text-white  cursor-pointer font-semibold text-2xl rounded hover:bg-gray-50/20"
+        >
+          &lt;
+        </button>
         {arr.map((image, index) => {
-          if(index>0){
-          return <div
-            key={index}
-            className="bg-red-500 h-24 w-24 top-1/2 right-1/3 bg-center bg-cover rounded-lg"
-            style={{ backgroundImage: image }}
-          />;
-}})}
+          if (index != 0) {
+            return (
+              <div
+                key={index}
+                className="bg-red-500 h-24 w-24 top-1/2 right-1/3 bg-center bg-cover rounded-lg"
+                style={{ backgroundImage: image }}
+              />
+            );
+          }
+        })}
+ <button
+          onClick={handleClick}
+          id="next"
+          className="px-2 py-1 text-white cursor-pointer font-semibold text-2xl rounded hover:bg-gray-50/20"
+        >
+         &gt;
+       </button>
       </div>
     </article>
   );
