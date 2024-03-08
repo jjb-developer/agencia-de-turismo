@@ -4,17 +4,10 @@ import { loadServiceHandler } from './services.js'
 
 const store = create((set) => ({
 	isLogin: null,
-	getService: null,
-	setService: async ()=> {
-		const data = await loadServiceHandler(url)
-		set((state) => ({ ...state, getService: data }))
-	},
-	getSales: null,
-	setSales: null,
-	getCondicion: 'todos',
-	setCondicion: (condicion)=> set((state)=> ({...state, getCondicion: condicion })),
 	getUser: null,
-	setUser: (info)=> set((state)=> ({...state, getUser: info }))
+	setUser: (info)=> set((state)=> ({...state, getUser: info })),
+	getUserService: null,
+	setUserService: (service)=> set((state)=> ({...state, getUserService: service }))
 }));
 
 export default store;

@@ -20,7 +20,7 @@ export default function infoPersonal() {
 		const { name, lastname, username, dni, country, birthdate, phone, email  } = updateUser
 
 		const user = JSON.parse(localStorage.getItem("user"))
-		fetch(`${import.meta.env.VITE_REACT_URL}/seller`, {
+		fetch("https://agencia-de-turismo.onrender.com/seller", {
 			method: "PATCH",
 			headers: {
 				"content-type": "application/json",
@@ -38,7 +38,7 @@ export default function infoPersonal() {
 	}
 
 	return (
-		<section className="py-5 bg-zinc-100 relative">
+		<section className="py-5 bg-zinc-100">
 			<h3>Informacion de vendedor</h3>
 			<div className='mt-6 flex flex-col justify-center'>
 				<form onSubmit={ handleSubmit } className='w-96 flex flex-col gap-y-2 mx-auto'>

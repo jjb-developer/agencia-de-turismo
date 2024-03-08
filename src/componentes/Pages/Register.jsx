@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { registerHandler } from "../../utils/register.js";
 import { useNavigate } from "react-router-dom";
+import { BiShow, BiHide } from 'react-icons/bi'
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -16,6 +17,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [job, setJob] = useState("");
   const [salary, setSalary] = useState("");
+  const [viewPass, setViewPass] = useState(false);
 
   const navigate = useNavigate();
 
@@ -246,7 +248,7 @@ export default function Register() {
               className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
             />
           </div>
-          <div className="w-full px-4 mt-3">
+          <div className="relative w-full px-4 mt-3">
             <label className="uppercase text-xs text-zinc-800 font-bold">
               Password
             </label>
@@ -254,11 +256,16 @@ export default function Register() {
               required
               pattern="^[0-9A-Za-z]{8,}$"
               placeholder="Minimo 8 caracteres alfanumericos"
-              type="password"
+              type={ viewPass ? "text":"password" }
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="outline-none py-2.5 px-2.5 border-b-2 rounded-xl focus:border-orange-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400"
             />
+            { viewPass ? 
+              (<BiHide size='20' className='absolute top-9 right-7 cursor-pointer text-zinc-700' onClick={()=> setViewPass(false)}/>)
+              :
+              (<BiShow size='20' className='absolute top-9 right-7 cursor-pointer text-zinc-700' onClick={()=> setViewPass(true)}/>)
+            }
           </div>
         </div>
 

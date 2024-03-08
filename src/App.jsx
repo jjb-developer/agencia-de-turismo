@@ -12,7 +12,7 @@ import Footer from './componentes/Footer/Footer'
 
 function App() {
 	return (
-		<div className='w-full h-screen'>
+		<div className='w-full'>
 			<Navbar/>
 		   <Routes>
 				<Route path="/" element={<Home/>} />

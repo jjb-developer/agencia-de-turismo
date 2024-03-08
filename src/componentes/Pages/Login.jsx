@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import store from "./../../utils/store";
 import { loginGetInfoHandle } from '../../utils/login.js'
+import { BiShow, BiHide } from 'react-icons/bi'
 
 export default function Login() {
   const { getUser } = store()
   const { setUser } = store()
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [viewPass, setViewPass] = useState(false);
 
   const navigate = useNavigate();
 
@@ -23,18 +25,19 @@ export default function Login() {
 
   //REDIRECCIONAMIENTO
   useEffect(() => {
-    if (getUser !== null) {
+    if(getUser !== null) navigate("/")
+    /* if (getUser !== null) {
       if (getUser.role == "cliente" && getUser.user_state != "false") {
         navigate("/");
       } else if (getUser.role == "vendedor" && getUser.user_state != "false") {
         navigate("/vendedor") //navigate("/vendedor");
       }
-    }
+    } */
   }, [getUser]);
 
   return (
     <main
-      className="bg-sky-500 w-full flex flex-col items-center justify-center"
+      className="bg-sky-500 w-full py-20 flex flex-col items-center justify-center"
       style={{
         backgroundImage: "url('/13.webp')",
         backgroundSize: "cover",
@@ -64,13 +67,13 @@ export default function Login() {
             }}
           />
         </div>
-        <div className="flex flex-col mt-7 gap-y-2">
+        <div className="flex flex-col mt-7 gap-y-2 relative">
           <label className="uppercase text-xs text-zinc-800 font-bold">
             Password
           </label>
           <input
             className="outline-none py-2.5 px-2.5 border-none rounded focus:ring-orange-500 text-zinc-700 text-[0.98rem] duration-300"
-            type="password"
+            type={ viewPass ? "text":"password" }
             name=""
             id="1"
             placeholder="Escribe tu Password"
@@ -79,6 +82,11 @@ export default function Login() {
               setPassword(e.target.value);
             }}
           />
+          { viewPass ? 
+            (<BiHide size='20' className='absolute top-9 right-3 cursor-pointer text-zinc-700' onClick={()=> setViewPass(false)}/>)
+            :
+            (<BiShow size='20' className='absolute top-9 right-3 cursor-pointer text-zinc-700' onClick={()=> setViewPass(true)}/>)
+          }
         </div>
         <div className="flex items-center justify-center w-full h-auto mt-7">
           <button
