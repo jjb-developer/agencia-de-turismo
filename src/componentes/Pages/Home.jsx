@@ -1,13 +1,13 @@
-import Header from "../Header/Header";
 import { servicios } from "../../utils/variables.js";
 import Section from "./Home/Section.jsx";
 import ContactForm from "./Home/ContactForm.jsx";
 import Main from "./Home/Main.jsx";
+import Slider from "../Slider/Slider.jsx";
 
 export default function Home() {
   return (
     <div className="overflow-hidden">
-      <Header />
+     <Slider/>
       <h1 className="text-5xl md:text-7xl my-16 text-center font-zeyada font-bold text-orange-800">
         Nuestros Servicios
       </h1>
