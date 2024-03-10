@@ -13,20 +13,39 @@ export default function AgregarServicio() {
 		"entradas a eventos": 7
 	}
 
-	const [data,setData] = useState({
+	const initialState = {
 		name: "hotel por noche",
 		description: "",
 		service_destination: "",
-		service_date: "1990-01-01",
+		service_date: new Date().toISOString().split('T')[0],
 		cost: "",
-		service_code: ""
-	})
+		service_code: 1
+	}
+
+	const [data,setData] = useState(initialState)
+
 
 	async function handleSubmit(e) {
 		e.preventDefault();
-		console.info(data)
-		console.info(e.target.value = '')
+		const user = JSON.parse(localStorage.getItem('user'))
+		try {
+			const response = await fetch('https://agencia-de-turismo.onrender.com/service', {
+				method: "POST",
+				headers: {
+					"content-type": "application/json",
+					"authorization": `Bearer ${user.token}`,
+				},
+				body: JSON.stringify(data),
+			})
+			console.info( response.ok )
+			if(response.ok) setData(initialState)
+
+		} catch (error){
+			console.info("Error agregando servicio de usuario: ")
+			throw(error)
+		}
 	}
+
 
 	return (
 		<main className="bg-sky-100 py-10">
@@ -66,14 +85,17 @@ export default function AgregarServicio() {
 						</button>
 					</div>
 				</div>
-				<form onSubmit={ handleSubmit } className='flex flex-col gap-y-2 mx-auto w-full mt-5 sm:mt-0 sm:w-1/2'>
+				<form 
+					onSubmit={ handleSubmit } 
+					className='flex flex-col gap-y-2 mx-auto w-full mt-5 sm:mt-0 sm:w-1/2'>
 					<div className='w-full flex flex-col gap-y-1'>
 						<select 
+							name='name'
+							defaultValue="hotel por noche"
 							value={data.name}
-							className='w-full' 
+							className='w-full p-1' 
 							onChange={(e)=>{
-								console.info(code[data.name])
-								setData({...data, 'name': e.target.value })
+								setData({...data, 'name': e.target.value, 'service_code': code[e.target.value] })
 							}}
 						>
 							<option value="hotel por noche">hotel por noche</option>
@@ -85,6 +107,7 @@ export default function AgregarServicio() {
 							<option value="entradas a eventos">entradas a eventos</option>
 						</select>
 						<input 
+						name='cost'
 							type='text' 
 							value={data.cost}
 							placeholder='Escribe el costo del servicio (solo numeros).' 
@@ -92,6 +115,7 @@ export default function AgregarServicio() {
 							onChange={(e)=> setData({...data, 'cost': e.target.value })}
 						/>
 						<input 
+							name='service_destination'
 							type='text' 
 							value={data.service_destination}
 							placeholder='Escribe el destino del servico.' 
@@ -99,6 +123,7 @@ export default function AgregarServicio() {
 							onChange={(e)=> setData({...data, 'service_destination': e.target.value })}
 						/>
 						<input 
+							name='service_date'
 							className='w-full'
 							type='date'
 							value={data.service_date}
@@ -106,6 +131,7 @@ export default function AgregarServicio() {
 
 						/>
 						<textarea
+							name='description'
 							value={data.description}
 							onChange={(e)=> setData({...data, 'description': e.target.value })}
 							placeholder='Escribe una breve descripción del servicio.' 

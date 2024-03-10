@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { BiUser, BiCart } from "react-icons/bi";
 import Boton from "./componentes/Boton";
@@ -54,7 +54,7 @@ export default function Navbar() {
               />)}
             </div>
           
-            { getUser.role === "vendedor" && (
+            { getUser.role === "vendedor" && activeMenu && (
             <div className={`flex-col bg-zinc-200 absolute top-12 right-0 z-50 ${ activeMenu === false ? 'hidden':'flex'}`}>
               <button 
                 onClick={()=> {
@@ -91,7 +91,7 @@ export default function Navbar() {
           {getUser.role === "cliente" && (
             <div className="flex flex-wrap text-center justify-center">
               <button
-                onClick={handleLoginOut}
+                onClick={ handleLoginOut }
                 className="bg-rose-500 max-sm:mb-2 text-rose-50 font-bold text-sm uppercase ml-4 rounded-lg py-1.5 px-4 hover:text-rose-600 hover:bg-rose-50 hover:border-2 hover:border-rose-500"
               >
                 Logout

@@ -113,7 +113,7 @@ export default function Register() {
             </label>
             <input
               required
-              pattern="^[A-Za-z]{3,20}$"
+              pattern="^[A-Za-z\s]{3,20}$"
               placeholder="Minimo 3, Maximo 20 caracteres alfabeticos"
               type="text"
               value={address}

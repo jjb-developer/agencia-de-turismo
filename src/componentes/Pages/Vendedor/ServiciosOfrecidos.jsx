@@ -14,27 +14,14 @@ export default function ServiciosOfrecidos() {
 				"authorization": `Bearer ${user.token}`,
 			}
 		})
-		.then((res) => res.json())
-		.then((data) => setUserService(data.results))
-		.catch((error) => console.error("Error en el proceso de solicitud de servicios ofrecidos: ", error.message));
-	}
-
-	function handleSubmit(e) {
-		e.preventDefault();
-		
-		const user = JSON.parse(localStorage.getItem("user"))
-
-		fetch("https://agencia-de-turismo.onrender.com/service", {
-			method: "GET",
-			headers: {
-				"content-type": "application/json",
-				"authorization": `Bearer ${user.token}`,
-			}
+		.then((res) => {
+			console.info(`ok: ${res.ok}`)
+			return res.json()
 		})
-		.then((res) => res.json())
 		.then((data) => setUserService(data.results))
-		.catch((error) => console.error("Error en el proceso de solicitud de servicios ofrecidos: ", error.message));
+		.catch((error) => console.error("Ha ocurrido un error en la consulta de servicios: ", error.message));
 	}
+
 
 	useEffect(()=>{
 		userServices()
