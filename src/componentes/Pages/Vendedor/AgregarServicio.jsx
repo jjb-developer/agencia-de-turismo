@@ -1,17 +1,8 @@
 import { useState } from 'react'
 import { BiImage, BiPlus } from 'react-icons/bi'
+import { code } from '../../../utils/variables.js'
 
 export default function AgregarServicio() {
-
-	const code = {
-		"hotel por noche": 1,
-		"alquiler de auto": 2,
-		"pasajes de colectivos": 3,
-		"pasaje de avion": 4,
-		"pasaje de tren": 5,
-		"excursiones": 6,
-		"entradas a eventos": 7
-	}
 
 	const initialState = {
 		name: "hotel por noche",
@@ -23,6 +14,12 @@ export default function AgregarServicio() {
 	}
 
 	const [data,setData] = useState(initialState)
+
+
+	async function pruebasSubmit(e){
+		e.preventDefault()
+		console.info(data)
+	}
 
 
 	async function handleSubmit(e) {
@@ -86,12 +83,11 @@ export default function AgregarServicio() {
 					</div>
 				</div>
 				<form 
-					onSubmit={ handleSubmit } 
+					onSubmit={ pruebasSubmit } 
 					className='flex flex-col gap-y-2 mx-auto w-full mt-5 sm:mt-0 sm:w-1/2'>
 					<div className='w-full flex flex-col gap-y-1'>
 						<select 
 							name='name'
-							defaultValue="hotel por noche"
 							value={data.name}
 							className='w-full p-1' 
 							onChange={(e)=>{
