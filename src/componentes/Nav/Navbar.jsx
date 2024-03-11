@@ -21,7 +21,7 @@ export default function Navbar() {
   return (
     <nav className="w-full h-20 flex flex-wrap mb-36 md:mb-20  xl:flex-nowrap items-center justify-between px-10 py-16 md:py-2 md:my-6">
       <span
-        className="text-4xl flex md:text-6xl mb-5 xl:mb-2 capitalize font-indie font-bold text-orange-500 tracking-tight"
+        className="text-4xl flex md:text-6xl mb-5 xl:mb-2 capitalize font-roboto font-bold text-orange-500 tracking-tight"
         style={{
           textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
         }}

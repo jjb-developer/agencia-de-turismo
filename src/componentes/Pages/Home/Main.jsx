@@ -1,9 +1,37 @@
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BsPlusSquareFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 import store from "../../../utils/store";
-import { useNavigate } from 'react-router-dom';
 
 export default function Main({ servicios }) {
+  const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
+  const [animateShow, setAnimateShow] = useState(true); // Estado para controlar la animación
+
+  useEffect(() => {
+    // Cuando cambia el índice del servicio actual, activa la animación
+    setAnimateShow(true);
+
+    // Desactiva la animación después de 1.5 segundos (ajusta según la duración de la animación)
+    const timeout = setTimeout(() => {
+      setAnimateShow(false);
+    }, 1500);
+
+    // Limpia el temporizador cuando el componente se desmonta o cuando cambia el índice del servicio actual
+    return () => clearTimeout(timeout);
+  }, [currentServiceIndex]);
+
+  const handleNext = () => {
+    setCurrentServiceIndex((prevIndex) =>
+      prevIndex === servicios.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentServiceIndex((prevIndex) =>
+      prevIndex === 0 ? servicios.length - 1 : prevIndex - 1
+    );
+  };
 
   const navigate = useNavigate();
   const statusLogin = localStorage.getItem("user")
@@ -11,49 +39,95 @@ export default function Main({ servicios }) {
     : null;
   const { getUser, setUser } = store();
 
-    // Ejemplo de cómo usar setUser para actualizar el estado de autenticación
-    const handleLogin = () => {
-      setUser({ isLoggedIn: true, username: "exampleUser" });
-      navigate('/'); // Redirigir al usuario después de iniciar sesión
-    };
+  // Ejemplo de cómo usar setUser para actualizar el estado de autenticación
+  const handleLogin = () => {
+    setUser({ isLoggedIn: true, username: "exampleUser" });
+    navigate("/"); // Redirigir al usuario después de iniciar sesión
+  };
 
   return (
-    <main className="mt-8 mb-8 px-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-4 gap-4">
-        {servicios?.map((servicio, index) => (
-          <div key={index} className="flex-shrink-0">
-            <article className="border rounded p-6 border-gray-300 pb-16 shadow-md hover:border-orange-300 duration-300">
-              <figure>
-                <img
-                  className="w-full h-40 object-cover mb-4"
-                  src={servicio.image}
-                  alt="imagen del servicio"
-                />
-              </figure>
-              <div className="h-full flex flex-col justify-between">
-                <div>
-                  <h3 className="text-2xl lg:text-4xl font-bold font-playfair text-gray-800 capitalize mt-3 mb-2 text-center h-16">
-                    {servicio.name}
-                  </h3>
-                  <p className="text-xl lg:text-3xl xl:text-xl text-gray-600 font-semibold text-center mt-9 mx-8 px-5 pb-16 h-96 shadow-xl shadow-orange-300">
-                    {servicio.description}
-                  </p>
-                </div>
-                {getUser && ( // Verifica si el usuario está logueado
-                  <div className="flex justify-end">
-                    <Link
-                      to={`/ruta/${servicio.name}`} // Cambia "/ruta/" por la ruta deseada
-                      className="text-gray-800 text-xl hover:text-orange-700 translate-y-11 font-semibold flex items-center"
-                    >
-                      <BsPlusSquareFill className="mr-1" />
-                    </Link>
-                  </div>
-                )}
-              </div>
-            </article>
+    <div className="container h-screen grid place-items-center bg-cover bg-center relative overflow-hidden">
+      <div
+        className="absolute top-0 left-0 w-full h-full bg-cover bg-center inset-1"
+        style={{
+          backgroundImage: `url(${servicios[currentServiceIndex].image})`,
+        }}
+      >
+        <div
+          className={`content absolute top-[25%] left-12 font-roboto font-bold text-base shadow-lg shadow-black w-[400px] h-[450px] bg-slate-600 text-black p-4 opacity-80 rounded-xl ${
+            animateShow ? "animate-show" : ""
+          }`}
+        >
+          <div className="w-[350px] h-[340px] bg-slate-400 rounded-lg shadow-lg shadow-black mx-auto">
+            <h2 className="text-3xl font-900 uppercase font-arialBlack text-sky-800 text-center pt-4 pb-2 shadow-md shadow-black">
+              {servicios[currentServiceIndex].name}
+            </h2>
+            <p className="text-xl px-6 pb-4 mt-6 mb-6 font-400">
+              {servicios[currentServiceIndex].description}
+            </p>
           </div>
-        ))}
+          {getUser && ( // Verifica si el usuario está logueado
+            <div className="flex justify-end">
+              <Link
+                to={`/ServiciosOfrecidos/${servicios.name}`}
+                className="text-gray-800 text-xl hover:text-orange-700 translate-y-11 font-semibold flex items-center"
+              >
+                <BsPlusSquareFill className="mr-1" />
+              </Link>
+            </div>
+          )}
+        </div>
+        <div className="secondary-images w-100% opacity-90 flex-shrink-0 flex justify-center pr-12 absolute bottom-8 right-0 transform translate-x-[calc(-100% + 20px)] -translate-y-1/2 z-[1] select-none duration-300 ">
+          {servicios.map((service, index) => (
+            <div
+              key={index}
+              className="secondary-image-container w-[80px] h-[130px]  flex justify-start bottom-8 left-0  rounded-lg overflow-hidden shadow-lg shadow-gray-900 ml-2"
+              style={{
+                transform: `translateX(calc(${
+                  (index - currentServiceIndex) * 10
+                }px))`,
+                transform:
+                  index === currentServiceIndex ? "translateY(-20px)" : "",
+                zIndex: index === currentServiceIndex ? 1 : -1,
+                opacity: index === currentServiceIndex ? 0.8 : 1,
+                border:
+                  index === currentServiceIndex ? "4px double darkgray" : "",
+                boxShadow:
+                  index === currentServiceIndex
+                    ? "2px 3px 4px rgba(0,0,0,0.5)"
+                    : "",
+                transition: "transform 0.5s, opacity 0.2s",
+              }}
+              onClick={() => setCurrentServiceIndex(index)}
+            >
+              <div
+                className="secondary-image"
+                style={{
+                  backgroundImage: `url(${service.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  width: "80px",
+                  height: "130px",
+                }}
+              ></div>
+            </div>
+          ))}
+        </div>
+        <div className="nav absolute bottom-8 left-1/2 translate-x-[-50%] z-[3] select-none">
+          <button
+            onClick={handlePrev}
+            className="btn prev bg-gray-400 text-black border-2 border-black rounded-lg mx-1 p-2 hover:bg-gray-900 hover:text-white"
+          >
+            Prev
+          </button>
+          <button
+            onClick={handleNext}
+            className="btn next bg-gray-400 text-black border-2 border-black rounded-lg mx-1 p-2 hover:bg-gray-900 hover:text-white"
+          >
+            Next
+          </button>
+        </div>
       </div>
-    </main>
+    </div>
   );
 }

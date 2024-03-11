@@ -8,13 +8,13 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Header />
-      <h1 className="text-5xl md:text-7xl my-16 text-center font-zeyada font-bold text-orange-800">
+      <h1 className="text-5xl md:text-7xl my-16 text-center font-roboto font-bold text-orange-800">
         Nuestros Servicios
       </h1>
       <Main servicios={servicios} />
-      <div className="mx-auto bg-emerald-200 w-[350px] md:w-[768px] lg:w-[1024px] xl:w-[1400px] 2xl:w-[1800px] h-[200px] md:h-[400px] flex justify-around text-center">
+      <div className="mx-auto mt-24 bg-emerald-200 w-[350px] md:w-[768px] lg:w-[1024px] xl:w-[1400px] 2xl:w-[1800px] h-[200px] md:h-[400px] flex justify-around text-center">
         <h1
-          className="my-auto mx-auto text-xl md:text-4xl lg:text-5xl font-bold font-indie "
+          className="my-auto mx-auto text-xl md:text-4xl lg:text-5xl font-bold font-roboto "
           style={{ transform: "rotate(-6deg)" }}
         >
           Encontrá tu próximo destino.
