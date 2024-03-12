@@ -13,7 +13,7 @@ export default function Navbar() {
     ? JSON.parse(localStorage.getItem("user"))
     : null;
 
-  const { setUserService, getUser, setUser } = store();
+  const { setUserService, getUser, setUser, setAddOrUpdate } = store();
 
   // Función para manejar el login out.
   function handleLoginOut() {
@@ -74,6 +74,7 @@ export default function Navbar() {
               </button>
               <button 
                 onClick={()=> {
+                  setAddOrUpdate("add")
                   navigate('/agregarServicio')
                   setActiveMenu(false)
                 }} 

@@ -25,6 +25,16 @@ export const code = {
   }
 
 
+export const initialStateServicetoAdd = {
+    "name": "hotel por noche",
+    "description": "",
+    "service_destination": "",
+    "service_date": new Date().toISOString().split('T')[0],
+    "cost": "",
+    "service_code": 1
+}
+
+
 export const servicios = [
   {
     "code": 1,

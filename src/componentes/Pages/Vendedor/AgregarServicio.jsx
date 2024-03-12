@@ -1,42 +1,43 @@
-import { useState } from 'react'
 import { BiImage, BiPlus } from 'react-icons/bi'
-import { code } from '../../../utils/variables.js'
+import { code, initialStateServicetoAdd } from '../../../utils/variables.js'
+import store from '../../../utils/store'
+import { useNavigate } from 'react-router-dom'
 
 export default function AgregarServicio() {
 
-	const initialState = {
-		name: "hotel por noche",
-		description: "",
-		service_destination: "",
-		service_date: new Date().toISOString().split('T')[0],
-		cost: "",
-		service_code: 1
-	}
-
-	const [data,setData] = useState(initialState)
+	const navigate = useNavigate()
+	const { getInitialServiceToAdd, setInitialServiceToAdd, getAddOrUpdate, getIdService } = store()
 
 
 	async function pruebasSubmit(e){
 		e.preventDefault()
+		const data = getAddOrUpdate === "add" ? 
+		getInitialServiceToAdd: {...getInitialServiceToAdd, id_service: getIdService }
 		console.info(data)
+		setTimeout(()=>setInitialServiceToAdd(initialStateServicetoAdd), 2500)
+		if(getAddOrUpdate === "update") navigate('/serviciosOfrecidos')
 	}
 
 
 	async function handleSubmit(e) {
 		e.preventDefault();
+		const data = getAddOrUpdate === "add" ? 
+		getInitialServiceToAdd: {...getInitialServiceToAdd, id_service: getIdService }
 		const user = JSON.parse(localStorage.getItem('user'))
 		try {
 			const response = await fetch('https://agencia-de-turismo.onrender.com/service', {
-				method: "POST",
+				method: getAddOrUpdate === "add" ? "POST":"PATCH",
 				headers: {
 					"content-type": "application/json",
 					"authorization": `Bearer ${user.token}`,
 				},
 				body: JSON.stringify(data),
 			})
-			console.info( response.ok )
-			if(response.ok) setData(initialState)
-
+			if(response.ok){
+				setInitialServiceToAdd(initialStateServicetoAdd)
+				console.info(`El servicio ha sido ${ getAddOrUpdate === "add" ? "agregado":"actualizado"} exitosamente!.`)
+				if(getAddOrUpdate === "update") navigate('/serviciosOfrecidos')
+			} else console.info(`No se han podido ${ getAddOrUpdate === "add" ? "agregar":"actualizar"} el servicio!.`)
 		} catch (error){
 			console.info("Error agregando servicio de usuario: ")
 			throw(error)
@@ -83,15 +84,15 @@ export default function AgregarServicio() {
 					</div>
 				</div>
 				<form 
-					onSubmit={ pruebasSubmit } 
+					onSubmit={ handleSubmit } 
 					className='flex flex-col gap-y-2 mx-auto w-full mt-5 sm:mt-0 sm:w-1/2'>
 					<div className='w-full flex flex-col gap-y-1'>
 						<select 
 							name='name'
-							value={data.name}
+							value={getInitialServiceToAdd.name}
 							className='w-full p-1' 
 							onChange={(e)=>{
-								setData({...data, 'name': e.target.value, 'service_code': code[e.target.value] })
+								setInitialServiceToAdd({...getInitialServiceToAdd, 'name': e.target.value, 'service_code': code[e.target.value] })
 							}}
 						>
 							<option value="hotel por noche">hotel por noche</option>
@@ -103,43 +104,56 @@ export default function AgregarServicio() {
 							<option value="entradas a eventos">entradas a eventos</option>
 						</select>
 						<input 
-						name='cost'
+							required
+							name='cost'
 							type='text' 
-							value={data.cost}
+							pattern="^[0-9]+$"
+							title="Por favor solo caracteres numeros. Gracias"
+							value={getInitialServiceToAdd.cost}
 							placeholder='Escribe el costo del servicio (solo numeros).' 
-							className='w-full placeholder:text-sm placeholder:text-zinc-400'
-							onChange={(e)=> setData({...data, 'cost': e.target.value })}
+							className='w-full placeholder:text-sm placeholder:text-zinc-400 invalid:text-rose-500'
+							onChange={(e)=> setInitialServiceToAdd({...getInitialServiceToAdd, 'cost': e.target.value })}
 						/>
 						<input 
+							required
 							name='service_destination'
-							type='text' 
-							value={data.service_destination}
+							type='text'
+							pattern="^[a-z]{3,20}$"
+							title="Por favor ingrese mínimo 3 ó máximo 20 carácteres. Gracias"
+							value={getInitialServiceToAdd.service_destination}
 							placeholder='Escribe el destino del servico.' 
 							className='w-full placeholder:text-sm placeholder:text-zinc-400'
-							onChange={(e)=> setData({...data, 'service_destination': e.target.value })}
+							onChange={(e)=> setInitialServiceToAdd({...getInitialServiceToAdd, 'service_destination': e.target.value })}
 						/>
 						<input 
 							name='service_date'
 							className='w-full'
 							type='date'
-							value={data.service_date}
-							onChange={(e)=> setData({...data, 'service_date': e.target.value })}
+							value={getInitialServiceToAdd.service_date}
+							onChange={(e)=> setInitialServiceToAdd({...getInitialServiceToAdd, 'service_date': e.target.value })}
 
 						/>
-						<textarea
+						<textarea 
+							required
 							name='description'
-							value={data.description}
-							onChange={(e)=> setData({...data, 'description': e.target.value })}
+							value={getInitialServiceToAdd.description}
+							onChange={(e)=> setInitialServiceToAdd({...getInitialServiceToAdd, 'description': e.target.value })}
 							placeholder='Escribe una breve descripción del servicio.' 
 							className='w-full resize-none h-32 placeholder:text-sm placeholder:text-zinc-400'>
 						</textarea>
 					</div>
-					<button 
+					{ getAddOrUpdate === "add" && <button 
 						type='submit'
-						className="w-full px-7 text-sm font-bold py-3 rounded-md uppercase bg-zinc-500 hover:bg-rose-500 text-white"
+						className="w-full px-7 text-sm font-bold py-3 rounded-md uppercase bg-zinc-500 hover:bg-green-500 text-white"
 						>
 						agregar
-					</button>
+					</button> }
+					{ getAddOrUpdate === "update" && <button 
+						type='submit'
+						className="w-full px-7 text-sm font-bold py-3 rounded-md uppercase bg-zinc-500 hover:bg-sky-500 text-white"
+						>
+						update
+					</button> }
 				</form>
 			</div>
 		</main>
