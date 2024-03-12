@@ -95,10 +95,6 @@ export default function Section() {
   const [selectedService, setSelectedService] = useState(null);
   const [showDescription, setShowDescription] = useState(false);
 
-  const toggleDescription = () => {
-    setShowDescription(!showDescription);
-  };
-
   /* useEffect (()=> {
   handlerLoadService();
 },[])*/
@@ -111,47 +107,32 @@ export default function Section() {
   }
 
   return (
-    <section className="mt-8 mb-8 px-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6 gap-4">
+    <section className="bg-gray-50 flex flex-row flex-wrap items-center justify-around min-h-screen w-full gap-4 p-4">
+      
         {responseService.map((servicio, index) => (
-          <div key={index} className="flex-shrink-0 w-full max-w-md">
-            <article className="border-4 rounded-3xl p-2 pb-9 border-gray-700 shadow-lg shadow-slate-900 hover:border-emerald-600 duration-300 flex flex-col max-h-full">
-              <div className="flex-grow">
-                <div className="mb-8 h-32">
+          <div key={index} className=" bg-blue-200 w-64 h-80 bg-center bg-cover overflow-hidden relative flex items-end group rounded-lg" style={{backgroundImage:`url(${servicio.image})`}}>
+            <div className="w-full flex justify-start absolute top-0 left-0 p-2">
                   <h3
-                    className="text-3xl font-bold font-playfair text-emerald-800 capitalize text-center py-5 cursor-pointer"
-                    onClick={() =>
-                      setSelectedService(
-                        selectedService === index ? null : index
-                      )
-                    }
+                    className="text-gray-200 text-lg font-roboto" 
                   >
                     {servicio.name}
                   </h3>
                 </div>
-                <figure className="mb-2">
-                  <img
-                    className="w-full h-40 object-cover shadow-xl shadow-black border-2 border-white rounded-xl mb-10"
-                    src={servicio.image}
-                    alt="imagen del servicio"
-                  />
-                </figure>
-                <div className="text-center mb-8 h-32">
+            <article className="bg-gray-700/60 w-full p-2 absolute -left-full group-hover:left-0 transition-all">
+             
+                
                   <div>
-                    <h3 className="text-xl text-gray-700 font-bold h-24">
+                    <h3 className="text-xl text-gray-50 font-bold h-24">
                       Destino: {servicio.service_destination}
                     </h3>
                   </div>
-                  <p className="text-xl text-gray-700 font-bold mt-4">
-                    Costo: ${servicio.cost}
-                  </p>
-                </div>
+                  
+             
                 {/* Botón "Ver más" para mostrar la descripción */}
                 {selectedService !== index && (
                   <div className="text-center mt-auto">
                     <button
-                      className="text-emerald-500 font-semibold border-2 border-emerald-700 p-2 rounded-xl hover:bg-emerald-700 hover:text-sky-100"
-                      onClick={() => setSelectedService(index)}
+                      className="text-gray-50 font-semibold border-2 border-gray-50 p-2 rounded-xl"
                     >
                       Ver más
                     </button>
@@ -175,7 +156,7 @@ export default function Section() {
                         <button
                           className="text-orange-500 border-2 border-orange-700 p-3 hover:bg-orange-600
                            hover:text-yellow-50 text-xl rounded-2xl font-semibold mt-auto"
-                          onClick={() => setSelectedService(null)}
+                         
                         >
                           Ver menos
                         </button>
@@ -183,11 +164,11 @@ export default function Section() {
                     </div>
                   )}
                 </div>
-              </div>
+              
             </article>
           </div>
         ))}
-      </div>
+      
     </section>
   );
 }

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { servicios } from "../../utils/variables.js";
 import Section from "./Home/Section.jsx";
 import ContactForm from "./Home/ContactForm.jsx";
@@ -5,24 +6,19 @@ import Main from "./Home/Main.jsx";
 import Slider from "../Slider/Slider.jsx";
 import Navbar from "../Nav/Navbar.jsx"
 export default function Home() {
+
+
   return (
     <div className="overflow-hidden w-full">
       <Navbar/>
      <Slider/>
-      <h1 className="text-5xl md:text-7xl my-16 text-center font-bold text-orange-800">
-        Nuestros Servicios
+     <div className="bg-gray-800 h-48 flex items-center justify-center">
+      <h1 className="text-3xl text-center text-gray-50">
+        Que ofrecemos?
       </h1>
+      </div>
       <Main servicios={servicios} />
-      
-     
-      <div className="flex text-center justify-center bg-cover border-t-4 border-dotted border-slate-300">
-        <img
-          src="./contacto.png"
-          alt=""
-          className="w-full h-48 aspect-auto md:h-96 mx-auto "
-        />
-  </div>
-      <ContactForm />
+      <Section className="scroll-section" />
     </div>
   );
 }

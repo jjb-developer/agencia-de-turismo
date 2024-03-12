@@ -29,7 +29,7 @@ export default function Navbar() {
   }, []);
 
   const navBackground = scrollY > 0 ? 'bg-gray-50' : '';
-  const textColor=scrollY >0? 'text-orange-500':'text-gray-200';
+  const textColor=scrollY >0? 'text-orange-500':'text-orange-500';//text-gray-200
   const textUserColor=scrollY >0? 'text-gray-600':'text-gray-50';
   // Función para manejar el login out.
   function handleLoginOut() {
@@ -40,12 +40,12 @@ export default function Navbar() {
   }
 
   return (
-    <nav style={{ backdropFilter: 'blur(3px)'}} className = {`w-full flex justify-between items-center px-10 py-4 fixed left-0 z-40 top-0 ${navBackground} transition-all`}>
+    <nav style={{ backdropFilter: 'blur(3px)'}} className = {`w-full flex justify-between items-center px-10 py-4 fixed left-0 z-40 top-0 ${{/*navBackground*/}} transition-all`}>
       <span
         className={`${textColor} text-4xl flex md:text-6xl mb-5 xl:mb-2 capitalize font-bold tracking-tight"`}
         style={{
-          textShadow: scrollY > 0 ? "2px 2px 4px rgba(0, 0, 0, 0.8)" : "2px 2px 4px rgba(200, 200, 200, 0.8)"
-        }}
+          textShadow:"2px 2px 4px rgba(0, 0, 0, 0.8)"
+        }}//textShadow: scrollY > 0 ? "2px 2px 4px rgba(0, 0, 0, 0.8)" : "2px 2px 4px rgba(200, 200, 200, 0.8)"
       >
         <Link to="/" className="cursor-pointer">
           agencia de turismo
