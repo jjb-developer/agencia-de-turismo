@@ -46,7 +46,7 @@ export default function Main({ servicios }) {
   };
 
   return (
-    <div className="container h-screen grid place-items-center bg-cover bg-center relative overflow-hidden">
+    <div className="container h-[500px] grid place-items-center bg-cover bg-center relative overflow-hidden">
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-center inset-1"
         style={{
@@ -54,7 +54,7 @@ export default function Main({ servicios }) {
         }}
       >
         <div
-          className={`content absolute top-[25%] left-12 font-roboto font-bold text-base shadow-lg shadow-black w-[400px] h-[450px] bg-slate-600 text-black p-4 opacity-80 rounded-xl ${
+          className={`content absolute top-[5%] left-12 font-roboto font-bold text-base shadow-lg shadow-black w-[400px] h-[450px] bg-slate-600 text-black p-4 opacity-80 rounded-xl ${
             animateShow ? "animate-show" : ""
           }`}
         >

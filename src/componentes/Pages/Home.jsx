@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Header />
-      <h1 className="text-5xl md:text-7xl my-16 text-center font-roboto font-bold text-orange-800">
+      <h1 className="text-4xl md:text-6xl mt-12 mb-6 text-center font-roboto font-bold text-orange-800">
         Nuestros Servicios
       </h1>
       <Main servicios={servicios} />
