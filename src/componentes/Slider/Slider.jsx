@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-
+import { BiUser, BiCart, BiSolidHotel } from "react-icons/bi";
+import { ImAirplane, ImCart } from "react-icons/im";
+import { FaCarAlt, FaBusAlt, FaTrain } from "react-icons/fa";
+import { GiJourney } from "react-icons/gi";
+import { MdEvent } from "react-icons/md";
 const bgImages = [
   "0.webp",
   "1.webp",
@@ -48,7 +52,7 @@ export default function Slider() {
     return () => {
       clearInterval(timer);
     };
-  }, [arr,currentBgIndex]);
+  }, [arr, currentBgIndex]);
 
   function handleClick(index) {
     if (index !== undefined) {
@@ -59,21 +63,16 @@ export default function Slider() {
   }
 
   function nextImage() {
-   
     if (currentBgIndex < arr.length - 1) {
       setCurrentBgIndex(currentBgIndex + 1);
-    
     } else {
       setCurrentBgIndex(0);
-     
     }
-   
   }
 
   function previewImage() {
-    setAnimatingIndex(animatingIndex-1)
+    setAnimatingIndex(animatingIndex - 1);
     if (currentBgIndex === 0) {
-      
       setCurrentBgIndex(arr.length - 1);
     } else {
       setCurrentBgIndex(currentBgIndex - 1);
@@ -87,11 +86,37 @@ export default function Slider() {
         style={{ backgroundImage: `url(${bgImages[currentBgIndex]})` }}
       >
         <div className="h-full w-full left-1/2 flex items-end justify-end gap-2 overflow-hidden">
-          <div className=" flex flex-col max-w-80  max-h-64 self-center backdrop-blur-sm rounded-lg bg-gray-800/30 shadow-lg text-wrap font-semibold text-gray-100 absolute left-10 p-2">
-            <span className="text-3xl text-blue-300">PAQUETES</span><span className="text-sm">¡Descubre nuestras ofertas exclusivas y
-            elige el paquete perfecto para tus vacaciones! Desde emocionantes
-            combos de pasaje de avión y hotel hasta opciones adicionales para
-            personalizar tu experiencia.</span>
+          <div className=" flex flex-col gap-2 min-w-32 max-w-96 self-center backdrop-blur-sm rounded-lg bg-gray-800/30 shadow-lg text-wrap font-semibold text-gray-100 absolute left-10 p-2">
+            <span className="text-3xl text-blue-300">PAQUETES</span>
+            <span className="text-sm">
+              ¡Descubre nuestras ofertas exclusivas y elige el paquete perfecto
+              para tus vacaciones! Desde emocionantes combos de pasaje de avión
+              y hotel hasta opciones adicionales para personalizar tu
+              experiencia.</span>
+              <ul className="flex items-center justify-center gap-2">
+                <li className="bg-blue-600 text-white text-2xl p-2 inline-block rounded-full">
+                  <ImAirplane />
+                </li>
+                <li className="bg-blue-500 text-white text-2xl inline-block p-2 rounded-full">
+                  <FaCarAlt />
+                </li>
+                <li className="bg-blue-400 text-white text-2xl inline-block p-2 rounded-full">
+                  <BiSolidHotel />
+                </li>
+                <li className="bg-yellow-500 text-white text-2xl inline-block p-2 rounded-full">
+                  <FaBusAlt />
+                </li>
+                <li className="bg-orange-500 text-white text-2xl inline-block p-2 rounded-full">
+                  <FaTrain />
+                </li>
+                <li className="bg-orange-600 text-white text-2xl inline-block p-2 rounded-full">
+                  <MdEvent />
+                </li>
+                <li className="bg-green-600 text-white text-2xl inline-block p-2 rounded-full">
+                  <GiJourney />
+                </li>
+              </ul>
+            
           </div>
           <button
             onClick={previewImage}
@@ -105,7 +130,7 @@ export default function Slider() {
               onClick={() => handleClick(index)}
               className={`h-24 w-24 top-1/2 right-1/3 bg-center bg-cover rounded-lg ${
                 index === animatingIndex ? "animate-wiggle" : ""
-              }${index == currentBgIndex ? "animate-wiggle":""}`}
+              }${index == currentBgIndex ? "animate-wiggle" : ""}`}
               style={{ backgroundImage: `url(${image})` }}
             />
           ))}

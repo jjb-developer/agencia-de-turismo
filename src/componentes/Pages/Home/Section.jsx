@@ -107,68 +107,64 @@ export default function Section() {
   }
 
   return (
-    <section className="bg-gray-50 flex flex-row flex-wrap items-center justify-around min-h-screen w-full gap-4 p-4">
-      
-        {responseService.map((servicio, index) => (
-          <div key={index} className=" bg-blue-200 w-64 h-80 bg-center bg-cover overflow-hidden relative flex items-end group rounded-lg" style={{backgroundImage:`url(${servicio.image})`}}>
-            <div className="w-full flex justify-start absolute top-0 left-0 p-2">
-                  <h3
-                    className="text-gray-200 text-lg font-roboto" 
-                  >
-                    {servicio.name}
-                  </h3>
-                </div>
-            <article className="bg-gray-700/60 w-full p-2 absolute -left-full group-hover:left-0 transition-all">
-             
-                
-                  <div>
-                    <h3 className="text-xl text-gray-50 font-bold h-24">
-                      Destino: {servicio.service_destination}
-                    </h3>
-                  </div>
-                  
-             
-                {/* Botón "Ver más" para mostrar la descripción */}
-                {selectedService !== index && (
-                  <div className="text-center mt-auto">
+    <section className="bg-gray-50 flex flex-wrap flex-col justify-center items-center min-h-screen w-full gap-4 p-4">
+     <div><h2 className="text-2xl font-roboto"> &#11088; Servicios estrella &#11088;</h2></div>
+     <div className="flex flex-wrap justify-center items-center w-full h-auto gap-4 p-4">
+      {responseService.map((servicio, index) => (
+        <div
+          key={index}
+          className="w-64 h-80 bg-center bg-cover overflow-hidden relative flex items-end group rounded-lg "
+          style={{ backgroundImage: `url(${servicio.image})` }}
+        >
+          <div className="w-full flex justify-start absolute top-0 left-0 p-2">
+            <h3 className="text-gray-200 text-lg font-roboto">
+              {servicio.name}
+            </h3>
+          </div>
+          <article className="bg-gray-700/60 w-full p-2 absolute -left-full group-hover:left-0 transition-all">
+            <div>
+              <h3 className="text-xl text-gray-50 font-bold h-24">
+                Destino: {servicio.service_destination}
+              </h3>
+            </div>
+
+            {/* Botón "Ver más" para mostrar la descripción */}
+            {selectedService !== index && (
+              <div className="text-center mt-auto">
+                <button className="text-gray-50 font-semibold border-2 border-gray-50 p-2 rounded-xl">
+                  Ver más
+                </button>
+              </div>
+            )}
+            {/* Mostrar descripción solo si está seleccionada */}
+            <div
+              className={`absolute w-[450px] h-28 ${
+                index === responseService.length - 1
+                  ? "-translate-x-64"
+                  : "translate-x-9"
+              }`}
+            >
+              {selectedService === index && (
+                <div className="p-6 flex flex-col justify-between bg-slate-100 border-4 border-gray-400 shadow-xl shadow-black rounded-xl hover:border-orange-600">
+                  <p className="text-lg text-gray-600 font-bold mb-2 text-center font-playfair">
+                    {servicio.description}
+                  </p>
+
+                  <div className="h-20 flex text-center justify-center">
                     <button
-                      className="text-gray-50 font-semibold border-2 border-gray-50 p-2 rounded-xl"
+                      className="text-orange-500 border-2 border-orange-700 p-3 hover:bg-orange-600
+                           hover:text-yellow-50 text-xl rounded-2xl font-semibold mt-auto"
                     >
-                      Ver más
+                      Ver menos
                     </button>
                   </div>
-                )}
-                {/* Mostrar descripción solo si está seleccionada */}
-                <div
-                  className={`absolute w-[450px] h-28 ${
-                    index === responseService.length - 1
-                      ? "-translate-x-64"
-                      : "translate-x-9"
-                  }`}
-                >
-                  {selectedService === index && (
-                    <div className="p-6 flex flex-col justify-between bg-slate-100 border-4 border-gray-400 shadow-xl shadow-black rounded-xl hover:border-orange-600">
-                      <p className="text-lg text-gray-600 font-bold mb-2 text-center font-playfair">
-                        {servicio.description}
-                      </p>
-
-                      <div className="h-20 flex text-center justify-center">
-                        <button
-                          className="text-orange-500 border-2 border-orange-700 p-3 hover:bg-orange-600
-                           hover:text-yellow-50 text-xl rounded-2xl font-semibold mt-auto"
-                         
-                        >
-                          Ver menos
-                        </button>
-                      </div>
-                    </div>
-                  )}
                 </div>
-              
-            </article>
-          </div>
-        ))}
-      
+              )}
+            </div>
+          </article>
+        </div>
+      ))}
+      </div>
     </section>
   );
 }
