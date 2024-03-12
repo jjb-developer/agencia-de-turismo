@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import store from "./../../utils/store";
 import { loginGetInfoHandle } from '../../utils/login.js'
 import { BiShow, BiHide } from 'react-icons/bi'
-
+import Navbar from '../Nav/Navbar.jsx'
 export default function Login() {
   const { getUser } = store()
   const { setUser } = store()
@@ -37,7 +37,7 @@ export default function Login() {
 
   return (
     <main
-      className="bg-sky-500 w-full py-20 flex flex-col items-center justify-center"
+      className="w-full h-screen flex flex-col items-center justify-center"
       style={{
         backgroundImage: "url('/13.webp')",
         backgroundSize: "cover",
@@ -46,6 +46,7 @@ export default function Login() {
         opacity: 0.9, //Ajusta este valor según la opacidad deseada
       }}
     >
+      <Navbar/>
       <form
         className="bg-white p-10 rounded-md shadow-xl shadow-black w-80"
         onSubmit={handleSubmit}
@@ -96,11 +97,11 @@ export default function Login() {
             Iniciar sesión
           </button>
         </div>
-        <div className="mt-4 text-xs text-zinc-900 font-bold text-center">
+        <div className="text-xs text-zinc-900 font-bold text-center">
           <span>No estas registrado?</span>
           <a
             onClick={registerHandleClick}
-            className="ml-2 font-roboto text-lg font-semibold hover:font-bold hover:text-orange-600 duration-1000 text-sky-700 cursor-pointer"
+            className="font-roboto text-lg font-semibold hover:font-bold hover:text-orange-600 duration-1000 text-sky-700 cursor-pointer"
           >
             Registrarse
           </a>

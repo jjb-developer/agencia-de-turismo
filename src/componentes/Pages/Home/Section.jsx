@@ -138,7 +138,7 @@ export default function Section() {
                 </figure>
                 <div className="text-center mb-8 h-32">
                   <div>
-                    <h3 className="text-xl text-gray-700 font-bold font-indie h-24">
+                    <h3 className="text-xl text-gray-700 font-bold h-24">
                       Destino: {servicio.service_destination}
                     </h3>
                   </div>

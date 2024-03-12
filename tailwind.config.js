@@ -20,24 +20,22 @@ const tailwindConfig = {
           '0%': {
             filter: 'blur(5px)',
             transform: 'translateY(calc(-10% + 75px))',
+            zIndex: 0,
           },
           '25%': {
             transform: 'scale(50%)',
             transform: 'translateY(calc(2% + 75px))',
           },
-          '80%': {
-            transform: 'translateY(calc(-100% ))',
-            transform: 'scale(300%)',
-          },
+          
           '100%': {
             opacity: 1,
-            filter: 'blur(0)',
-            transform: 'scale(400%)'
+            filter: 'blur(1px)',
+            transform: 'scale(1000%)'
           },
         },
       },
       animation: {
-        wiggle: 'wiggle 0.5s ease-in forwards',
+        wiggle: 'wiggle 0.5s ease-in-out',
       },
     },
   },

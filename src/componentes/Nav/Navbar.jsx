@@ -8,6 +8,7 @@ export default function Navbar() {
 
   const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState(false)
+  const [scrollY, setScrollY] = useState(0);
 
   const statusLogin = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
@@ -15,6 +16,21 @@ export default function Navbar() {
 
   const { setUserService, getUser, setUser, setAddOrUpdate } = store();
 
+  useEffect(() => {
+    function handleScroll() {
+      setScrollY(window.scrollY);
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const navBackground = scrollY > 0 ? 'bg-gray-50' : '';
+  const textColor=scrollY >0? 'text-orange-500':'text-gray-200';
+  const textUserColor=scrollY >0? 'text-gray-600':'text-gray-50';
   // Función para manejar el login out.
   function handleLoginOut() {
     navigate("/");
@@ -24,11 +40,11 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="w-full border-b-2 flex flex-wrap  xl:flex-nowrap items-center justify-between px-10 pb-12 pt-16">
+    <nav style={{ backdropFilter: 'blur(3px)'}} className = {`w-full flex justify-between items-center px-10 py-4 fixed left-0 z-40 top-0 ${navBackground} transition-all`}>
       <span
-        className="text-4xl flex md:text-6xl mb-5 xl:mb-2 capitalize font-indie font-bold text-orange-500 tracking-tight"
+        className={`${textColor} text-4xl flex md:text-6xl mb-5 xl:mb-2 capitalize font-bold tracking-tight"`}
         style={{
-          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
+          textShadow: scrollY > 0 ? "2px 2px 4px rgba(0, 0, 0, 0.8)" : "2px 2px 4px rgba(200, 200, 200, 0.8)"
         }}
       >
         <Link to="/" className="cursor-pointer">
@@ -37,9 +53,9 @@ export default function Navbar() {
       </span>
       {getUser ? (
         // Si el usuario está autenticado
-        <div className="flex items-center gap-x-2 relative">
-          <div className="flex flex-col gap-x-2">
-            <span className="text-xl tracking-tight capitalize leading-[1.4rem]">
+        <div className="flex items-center">
+          <div className="flex flex-col ">
+            <span className={`text-xl ${textUserColor} `}>
               {getUser.name} {getUser.lastname}
             </span>
             <span className="text-right uppercase font-bold text-sm text-orange-500">
@@ -55,7 +71,7 @@ export default function Navbar() {
             </div>
           
             { getUser.role === "vendedor" && activeMenu && (
-            <div className={`flex-col bg-zinc-200 absolute top-12 right-0 z-50 ${ activeMenu === false ? 'hidden':'flex'}`}>
+            <div className={`${ activeMenu === false ? 'hidden':'flex'}`}>
               <button 
                 onClick={()=> {
                   navigate('/infoPersonal')
@@ -93,11 +109,11 @@ export default function Navbar() {
             <div className="flex flex-wrap text-center justify-center">
               <button
                 onClick={ handleLoginOut }
-                className="bg-rose-500 max-sm:mb-2 text-rose-50 font-bold text-sm uppercase ml-4 rounded-lg py-1.5 px-4 hover:text-rose-600 hover:bg-rose-50 hover:border-2 hover:border-rose-500"
+                className="bg-rose-500 max-sm:mb-2 text-rose-50 font-bold text-sm uppercase rounded-lg py-1.5 px-4 hover:text-rose-600 hover:bg-rose-50 hover:border-2 hover:border-rose-500"
               >
                 Logout
               </button>
-              <button className="bg-blue-500 max-sm:mb-2 text-blue-50 font-bold mx-6 text-sm rounded-lg uppercase py-1.5 px-4 flex items-center gap-x-1 hover:text-blue-600 hover:bg-blue-50 hover:border-2 hover:border-blue-500">
+              <button className="bg-blue-500  text-blue-50 font-bold text-sm rounded-lg uppercase py-1.5 px-4 flex items-center gap-x-1 hover:text-blue-600 hover:bg-blue-50 hover:border-2 hover:border-blue-500">
                 <BiCart />
                 Carrito
               </button>
@@ -105,9 +121,9 @@ export default function Navbar() {
           )}
         </div>
       ) : (
-        <div className="flex flex-wrap md:flex-nowrap mr-12 md:mr-28 md:w-40 gap-2">
-          <Boton ruta="/register" name="register" />
-          <Boton ruta="/login" name="login" />
+        <div className="flex flex-row gap-2">
+          <Boton ruta="/register" name="Register" />
+          <Boton ruta="/login" name="Login" />
         </div>
       )}
     </nav>

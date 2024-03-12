@@ -2,7 +2,7 @@ import { useState } from "react";
 import { registerHandler } from "../../utils/register.js";
 import { useNavigate } from "react-router-dom";
 import { BiShow, BiHide } from 'react-icons/bi'
-
+import Navbar from '../Nav/Navbar.jsx'
 export default function Register() {
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
@@ -66,7 +66,7 @@ export default function Register() {
 
   return (
     <section
-      className="bg-sky-500 w-full py-20 flex flex-col items-center justify-center"
+      className="bg-sky-500 w-full h-full py-20 pt-40 flex flex-col items-center justify-center"
       style={{
         backgroundImage: "url('/0.webp')",
         backgroundSize: "cover",
@@ -74,6 +74,7 @@ export default function Register() {
         opacity: 0.9, // ajusta este valor según la opacidad deseada
       }}
     >
+      <Navbar/>
       <form
         className="bg-white p-10 rounded shadow-md max-w-xl mx-auto"
         onSubmit={ handleSubmit }

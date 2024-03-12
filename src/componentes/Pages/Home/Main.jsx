@@ -32,7 +32,7 @@ export default function Main({ servicios }) {
               </figure>
               <div className="h-full flex flex-col justify-between">
                 <div>
-                  <h3 className="text-2xl lg:text-4xl font-bold font-playfair text-gray-800 capitalize mt-3 mb-2 text-center h-16">
+                  <h3 className="text-2xl lg:text-4xl font-bold text-gray-800 capitalize mt-3 mb-2 text-center h-16">
                     {servicio.name}
                   </h3>
                   <p className="text-xl lg:text-3xl xl:text-xl text-gray-600 font-semibold text-center mt-9 mx-8 px-5 pb-16 h-96 shadow-xl shadow-orange-300">
@@ -45,7 +45,7 @@ export default function Main({ servicios }) {
                       to={`/ruta/${servicio.name}`} // Cambia "/ruta/" por la ruta deseada
                       className="text-gray-800 text-xl hover:text-orange-700 translate-y-11 font-semibold flex items-center"
                     >
-                      <BsPlusSquareFill className="mr-1" />
+                      <BsPlusSquareFill />
                     </Link>
                   </div>
                 )}
