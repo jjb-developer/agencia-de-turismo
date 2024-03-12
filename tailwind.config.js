@@ -16,10 +16,12 @@ const tailwindConfig = {
         wiggle: {
           '0%': {
             filter: 'blur(5px)',
-            transform: 'translateY(calc(-10% + 75px))',
             zIndex: 0,
           },
-          '25%': {
+          '10%': {
+            transform: 'translateY(-15px)',
+          },
+          '50%': {
             transform: 'scale(50%)',
             transform: 'translateY(calc(2% + 75px))',
           },
@@ -27,7 +29,7 @@ const tailwindConfig = {
           '100%': {
             opacity: 1,
             filter: 'blur(1px)',
-            transform: 'scale(1000%)'
+            transform: 'scale(10%)'
           },
         },
       },

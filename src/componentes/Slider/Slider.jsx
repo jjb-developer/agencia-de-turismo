@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 const bgImages = [
   "0.webp",
@@ -14,8 +14,7 @@ export default function Slider() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const [arr, setArr] = useState(bgImages);
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  const divAnimadoRef = useRef(null);
-  const lastDivAnimadoRef = useRef(null);
+  const [animatingIndex, setAnimatingIndex] = useState(null);
 
   useEffect(() => {
     const images = [];
@@ -49,49 +48,35 @@ export default function Slider() {
     return () => {
       clearInterval(timer);
     };
-  }, [arr]);
+  }, [arr,currentBgIndex]);
+
+  function handleClick(index) {
+    if (index !== undefined) {
+      setAnimatingIndex(index);
+      setCurrentBgIndex(index);
+      setAnimatingIndex(null);
+    }
+  }
 
   function nextImage() {
-    if (divAnimadoRef.current) {
-      divAnimadoRef.current.classList.add("animate-wiggle");
+   
+    if (currentBgIndex < arr.length - 1) {
+      setCurrentBgIndex(currentBgIndex + 1);
+    
+    } else {
+      setCurrentBgIndex(0);
+     
     }
-
-    setTimeout(() => {
-      let copy = arr.map((e) => e);
-      let aux = copy.shift();
-      copy.push(aux);
-      setArr(copy);
-      if (currentBgIndex < arr.length - 1) {
-        setCurrentBgIndex(currentBgIndex + 1);
-      } else {
-        setCurrentBgIndex(0);
-      }
-      divAnimadoRef.current.classList.remove("animate-wiggle");
-    }, 500);
+   
   }
 
   function previewImage() {
-    lastDivAnimadoRef.current.classList.add("animate-wiggle");
-    setTimeout(() => {
-      let copy = arr.map((e) => e);
-      let aux = copy.pop();
-      copy.unshift(aux);
-      setArr(copy);
-      if (currentBgIndex === 0) {
-        setCurrentBgIndex(arr.length - 1);
-      } else {
-        setCurrentBgIndex(currentBgIndex - 1);
-      }
-      lastDivAnimadoRef.current.classList.remove("animate-wiggle");
-    }, 500);
-  }
-
-  function handleClick(e) {
-    if (e.target.id === "next") {
-      nextImage();
-    }
-    if (e.target.id === "preview") {
-      previewImage();
+    setAnimatingIndex(animatingIndex-1)
+    if (currentBgIndex === 0) {
+      
+      setCurrentBgIndex(arr.length - 1);
+    } else {
+      setCurrentBgIndex(currentBgIndex - 1);
     }
   }
 
@@ -109,40 +94,23 @@ export default function Slider() {
             personalizar tu experiencia.</span>
           </div>
           <button
-            onClick={handleClick}
-            id="preview"
+            onClick={previewImage}
             className="px-2 py-1 text-white  cursor-pointer font-semibold text-2xl rounded hover:bg-gray-50/20"
           >
             &lt;
           </button>
-          {arr.map((image, index) => {
-            if (index !== 0) {
-              return index === 1 ? (
-                <div
-                  ref={divAnimadoRef}
-                  key={index}
-                  className="-z-10 divAnimado h-24 w-24 top-1/2 right-1/3 bg-center bg-cover rounded-lg"
-                  style={{ backgroundImage: `url(${image})` }}
-                />
-              ) : index == arr.length - 1 ? (
-                <div
-                  ref={lastDivAnimadoRef}
-                  key={index}
-                  className="h-24 w-24 top-1/2 right-1/3 bg-center bg-cover rounded-lg"
-                  style={{ backgroundImage: `url(${image})` }}
-                />
-              ) : (
-                <div
-                  key={index}
-                  className="z-10 h-24 w-24 top-1/2 right-1/3 bg-center bg-cover rounded-lg"
-                  style={{ backgroundImage: `url(${image})` }}
-                />
-              );
-            }
-          })}
+          {arr.map((image, index) => (
+            <div
+              key={index}
+              onClick={() => handleClick(index)}
+              className={`h-24 w-24 top-1/2 right-1/3 bg-center bg-cover rounded-lg ${
+                index === animatingIndex ? "animate-wiggle" : ""
+              }${index == currentBgIndex ? "animate-wiggle":""}`}
+              style={{ backgroundImage: `url(${image})` }}
+            />
+          ))}
           <button
-            onClick={handleClick}
-            id="next"
+            onClick={nextImage}
             className="px-2 py-1 text-white cursor-pointer font-semibold text-2xl rounded hover:bg-gray-50/20"
           >
             &gt;
