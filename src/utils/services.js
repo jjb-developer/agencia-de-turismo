@@ -7,3 +7,22 @@ export async function loadServiceHandler(url) {
       console.error("Error al obtener data de servicios: ", error)
     );
 }
+
+
+export async function loadServiceUser(setUserService) {
+	const user = JSON.parse(localStorage.getItem("user"))
+	await fetch("https://agencia-de-turismo.onrender.com/service", {
+		method: "GET",
+		headers: {
+			"content-type": "application/json",
+			"authorization": `Bearer ${user.token}`,
+		}
+	})
+	.then((res) => {
+		if(res.ok){
+			return res.json()
+		} else throw new Error ("No se han podido cargados los servicios de este vendedor!.")
+	})
+	.then((data) => setUserService(data.results))
+	.catch((error) => console.error(error.message));
+}

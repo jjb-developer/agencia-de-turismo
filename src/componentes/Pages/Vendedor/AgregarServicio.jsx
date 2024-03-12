@@ -2,46 +2,39 @@ import { BiImage, BiPlus } from 'react-icons/bi'
 import { code, initialStateServicetoAdd } from '../../../utils/variables.js'
 import store from '../../../utils/store'
 import { useNavigate } from 'react-router-dom'
+import { updateServiceHandle } from '../../../utils/actualizarServicio.js'
+import { addServiceHandle } from '../../../utils/agregarServicio.js'
 
 export default function AgregarServicio() {
 
 	const navigate = useNavigate()
-	const { getInitialServiceToAdd, setInitialServiceToAdd, getAddOrUpdate, getIdService } = store()
-
-
-	async function pruebasSubmit(e){
-		e.preventDefault()
-		const data = getAddOrUpdate === "add" ? 
-		getInitialServiceToAdd: {...getInitialServiceToAdd, id_service: getIdService }
-		console.info(data)
-		setTimeout(()=>setInitialServiceToAdd(initialStateServicetoAdd), 2500)
-		if(getAddOrUpdate === "update") navigate('/serviciosOfrecidos')
-	}
+	const { getInitialServiceToAdd, setUserService, setInitialServiceToAdd, getAddOrUpdate, getIdService } = store()
 
 
 	async function handleSubmit(e) {
-		e.preventDefault();
-		const data = getAddOrUpdate === "add" ? 
-		getInitialServiceToAdd: {...getInitialServiceToAdd, id_service: getIdService }
-		const user = JSON.parse(localStorage.getItem('user'))
-		try {
-			const response = await fetch('https://agencia-de-turismo.onrender.com/service', {
-				method: getAddOrUpdate === "add" ? "POST":"PATCH",
-				headers: {
-					"content-type": "application/json",
-					"authorization": `Bearer ${user.token}`,
-				},
-				body: JSON.stringify(data),
-			})
-			if(response.ok){
-				setInitialServiceToAdd(initialStateServicetoAdd)
-				console.info(`El servicio ha sido ${ getAddOrUpdate === "add" ? "agregado":"actualizado"} exitosamente!.`)
-				if(getAddOrUpdate === "update") navigate('/serviciosOfrecidos')
-			} else console.info(`No se han podido ${ getAddOrUpdate === "add" ? "agregar":"actualizar"} el servicio!.`)
-		} catch (error){
-			console.info("Error agregando servicio de usuario: ")
-			throw(error)
-		}
+			e.preventDefault();
+
+			const user = JSON.parse(localStorage.getItem('user'))
+			
+			const data = getAddOrUpdate === "add" ? 
+			getInitialServiceToAdd: {...getInitialServiceToAdd, id_service: getIdService }
+
+			if(getAddOrUpdate === "update"){
+				const response = await updateServiceHandle(data,user)
+				if(response){
+					setInitialServiceToAdd(initialStateServicetoAdd)
+					setUserService(null)
+					navigate('/serviciosOfrecidos')
+				}
+			}
+
+			if(getAddOrUpdate === "add"){
+				const response = await addServiceHandle(data,user)
+				if(response){
+					setInitialServiceToAdd(initialStateServicetoAdd)
+					setUserService(null)
+				}
+			}
 	}
 
 
@@ -118,7 +111,7 @@ export default function AgregarServicio() {
 							required
 							name='service_destination'
 							type='text'
-							pattern="^[a-z]{3,20}$"
+							pattern="^[A-Za-z0-9]{3,20}$"
 							title="Por favor ingrese mínimo 3 ó máximo 20 carácteres. Gracias"
 							value={getInitialServiceToAdd.service_destination}
 							placeholder='Escribe el destino del servico.' 
