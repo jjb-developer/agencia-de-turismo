@@ -9,7 +9,7 @@ export default function Main({ servicios }) {
   const statusLogin = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : null;
-  const { getUser, setUser } = store();
+  const { getUser, setUser, setServiceFilter } = store();
 
     // Ejemplo de cómo usar setUser para actualizar el estado de autenticación
     const handleLogin = () => {
@@ -39,14 +39,17 @@ export default function Main({ servicios }) {
                     {servicio.description}
                   </p>
                 </div>
-                {getUser && ( // Verifica si el usuario está logueado
+                {getUser && ( //getUser Verifica si el usuario está logueado
                   <div className="flex justify-end">
-                    <Link
-                      to={`/ruta/${servicio.name}`} // Cambia "/ruta/" por la ruta deseada
+                    <button 
+                      onClick={()=>{
+                        setServiceFilter(servicio.name)
+                        navigate('/all_servicios')
+                      }}
                       className="text-gray-800 text-xl hover:text-orange-700 translate-y-11 font-semibold flex items-center"
                     >
                       <BsPlusSquareFill />
-                    </Link>
+                    </button>
                   </div>
                 )}
               </div>
