@@ -9,7 +9,7 @@ export default function Main({ servicios }) {
   const statusLogin = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : null;
-  const { getUser, setUser } = store();
+  const { getUser, setUser, setServiceFilter } = store();
 
   // Ejemplo de cómo usar setUser para actualizar el estado de autenticación
   function handleLogin (){
@@ -35,9 +35,13 @@ function handleClick(code_service){
                   </h2>
                   <div className="h-auto flex items-center justify-center">
                     <p className="text-lg text-white">{servicio.description}</p>
-                    
                   </div>
-                  <span onClick={()=>{handleClick(servicio.code)}} className="text-3xl text-white p-2"><HiArrowRight/></span>
+                  <span 
+                    onClick={()=>{
+                      setServiceFilter(""+servicio.code)
+                      navigate('/all_servicios')
+                    }} 
+                    className="text-3xl text-white p-2"><HiArrowRight/></span>
                 </div>
               </figure>
             </article>

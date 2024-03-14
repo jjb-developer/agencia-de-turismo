@@ -2,6 +2,7 @@ import store from '../../../utils/store'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { code } from '../../../utils/variables.js'
+import Navbar from '../../Nav/Navbar'
 import { deleteServicioHandler } from '../../../utils/eliminarServicio.js'
 import { loadServiceUser } from '../../../utils/services.js'
 
@@ -16,7 +17,9 @@ export default function ServiciosOfrecidos() {
 
 
 	return (
-		<main className="bg-sky-50 p-10 w-[90%] mx-auto">
+		<>
+		<Navbar/>
+		<main className="bg-sky-50 p-10 w-[90%] mx-auto mt-40">
 			<h3 className='capitalize text-[1.7rem] tracking-tight font-bold text-zinc-800'>Servicios ofrecidos</h3>
 			<section className='mt-5 h-12 flex items-center gap-x-2'>
 				<input type='text' placeholder='Search' className='h-full w-full rounded-lg'/>
@@ -59,5 +62,6 @@ export default function ServiciosOfrecidos() {
 				</div>
 			</section>
 		</main>
+		</>
 	)
 }

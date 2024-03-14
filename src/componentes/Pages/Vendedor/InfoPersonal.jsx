@@ -1,6 +1,7 @@
 import store from '../../../utils/store'
 import { useState } from 'react'
 import { BiEditAlt } from 'react-icons/bi'
+import Navbar from '../../Nav/Navbar'
 
 export default function infoPersonal() {
 	const { getUser } = store()
@@ -38,7 +39,9 @@ export default function infoPersonal() {
 	}
 
 	return (
-		<section className="py-5 bg-zinc-100">
+		<>
+		<Navbar/>
+		<section className="py-5 bg-zinc-100 mt-40">
 			<h3>Informacion de vendedor</h3>
 			<div className='mt-6 flex flex-col justify-center'>
 				<form onSubmit={ handleSubmit } className='w-96 flex flex-col gap-y-2 mx-auto'>
@@ -178,5 +181,6 @@ export default function infoPersonal() {
 				<button onClick={()=> setEdit(!edit)} className={`w-96 mx-auto mt-10 text-sm font-bold py-3 rounded-md uppercase bg-zinc-500 hover:bg-rose-500 text-white ${edit ? 'hidden':''}`}><BiEditAlt size='20' className='text-white mx-auto'/></button>
 			</div>
 		</section>
+		</>
 	)
 }

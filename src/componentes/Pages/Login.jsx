@@ -26,13 +26,6 @@ export default function Login() {
   //REDIRECCIONAMIENTO
   useEffect(() => {
     if(getUser !== null) navigate("/")
-    /* if (getUser !== null) {
-      if (getUser.role == "cliente" && getUser.user_state != "false") {
-        navigate("/");
-      } else if (getUser.role == "vendedor" && getUser.user_state != "false") {
-        navigate("/vendedor") //navigate("/vendedor");
-      }
-    } */
   }, [getUser]);
 
   return (
@@ -48,7 +41,7 @@ export default function Login() {
     >
       <Navbar/>
       <form
-        className="bg-white p-10 rounded-md shadow-xl shadow-black w-80"
+        className="bg-white mt-20 p-10 rounded-md shadow-xl shadow-black w-80"
         onSubmit={handleSubmit}
         action=""
       >

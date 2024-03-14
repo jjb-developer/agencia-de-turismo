@@ -1,6 +1,6 @@
 // OBTENER TODOS LOS SERVICIOS OFRECIDOS
-export async function loadServiceHandler(url) {
-  return fetch(url)
+export async function loadServiceHandler() {
+  return fetch("https://agencia-de-turismo.onrender.com")
     .then((res) => res.json())
     .then((data) => data.results)
     .catch((error) =>
@@ -8,7 +8,7 @@ export async function loadServiceHandler(url) {
     );
 }
 
-
+// OBTENER TODOS LOS SERVICIOS OFRECIDOS DE UN VENDEDOR
 export async function loadServiceUser(setUserService) {
 	const user = JSON.parse(localStorage.getItem("user"))
 	await fetch("https://agencia-de-turismo.onrender.com/service", {

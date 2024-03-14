@@ -1,6 +1,7 @@
 import { BiImage, BiPlus } from 'react-icons/bi'
 import { code, initialStateServicetoAdd } from '../../../utils/variables.js'
 import store from '../../../utils/store'
+import Navbar from '../../Nav/Navbar'
 import { useNavigate } from 'react-router-dom'
 import { updateServiceHandle } from '../../../utils/actualizarServicio.js'
 import { addServiceHandle } from '../../../utils/agregarServicio.js'
@@ -39,7 +40,9 @@ export default function AgregarServicio() {
 
 
 	return (
-		<main className="bg-sky-100 py-10">
+		<>
+		<Navbar/>
+		<main className="bg-sky-100 py-10 mt-40">
 			<div className='flex gap-x-2 justify-between w-[90%] mx-auto'>
 				<div className='flex gap-x-2'>
 					<button className='bg-sky-600 text-white font-bold text-sm uppercase flex flex-col items-center justify-center w-32 h-14 rounded-lg'>
@@ -111,7 +114,7 @@ export default function AgregarServicio() {
 							required
 							name='service_destination'
 							type='text'
-							pattern="^[A-Za-z0-9]{3,20}$"
+							pattern="^[A-Za-z0-9\s]{3,20}$"
 							title="Por favor ingrese mínimo 3 ó máximo 20 carácteres. Gracias"
 							value={getInitialServiceToAdd.service_destination}
 							placeholder='Escribe el destino del servico.' 
@@ -150,5 +153,6 @@ export default function AgregarServicio() {
 				</form>
 			</div>
 		</main>
+		</>
 	)
 }
