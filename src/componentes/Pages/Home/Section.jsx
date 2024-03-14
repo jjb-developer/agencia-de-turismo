@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { loadServiceHandler } from "../../../utils/services";
-import { AiOutlineClose } from "react-icons/ai";
+import FlagArgentina from "../../../../public/argentina.png";
+import FlagBolivia from "../../../../public/bolivia.png";
+import FlagIndonesia from "../../../../public/indonesia.png";
+import FlagSingapur from "../../../../public/singapur.png";
+import FlagPeru from "../../../../public/peru.png";
 
 const responseService = [
   {
@@ -11,7 +15,7 @@ const responseService = [
     name: "Entrada VIP para Cosquín Rock",
     description:
       "Disfruta de una experiencia única en el legendario festival de música rock en la provincia de Córdoba. Tu entrada VIP incluye acceso exclusivo a áreas premium, artistas invitados sorpresa y mucho más.",
-    service_destination: "Córdoba, Argentina",
+    service_destination: "Argentina",
     service_date: "2024-02-15",
     cost: 30000,
     service_code: 7,
@@ -53,7 +57,7 @@ const responseService = [
     name: "Paseo en colectivo turístico",
     description:
       "Descubre los encantos de la Ciudad Autónoma de Buenos Aires desde la comodidad de nuestro colectivo turístico. Disfruta de un recorrido guiado por los principales puntos de interés de la ciudad, con aire acondicionado y atención personalizada.",
-    service_destination: "Ciudad Autónoma de Buenos Aires, Argentina",
+    service_destination: "Argentina",
     service_date: "2024-11-04",
     cost: 1,
     service_code: 4,
@@ -67,7 +71,7 @@ const responseService = [
     name: "Tour gastronómico",
     description:
       "Embárcate en un viaje culinario único explorando los sabores y aromas de la cocina local. Este tour gastronómico te llevará a los mejores restaurantes y mercados de la ciudad, donde podrás degustar platos tradicionales y experimentar la cultura culinaria de la región.",
-    service_destination: "Lima, Perú",
+    service_destination: "Peru",
     service_date: "2024-04-20",
     cost: 60000,
     service_code: 8,
@@ -81,7 +85,7 @@ const responseService = [
     name: "Clases de surf",
     description:
       "Aprende a surfear las olas con nuestras clases de surf personalizadas. Nuestros instructores expertos te guiarán a través de los fundamentos del surf y te ayudarán a mejorar tus habilidades en las hermosas playas de la costa. ¡No se requiere experiencia previa!",
-    service_destination: "Bali, Indonesia",
+    service_destination: "Indonesia",
     service_date: "2024-05-15",
     cost: 80000,
     service_code: 9,
@@ -89,15 +93,27 @@ const responseService = [
   },
 ];
 
+const countryFlags = {
+  argentina: FlagArgentina,
+  bolivia: FlagBolivia,
+  indonesia: FlagIndonesia,
+  peru: FlagPeru,
+  singapur: FlagSingapur,
+};
+
 export default function Section() {
   const [filteredServicios, setFilteredServicios] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedService, setSelectedService] = useState(null);
   const [showDescription, setShowDescription] = useState(false);
 
-  /* useEffect (()=> {
-  handlerLoadService();
-},[])*/
+  const toggleDescription = () => {
+    setShowDescription(!showDescription);
+  };
+
+  useEffect(() => {
+    handlerLoadService();
+  }, []);
 
   async function handlerLoadService() {
     const loadService = await loadServiceHandler(
@@ -107,63 +123,95 @@ export default function Section() {
   }
 
   return (
-    <section className="bg-gray-50 flex flex-wrap flex-col justify-center items-center min-h-screen w-full gap-4 p-4">
-     <div><h2 className="text-2xl font-roboto"> &#11088; Servicios estrella &#11088;</h2></div>
-     <div className="flex flex-wrap justify-center items-center w-full h-auto gap-4 p-4">
-      {responseService.map((servicio, index) => (
-        <div
-          key={index}
-          className="w-64 h-80 bg-center bg-cover overflow-hidden relative flex items-end group rounded-lg "
-          style={{ backgroundImage: `url(${servicio.image})` }}
-        >
-          <div className="w-full flex justify-start absolute top-0 left-0 p-2">
-            <h3 className="text-gray-200 text-lg font-roboto">
-              {servicio.name}
-            </h3>
-          </div>
-          <article className="bg-gray-700/60 w-full p-2 absolute -left-full group-hover:left-0 transition-all">
-            <div>
-              <h3 className="text-xl text-gray-50 font-bold h-24">
-                Destino: {servicio.service_destination}
-              </h3>
-            </div>
+    <section className="mt-8 mb-8 px-4">
+      <h1 className="text-xl md:text-3xl lg:text-5xl  mb-16 mt-24 text-center font-roboto font-bold text-slate-800">
+        Los más vendidos
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {responseService.map((servicio, index) => (
+          <div key={index} className="flex-shrink-0 w-full max-w-md">
+            <article className="border-4 rounded-3xl p-2 pb-4 border-gray-700 shadow-lg shadow-slate-900 hover:border-emerald-600 duration-300 flex flex-col max-h-1/2">
+              <div className="flex-grow">
+                <div className="mb-8 h-28 relative">
+                  <h3
+                    className="text-2xl font-bold font-playfair text-emerald-800 capitalize text-center py-5 cursor-pointer"
+                    onClick={() =>
+                      setSelectedService(
+                        selectedService === index ? null : index
+                      )
+                    }
+                  >
+                    {servicio.name}
+                  </h3>
+                </div>
+                <figure className="mb-2">
+                  <img
+                    className="translate-y-8 translate-x-2 w-6 z-20"
+                    src={
+                      countryFlags[servicio.service_destination.toLowerCase()]
+                    }
+                    alt={servicio.service_destination}
+                  />
+                  <img
+                    className="w-full h-40 object-cover shadow-xl shadow-black border-2 border-white rounded-xl mb-10"
+                    src={servicio.image}
+                    alt="imagen del servicio"
+                  />
+                </figure>
 
-            {/* Botón "Ver más" para mostrar la descripción */}
-            {selectedService !== index && (
-              <div className="text-center mt-auto">
-                <button className="text-gray-50 font-semibold border-2 border-gray-50 p-2 rounded-xl">
-                  Ver más
-                </button>
-              </div>
-            )}
-            {/* Mostrar descripción solo si está seleccionada */}
-            <div
-              className={`absolute w-[450px] h-28 ${
-                index === responseService.length - 1
-                  ? "-translate-x-64"
-                  : "translate-x-9"
-              }`}
-            >
-              {selectedService === index && (
-                <div className="p-6 flex flex-col justify-between bg-slate-100 border-4 border-gray-400 shadow-xl shadow-black rounded-xl hover:border-orange-600">
-                  <p className="text-lg text-gray-600 font-bold mb-2 text-center font-playfair">
-                    {servicio.description}
-                  </p>
-
-                  <div className="h-20 flex text-center justify-center">
+                {/* Botón "Ver más" para mostrar la descripción */}
+                {selectedService !== index && (
+                  <div className="text-center mt-auto z-10">
                     <button
-                      className="text-orange-500 border-2 border-orange-700 p-3 hover:bg-orange-600
-                           hover:text-yellow-50 text-xl rounded-2xl font-semibold mt-auto"
+                      className="text-emerald-500 font-semibold border-2 border-emerald-700 p-2 rounded-xl
+                       hover:bg-emerald-700 hover:text-sky-100"
+                      onClick={() => setSelectedService(index)}
                     >
-                      Ver menos
+                      Ver más
                     </button>
                   </div>
+                )}
+                {/* Mostrar descripción solo si está seleccionada */}
+                <div
+                  className={`relative w-[450px] h-16 opacity-90 ${
+                    index === responseService.length - 1 ||
+                    index === responseService.length - 2
+                      ? "-translate-x-80"
+                      : "translate-x-9"
+                  }`}
+                >
+                  {selectedService === index && (
+                    <div
+                      className=" p-6 flex flex-col justify-between bg-slate-100 border-4
+                     border-gray-400 shadow-xl shadow-black rounded-xl hover:border-orange-600 -translate-y-1/2"
+                    >
+                      <div className="text-center">
+                        <h3 className="text-2xl text-gray-700 font-bold font-roboto">
+                          Destino: "{servicio.service_destination}"
+                        </h3>
+                        <p className="text-base text-gray-600 font-bold mb-2 text-center font-playfair">
+                          {servicio.description}
+                        </p>
+                        <p className="text-lg text-gray-700 font-bold">
+                          Costo: ${servicio.cost}
+                        </p>
+                      </div>
+                      <div className="h-16 flex text-center justify-center">
+                        <button
+                          className="text-orange-500 border-2 border-orange-700 p-2 hover:bg-orange-600
+                           hover:text-yellow-50 text-lg rounded-2xl font-semibold mt-auto"
+                          onClick={() => setSelectedService(null)}
+                        >
+                          Ver menos
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          </article>
-        </div>
-      ))}
+              </div>
+            </article>
+          </div>
+        ))}
       </div>
     </section>
   );

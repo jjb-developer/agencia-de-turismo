@@ -1,43 +1,31 @@
-import { useEffect } from "react";
+import Header from "../Header/Header";
 import { servicios } from "../../utils/variables.js";
-import Section from "./Home/Section.jsx";
-import ContactForm from "./Home/ContactForm.jsx";
+
+import AgregarServicio from "./Vendedor/AgregarServicio.jsx";
+import store from "../../utils/store";
 import Main from "./Home/Main.jsx";
-import Slider from "../Slider/Slider.jsx";
-import Navbar from "../Nav/Navbar.jsx"
-import store from '../../utils/store'
-import { loadServiceHandler } from '../../utils/services.js'
+import Section from "./Home/Section.jsx";
+import ServiciosOfrecidos from "./Vendedor/ServiciosOfrecidos.jsx";
+import Publicidad from "./Home/Publicidad.jsx";
 
-export default function Home(){
+export default function Home() {
+  const { getUser } = store();
 
-  const { setAllService, getAllService } = store()
-
-  useEffect(()=>{
-    async function fetchAllServices(){
-      const response = await loadServiceHandler()
-      setAllService(response)
-    }
-    if(getAllService === null){
-      fetchAllServices()
-    }
-  },[])
-
+  const isLoggedIn = !!getUser; // isLoggedIn será true si getUser existe, es decir, si el usuario está logueado
+  const isVendedor = isLoggedIn && getUser.role === "vendedor";
+  const isCliente = isLoggedIn && getUser.role === "cliente";
 
   return (
-
-    <div className="overflow-hidden w-full">
-      <Navbar/>
-      <Slider/>
-      <div className="bg-gray-800 h-48 flex items-center justify-center">
-      <h1 className="text-3xl text-center text-gray-50">
-      Que ofrecemos?
-
+    <div className="overflow-hidden">
+      <Header />
+      <h1 className="text-4xl md:text-6xl mt-12 mb-6 text-center font-roboto font-bold text-orange-800">
+        Nuestros Servicios
       </h1>
-      </div>
       <Main servicios={servicios} />
-
-      <Section className="scroll-section" />
-
+      <Publicidad isLoggedIn={isLoggedIn} />
+      {isVendedor && <Section />}
+      {isCliente && <ServiciosOfrecidos />}
+      {!isLoggedIn && <Section />}
     </div>
   );
 }

@@ -1,17 +1,37 @@
+import React, { useState } from "react";
+import { FaComments } from 'react-icons/fa';
+
 import {
   BiLogoTwitter,
   BiLogoGithub,
   BiLogoFacebookCircle,
 } from "react-icons/bi";
+import ContactForm from "../Pages/Home/ContactForm";
+
+function CommentIcon() {
+  return <FaComments />;
+} 
 
 export default function Footer() {
   const sizeLogo = 28;
+  const mitad = 50;
+  const [showContactForm, setShowContactForm] = useState(false);
+
+  const toggleContactForm = () => {
+    setShowContactForm((prevState) => !prevState);
+  };
 
   return (
-    <footer
-      className="flex flex-col items-center justify-center w-full h-64 text-center px-10"
+    <div
+      className="flex flex-col items-center justify-center w-full h-80 text-center px-10 mt-12"
       style={{ background: "linear-gradient(to right, #FFA500, #FF6347)" }}
     >
+      <div className="translate-x-[500px] -translate-y-12 bg-orange-900 py-2 px-4 border-2 border-orande-200 hover:bg-orange-600 rounded-md">
+        <button className="text-sm flex text-orange-200 font-roboto font-bold rounded-xl uppercase" onClick={toggleContactForm}>
+        <span className="mr-2"><CommentIcon /></span>Comentarios 
+        </button>
+      </div>
+
       <div className="flex gap-x-4">
         <BiLogoGithub size={sizeLogo} />
         <BiLogoTwitter size={sizeLogo} />
@@ -25,6 +45,7 @@ export default function Footer() {
           Elaborado por [ Julia Rodriguez, Sebastian Oliveto, José Pereira ]
         </small>
       </div>
-    </footer>
+      {showContactForm && <ContactForm />}
+    </div>
   );
 }

@@ -1,13 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BiUser, BiCart, BiSolidHotel } from "react-icons/bi";
-import { ImAirplane, ImCart } from "react-icons/im";
-import { FaCarAlt, FaBusAlt, FaTrain } from "react-icons/fa";
-import { GiJourney } from "react-icons/gi";
-import { MdEvent } from "react-icons/md";
+import { BiUser, BiCart } from "react-icons/bi";
 import Boton from "./componentes/Boton";
 import store from "../../utils/store";
-import Carrito from '../Pages/Carrito'
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -18,7 +13,7 @@ export default function Navbar() {
     ? JSON.parse(localStorage.getItem("user"))
     : null;
 
-  const { setUserService, getUser, setUser, setAddOrUpdate, showCarrito } = store();
+  const { setUserService, getUser, setUser, setAddOrUpdate } = store();
 
   useEffect(() => {
     function handleScroll() {
@@ -35,7 +30,7 @@ export default function Navbar() {
   const navBackground = scrollY > 0 ? "bg-gray-50" : "";
   const textColor = scrollY > 0 ? "text-orange-500" : "text-orange-500"; //text-gray-200
   const textUserColor = scrollY > 0 ? "text-gray-600" : "text-gray-50";
-  // Función para manejar el login out.
+
   function handleLoginOut() {
     navigate("/");
     setUser(null);
@@ -43,108 +38,129 @@ export default function Navbar() {
     localStorage.removeItem("user");
   }
 
+  function renderMenu() {
+    return (
+      <div
+        className={`${
+          activeMenu === false
+            ? "hidden"
+            : `absolute border-2 border-orange-600 mt-2 -translate-x-1/3 rounded-lg shadow-lg ${
+                getUser.role === "vendedor"
+                  ? "bg-[rgba(244,193,156,0.5)] w-64"
+                  : "bg-[rgba(244,193,156,0.5)] w-40 translate-x-0"
+              }`
+        }`}
+      >
+        {getUser.role === "vendedor" ? (
+          <>
+            <button
+              onClick={() => {
+                navigate("/infoPersonal");
+                setActiveMenu(false);
+              }}
+              className="py-4 text-center font-roboto text-slate-700 font-bold text-lg uppercase hover:bg-orange-600 hover:text-white duration-300 px-3 w-full block"
+            >
+              Información
+            </button>
+            <button
+              onClick={() => {
+                navigate("/serviciosOfrecidos");
+                setActiveMenu(false);
+              }}
+              className="py-4 text-center font-roboto text-slate-700 font-bold text-lg uppercase hover:bg-orange-700 hover:text-white duration-300 px-3 w-full block"
+            >
+              Servicios Ofrecidos
+            </button>
+            <button
+              onClick={() => {
+                navigate("/agregarServicio");
+                setActiveMenu(false);
+              }}
+              className="py-4 text-center font-roboto text-slate-700 font-bold text-lg uppercase hover:bg-orange-800 hover:text-white duration-300 px-3 w-full block"
+            >
+              Agregar Servicio
+            </button>
+            <button
+              onClick={handleLoginOut}
+              className="py-4 text-center font-roboto text-slate-700 font-bold text-lg uppercase hover:bg-orange-900 hover:text-white duration-300 px-3 w-full block"
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              onClick={() => {
+                navigate("/infoPersonal");
+                setActiveMenu(false);
+              }}
+              className="py-4 text-center font-roboto text-slate-700 font-bold text-lg uppercase hover:bg-orange-600 hover:text-white duration-300 px-3 w-full block"
+            >
+              Información
+            </button>
+            <button className="py-4 flex items-center justify-center font-roboto text-slate-700 font-bold text-lg uppercase hover:bg-orange-900 hover:text-white duration-300 px-3 w-full">
+              <BiCart className="mr-2" />
+              Carrito
+            </button>
+            <button
+              onClick={handleLoginOut}
+              className="py-4 text-center font-roboto text-slate-700 font-bold text-lg uppercase hover:bg-orange-700 hover:text-white duration-300 px-3 w-full block"
+            >
+              Logout
+            </button>
+          </>
+        )}
+      </div>
+    );
+  }
+
   return (
-    <>
-    <Carrito/>
     <nav
       style={{ backdropFilter: "blur(3px)" }}
-      className={`w-full flex justify-between items-center px-10 py-4 absolute left-0 z-40 top-0 ${
-        {
-          /*navBackground*/
-        }
-      } transition-all`}
+      className={`w-full flex justify-between items-center px-10 py-2 absolute left-0 z-40 top-0 transition-all`}
     >
       <div>
         <span
-          className={`${textColor} text-4xl flex md:text-6xl mb-5 xl:mb-2 capitalize font-bold tracking-tight"`}
+          className={`${textColor} text-4xl flex md:text-6xl mb-5 xl:mb-2 capitalize font-bold tracking-tight`}
           style={{
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
-          }} //textShadow: scrollY > 0 ? "2px 2px 4px rgba(0, 0, 0, 0.8)" : "2px 2px 4px rgba(200, 200, 200, 0.8)"
+          }}
         >
           <Link to="/" className="cursor-pointer">
-            agencia de turismo
+            Agencia de Turismo
           </Link>
         </span>
-
-        {getUser ? (
-          // Si el usuario está autenticado
+      </div>
+      {getUser ? (
+        <div className="relative">
           <div className="flex items-center">
-            <div className="flex flex-col ">
-              <span className={`text-xl ${textUserColor} `}>
+            <div className="flex flex-col mr-2">
+              <span
+                className={`text-xl capitalize text-slate-900 bg-[#ffffff74] rounded-xl px-1 font-bold ${textUserColor}`}
+              >
                 {getUser.name} {getUser.lastname}
               </span>
               <span className="text-right uppercase font-bold text-sm text-orange-500">
                 {getUser.role}
               </span>
             </div>
-            <div 
-              className='cursor-pointer'
-              onClick={ ()=> setActiveMenu(!activeMenu)}>
-              { getUser.role === "vendedor" && (<BiUser 
-                className="text-white bg-orange-500 rounded-full w-10 h-10 p-1.5"
-                />)}
-              </div>
-            
-              { getUser.role === "vendedor" && activeMenu && (
-              <div className={`${ activeMenu === false ? 'hidden':'flex'}`}>
-                <button 
-                  onClick={()=> {
-                    navigate('/infoPersonal')
-                    setActiveMenu(false)
-                  }} 
-                  className="py-2 hover:bg-orange-500 hover:text-white duration-300 px-3 w-48 text-right">
-                  Infomación
-                </button>
-                <button 
-                  onClick={()=> {
-                    navigate('/serviciosOfrecidos')
-                    setActiveMenu(false)
-                  }} 
-                  className="py-2 hover:bg-orange-500 hover:text-white duration-300 px-3 w-48 text-right">
-                  Servicios Ofrecidos
-                </button>
-                <button 
-                  onClick={()=> {
-                    setAddOrUpdate("add")
-                    navigate('/agregarServicio')
-                    setActiveMenu(false)
-                  }} 
-                  className="py-2 hover:bg-orange-500 hover:text-white duration-300 px-3 w-48 text-right">
-                  Agregar Servicio
-                </button>
-                <button
-                  onClick={ handleLoginOut }
-                  className="py-2 hover:bg-orange-500 hover:text-white duration-300 px-3 w-48 text-right"
-                >
-                  Login Out
-                </button>
-              </div>
+            <div
+              className="cursor-pointer"
+              onClick={() => setActiveMenu(!activeMenu)}
+            >
+              {(getUser.role === "vendedor" || getUser.role === "cliente") && (
+                <BiUser className="text-white bg-orange-500 rounded-full w-10 h-10 p-1.5" />
               )}
-            {getUser.role === "cliente" && (
-              <div className="flex flex-wrap text-center justify-center">
-                <button
-                  onClick={ handleLoginOut }
-                  className="bg-rose-500 max-sm:mb-2 text-rose-50 font-bold text-sm uppercase rounded-lg py-1.5 px-4 hover:text-rose-600 hover:bg-rose-50 hover:border-2 hover:border-rose-500"
-                >
-                  Logout
-                </button>
-                <button
-                  onClick={ showCarrito }
-                  className="bg-blue-500  text-blue-50 font-bold text-sm rounded-lg uppercase py-1.5 px-4 flex items-center gap-x-1 hover:text-blue-600 hover:bg-blue-50 hover:border-2 hover:border-blue-500">
-                  <BiCart />
-                  Carrito
-                </button>
-              </div>
-            )}
+            </div>
           </div>
-        ) : (
-          <div className="flex flex-row gap-2">
-            <Boton ruta="/register" name="Register" />
-            <Boton ruta="/login" name="Login" />
-          </div>
-        )}
+          {renderMenu()}
         </div>
-      </nav>
-    </>
+      ) : (
+        <div className="flex flex-row gap-2">
+          <Boton ruta="/register" name="Register" />
+          <Boton ruta="/login" name="Login" />
+        </div>
+      )}
+    </nav>
   );
 }

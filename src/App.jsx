@@ -6,6 +6,7 @@ import Register from './componentes/Pages/Register'
 import Vendedor from './componentes/Pages/Vendedor'
 import AllServicios from './componentes/Pages/Servicios'
 import Cliente from './componentes/Pages/Cliente'
+import Carrito from './componentes/Pages/Carrito'
 import AgregarServicio from './componentes/Pages/Vendedor/AgregarServicio'
 import ServicioOfrecidos from './componentes/Pages/Vendedor/ServiciosOfrecidos'
 import InfoPersonal from './componentes/Pages/Vendedor/InfoPersonal'
@@ -14,6 +15,7 @@ import Footer from './componentes/Footer/Footer'
 function App() {
 	return (
 		<div className='w-full font-Roboto'>
+			<Navbar/>
 		   <Routes>
 				<Route path="/" element={<Home/>} />
 				<Route path="/login" element={<Login/>}/>
@@ -21,6 +23,7 @@ function App() {
 				<Route path="/vendedor" element={<Vendedor/>}/>
 				<Route path="/all_servicios" element={<AllServicios/>}/>
 				<Route path="/cliente" element={<Cliente/>}/>
+				<Route path="/carrito" element={<Carrito/>}/>
 				<Route path="/infoPersonal" element={<InfoPersonal/>}/>
 				<Route path="/serviciosOfrecidos" element={<ServicioOfrecidos/>}/>
 				<Route path="/agregarServicio" element={<AgregarServicio/>}/>
