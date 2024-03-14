@@ -7,6 +7,7 @@ import Main from "./Home/Main.jsx";
 import Section from "./Home/Section.jsx";
 import ServiciosOfrecidos from "./Vendedor/ServiciosOfrecidos.jsx";
 import Publicidad from "./Home/Publicidad.jsx";
+import SectionVendedor from "./Home/SectionVendedor.jsx";
 
 export default function Home() {
   const { getUser } = store();
@@ -23,7 +24,7 @@ export default function Home() {
       </h1>
       <Main servicios={servicios} />
       <Publicidad isLoggedIn={isLoggedIn} />
-      {isVendedor && <Section />}
+      {isVendedor && <SectionVendedor />}
       {isCliente && <ServiciosOfrecidos />}
       {!isLoggedIn && <Section />}
     </div>
