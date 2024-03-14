@@ -14,6 +14,26 @@ export const meses =
       "12": "diciembre"
   }
 
+export const code = {
+    "hotel por noche": 1,
+    "alquiler de auto": 2,
+    "pasajes de colectivos": 3,
+    "pasaje de avion": 4,
+    "pasaje de tren": 5,
+    "excursiones": 6,
+    "entradas a eventos": 7
+  }
+
+
+export const initialStateServicetoAdd = {
+    "name": "hotel por noche",
+    "description": "",
+    "service_destination": "",
+    "service_date": new Date().toISOString().split('T')[0],
+    "cost": "",
+    "service_code": 1
+}
+
 
 export const servicios = [
   {

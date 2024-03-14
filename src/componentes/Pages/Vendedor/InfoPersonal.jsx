@@ -1,6 +1,7 @@
 import store from '../../../utils/store'
 import { useState } from 'react'
 import { BiEditAlt } from 'react-icons/bi'
+import Navbar from '../../Nav/Navbar'
 
 export default function infoPersonal() {
 	const { getUser } = store()
@@ -20,11 +21,11 @@ export default function infoPersonal() {
 		const { name, lastname, username, dni, country, birthdate, phone, email  } = updateUser
 
 		const user = JSON.parse(localStorage.getItem("user"))
-		fetch(`${import.meta.env.VITE_REACT_URL}/seller`, {
+		fetch("https://agencia-de-turismo.onrender.com/seller", {
 			method: "PATCH",
 			headers: {
 				"content-type": "application/json",
-				authorization: `Bearer ${user.token}`,
+				"authorization": `Bearer ${user.token}`,
 			},
 			body: JSON.stringify({name, lastname, username, dni, country, birthdate, phone, email}),
 		})
@@ -38,7 +39,9 @@ export default function infoPersonal() {
 	}
 
 	return (
-		<section className="py-5 bg-zinc-100 relative">
+		<>
+		<Navbar/>
+		<section className="py-5 bg-zinc-100 mt-40">
 			<h3>Informacion de vendedor</h3>
 			<div className='mt-6 flex flex-col justify-center'>
 				<form onSubmit={ handleSubmit } className='w-96 flex flex-col gap-y-2 mx-auto'>
@@ -47,7 +50,13 @@ export default function infoPersonal() {
 						<label className='label_title'>name</label>
 						{
 							edit ? 
-							(<input type='text' placeholder='name' value={updateUser.name} onChange={ (e)=> setUpdateUser({...updateUser, name: e.target.value })}/>)
+							(<input 
+								required
+								pattern="^[a-z]{3,20}$" 
+								type='text' 
+								placeholder='name' 
+								value={updateUser.name} 
+								onChange={ (e)=> setUpdateUser({...updateUser, name: e.target.value })}/>)
 							:
 							(<label className='label_info'>{updateUser.name}</label>)
 						}
@@ -57,7 +66,13 @@ export default function infoPersonal() {
 						<label className='label_title'>lastname</label>
 						{
 							edit ? 
-							(<input type='text' placeholder='lastname' value={updateUser.lastname} onChange={ (e)=> setUpdateUser({...updateUser, lastname: e.target.value })}/>)
+							(<input 
+								required
+								pattern="^[a-z]{3,20}$" 
+								type='text' 
+								placeholder='lastname' 
+								value={updateUser.lastname} 
+								onChange={ (e)=> setUpdateUser({...updateUser, lastname: e.target.value })}/>)
 							:
 							(<label className='label_info'>{updateUser.lastname}</label>)
 						}
@@ -67,7 +82,12 @@ export default function infoPersonal() {
 						<label className='label_title'>birthdate</label>
 						{
 							edit ? 
-							(<input type='text' placeholder='birthdate' value={updateUser.birthdate} onChange={ (e)=> setUpdateUser({...updateUser, birthdate: e.target.value })}/>)
+							(<input 
+								required
+								type='text' 
+								placeholder='birthdate' 
+								value={updateUser.birthdate} 
+								onChange={ (e)=> setUpdateUser({...updateUser, birthdate: e.target.value })}/>)
 							:
 							(<label className='label_info'>{updateUser.birthdate}</label>)
 						}
@@ -77,7 +97,13 @@ export default function infoPersonal() {
 						<label className='label_title'>country</label>
 						{
 							edit ? 
-							(<input type='text' placeholder='country' value={updateUser.country} onChange={ (e)=> setUpdateUser({...updateUser, country: e.target.value })}/>)
+							(<input 
+								required
+								pattern="^[a-z]{3,20}$"
+								type='text' 
+								placeholder='country' 
+								value={updateUser.country} 
+								onChange={ (e)=> setUpdateUser({...updateUser, country: e.target.value })}/>)
 							:
 							(<label className='label_info'>{updateUser.country}</label>)
 						}
@@ -87,7 +113,13 @@ export default function infoPersonal() {
 						<label className='label_title'>dni</label>
 						{
 							edit ? 
-							(<input type='text' placeholder='dni' value={updateUser.dni} onChange={ (e)=> setUpdateUser({...updateUser, dni: e.target.value })}/>)
+							(<input 
+								required
+              				pattern="^[0-9]{8,9}$"
+								type='text' 
+								placeholder='dni' 
+								value={updateUser.dni} 
+								onChange={ (e)=> setUpdateUser({...updateUser, dni: e.target.value })}/>)
 							:
 							(<label className='label_info'>{updateUser.dni}</label>)
 						}
@@ -97,7 +129,13 @@ export default function infoPersonal() {
 						<label className='label_title'>email</label>
 						{
 							edit ? 
-							(<input type='text' placeholder='email' value={updateUser.email} onChange={ (e)=> setUpdateUser({...updateUser, email: e.target.value })}/>)
+							(<input 
+								required
+              				pattern="^[a-z][a-z0-9]{4,16}@[a-z]{4,10}\.com$"
+								type='text' 
+								placeholder='email' 
+								value={updateUser.email} 
+								onChange={ (e)=> setUpdateUser({...updateUser, email: e.target.value })}/>)
 							:
 							(<label className='label_info'>{updateUser.email}</label>)
 						}
@@ -107,7 +145,13 @@ export default function infoPersonal() {
 						<label className='label_title'>phone</label>
 						{
 							edit ? 
-							(<input type='text' placeholder='phone' value={updateUser.phone} onChange={ (e)=> setUpdateUser({...updateUser, phone: e.target.value })}/>)
+							(<input 
+								required
+								pattern="^[0-9]{8,}$"
+								type='text' 
+								placeholder='phone' 
+								value={updateUser.phone} 
+								onChange={ (e)=> setUpdateUser({...updateUser, phone: e.target.value })}/>)
 							:
 							(<label className='label_info'>{updateUser.phone}</label>)
 						}
@@ -117,7 +161,13 @@ export default function infoPersonal() {
 						<label className='label_title'>username</label>
 						{
 							edit ? 
-							(<input type='text' placeholder='username' value={updateUser.username} onChange={ (e)=> setUpdateUser({...updateUser, username: e.target.value })}/>)
+							(<input 
+								required
+								pattern="^[A-Za-z][A-Za-z0-9]{4,20}$"
+								type='text' 
+								placeholder='username' 
+								value={updateUser.username} 
+								onChange={ (e)=> setUpdateUser({...updateUser, username: e.target.value })}/>)
 							:
 							(<label className='label_info'>{updateUser.username}</label>)
 						}
@@ -131,5 +181,6 @@ export default function infoPersonal() {
 				<button onClick={()=> setEdit(!edit)} className={`w-96 mx-auto mt-10 text-sm font-bold py-3 rounded-md uppercase bg-zinc-500 hover:bg-rose-500 text-white ${edit ? 'hidden':''}`}><BiEditAlt size='20' className='text-white mx-auto'/></button>
 			</div>
 		</section>
+		</>
 	)
 }
