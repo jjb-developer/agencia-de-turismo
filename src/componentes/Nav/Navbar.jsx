@@ -98,7 +98,11 @@ export default function Navbar() {
             >
               Información
             </button>
-            <button className="py-4 flex items-center justify-center font-roboto text-slate-700 font-bold text-lg uppercase hover:bg-orange-900 hover:text-white duration-300 px-3 w-full">
+            <button 
+             onClick={() => {
+              navigate("/carrito");
+            }}
+            className="py-4 flex items-center justify-center font-roboto text-slate-700 font-bold text-lg uppercase hover:bg-orange-900 hover:text-white duration-300 px-3 w-full">
               <BiCart className="mr-2" />
               Carrito
             </button>

@@ -311,7 +311,7 @@ export default function ServiciosOfrecidos() {
 
   return (
     <main className="bg-sky-50 p-10 w-[100%] mx-auto relative">
-      <h3 className="capitalize text-4xl text-center mb-16 tracking-tight font-bold text-zinc-800 ">
+      <h3 className="capitalize text-5xl text-center mt-36 mb-16 tracking-tight font-bold text-zinc-800 ">
         Servicios ofrecidos
       </h3>
       <section className="mt-5 flex justify-between items-center gap-x-2 mb-16 relative z-10 ">
