@@ -8,6 +8,7 @@ import { code } from "../../../utils/variables.js";
 import { deleteServicioHandler } from "../../../utils/eliminarServicio.js";
 import { loadServiceUser } from "../../../utils/services.js";
 import { FaAngleDown } from "react-icons/fa";
+import { service } from "../../../assets/serviciosGenerales.js";
 
 const responseService = [
   {
@@ -339,7 +340,7 @@ export default function ServiciosOfrecidos() {
       )}
       <section className="mt-5 gap-x-2">
         <div className="grid grid-cols-2 gap-4">
-          {responseService.map((sv, index) => (
+          {service.map((sv, index) => (
             <div key={index}>
               <div
                 className="w-[500px] h-80 bg-center bg-cover overflow-hidden flex flex-col content-center items-end group rounded-lg"
