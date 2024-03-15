@@ -1,15 +1,21 @@
 import Navbar from '../Nav/Navbar'
 import store from '../../utils/store'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function servicios(){
+	const[user,setUser]=useState(null);
+	const { getAllService, setServiceFilter, getServiceFilter, getServiceInCarrito, addServiceInCarrito,getUser } = store()
 
-	const { getAllService, setServiceFilter, getServiceFilter, getServiceInCarrito, addServiceInCarrito } = store()
-
+	useEffect(()=>{
+		const user = JSON.parse(localStorage.getItem('user'))
+		if(user){setUser(getUser.role);
+		}
+		
+	},[]);
 	return (
 	<>
 		<Navbar/>
-		<main className='mt-48'>
+		<main className='pt-48 min-h-screen'>
 
 			<h1 className='mb-10 text-3xl font-bold tracking-tight capitalize'>servicios</h1>
 
@@ -37,13 +43,15 @@ export default function servicios(){
 						<p>{sv.description}</p>
 						<p className="font-bold">{sv.cost}$</p>
 						<p>{sv.service_date}</p>
+						{user=='cliente' &&
 						<button 
-							onClick={ ()=>{
-								if(getServiceInCarrito.includes(sv.id_servicio)) console.info('El servicios ya esta agregado!.')
-								else addServiceInCarrito(sv.id_servicio)
-							}}
-							className='bg-green-500 uppercase text-xs font-bold tracking-tight text-green-950 p-0.5 px-2 rounded absolute bottom-2 right-2'>add a car
-						</button>
+						onClick={ ()=>{
+							if(getServiceInCarrito.includes(sv.id_servicio)) console.info('El servicios ya esta agregado!.')
+							else addServiceInCarrito(sv.id_servicio)
+						}}
+						className='bg-green-500 uppercase text-xs font-bold tracking-tight text-green-950 p-0.5 px-2 rounded absolute bottom-2 right-2'>add a car
+					</button>}
+						
 					</div>
 				))
 			}

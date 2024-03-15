@@ -65,7 +65,7 @@ export default function Navbar() {
 
         {getUser ? (
           // Si el usuario está autenticado
-          <div className="flex items-center">
+          <div className="flex items-center relative">
             <div className="flex flex-col ">
               <span className={`text-xl ${textUserColor} `}>
                 {getUser.name} {getUser.lastname}
@@ -75,7 +75,7 @@ export default function Navbar() {
               </span>
             </div>
             <div 
-              className='cursor-pointer'
+              className='cursor-pointer '
               onClick={ ()=> setActiveMenu(!activeMenu)}>
               { getUser.role === "vendedor" && (<BiUser 
                 className="text-white bg-orange-500 rounded-full w-10 h-10 p-1.5"
@@ -83,13 +83,13 @@ export default function Navbar() {
               </div>
             
               { getUser.role === "vendedor" && activeMenu && (
-              <div className={`${ activeMenu === false ? 'hidden':'flex'}`}>
+              <div className={`${ activeMenu === false ? 'hidden':'flex'} bg-gray-200 flex-col absolute top-24  lg:top-16 sm:left-0`}>
                 <button 
                   onClick={()=> {
                     navigate('/infoPersonal')
                     setActiveMenu(false)
                   }} 
-                  className="py-2 hover:bg-orange-500 hover:text-white duration-300 px-3 w-48 text-right">
+                  className="py-2 hover:bg-orange-500 hover:text-white duration-300 px-3 w-full">
                   Infomación
                 </button>
                 <button 
@@ -97,7 +97,7 @@ export default function Navbar() {
                     navigate('/serviciosOfrecidos')
                     setActiveMenu(false)
                   }} 
-                  className="py-2 hover:bg-orange-500 hover:text-white duration-300 px-3 w-48 text-right">
+                  className="py-2 hover:bg-orange-500 hover:text-white duration-300 px-3 w-full">
                   Servicios Ofrecidos
                 </button>
                 <button 
@@ -106,12 +106,12 @@ export default function Navbar() {
                     navigate('/agregarServicio')
                     setActiveMenu(false)
                   }} 
-                  className="py-2 hover:bg-orange-500 hover:text-white duration-300 px-3 w-48 text-right">
+                  className="py-2 hover:bg-orange-500 hover:text-white duration-300 px-3 w-full">
                   Agregar Servicio
                 </button>
                 <button
                   onClick={ handleLoginOut }
-                  className="py-2 hover:bg-orange-500 hover:text-white duration-300 px-3 w-48 text-right"
+                  className="py-2 hover:bg-orange-500 hover:text-white duration-300 px-3 w-full"
                 >
                   Login Out
                 </button>

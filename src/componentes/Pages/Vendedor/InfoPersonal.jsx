@@ -41,7 +41,7 @@ export default function infoPersonal() {
 	return (
 		<>
 		<Navbar/>
-		<section className="py-5 bg-zinc-100 mt-40">
+		<section className="py-5 bg-zinc-100 pt-48">
 			<h3>Informacion de vendedor</h3>
 			<div className='mt-6 flex flex-col justify-center'>
 				<form onSubmit={ handleSubmit } className='w-96 flex flex-col gap-y-2 mx-auto'>

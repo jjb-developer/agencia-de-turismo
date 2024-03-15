@@ -51,7 +51,7 @@ export default function AgregarServicio() {
 	return (
 		<>
 		<Navbar/>
-		<main className="bg-sky-100 py-10 mt-40">
+		<main className="bg-sky-100 py-10 pt-48">
 			<div className='flex gap-x-2 justify-between w-[90%] mx-auto'>
 				<div className='flex gap-x-2'>
 					<button className='bg-sky-600 text-white font-bold text-sm uppercase flex flex-col items-center justify-center w-32 h-14 rounded-lg'>
