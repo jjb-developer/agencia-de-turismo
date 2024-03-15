@@ -9,7 +9,7 @@ export let pasajeColectivo = {
       "service_destination": "Buenos Aires, Argentina - Córdoba, Argentina",
       "service_date": "2024-07-10",
       "cost": 6000,
-      "service_code": 1041,
+      "service_code": 3,
       "vendedor_id_vendedor": 1,
       "visited": 40
     },
@@ -22,7 +22,7 @@ export let pasajeColectivo = {
       "service_destination": "Santiago, Chile - Valparaíso, Chile",
       "service_date": "2024-08-15",
       "cost": 8000,
-      "service_code": 1042,
+      "service_code": 3,
       "vendedor_id_vendedor": 2,
       "visited": 35
     },
@@ -35,7 +35,7 @@ export let pasajeColectivo = {
       "service_destination": "Lima, Perú - Cusco, Perú",
       "service_date": "2024-07-20",
       "cost": 10000,
-      "service_code": 1043,
+      "service_code": 3,
       "vendedor_id_vendedor": 3,
       "visited": 50
     },
@@ -48,7 +48,7 @@ export let pasajeColectivo = {
       "service_destination": "Ciudad de México, México - Oaxaca, México",
       "service_date": "2024-09-05",
       "cost": 7000,
-      "service_code": 1044,
+      "service_code": 3,
       "vendedor_id_vendedor": 4,
       "visited": 60
     },
@@ -61,7 +61,7 @@ export let pasajeColectivo = {
       "service_destination": "São Paulo, Brasil - Río de Janeiro, Brasil",
       "service_date": "2024-08-20",
       "cost": 9000,
-      "service_code": 1045,
+      "service_code": 3,
       "vendedor_id_vendedor": 5,
       "visited": 45
     },
@@ -74,7 +74,7 @@ export let pasajeColectivo = {
       "service_destination": "Bogotá, Colombia - Medellín, Colombia",
       "service_date": "2024-08-10",
       "cost": 8000,
-      "service_code": 1046,
+      "service_code": 3,
       "vendedor_id_vendedor": 6,
       "visited": 55
     },
@@ -87,7 +87,7 @@ export let pasajeColectivo = {
       "service_destination": "Montevideo, Uruguay - Punta del Este, Uruguay",
       "service_date": "2024-07-25",
       "cost": 5000,
-      "service_code": 1047,
+      "service_code": 3,
       "vendedor_id_vendedor": 7,
       "visited": 40
     },
@@ -100,7 +100,7 @@ export let pasajeColectivo = {
       "service_destination": "Buenos Aires, Argentina - Mar del Plata, Argentina",
       "service_date": "2024-09-15",
       "cost": 4000,
-      "service_code": 1048,
+      "service_code": 3,
       "vendedor_id_vendedor": 8,
       "visited": 35
     },
@@ -113,7 +113,7 @@ export let pasajeColectivo = {
       "service_destination": "Santiago, Chile - Mendoza, Argentina",
       "service_date": "2024-08-30",
       "cost": 7000,
-      "service_code": 1049,
+      "service_code": 3,
       "vendedor_id_vendedor": 9,
       "visited": 50
     },
@@ -126,7 +126,7 @@ export let pasajeColectivo = {
       "service_destination": "Asunción, Paraguay - Encarnación, Paraguay",
       "service_date": "2024-09-10",
       "cost": 6000,
-      "service_code": 1050,
+      "service_code": 3,
       "vendedor_id_vendedor": 10,
       "visited": 55
     }

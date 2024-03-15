@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { BiUser, BiCart } from "react-icons/bi";
 import Boton from "./componentes/Boton";
 import store from "../../utils/store";
+import Carrito from "../Pages/Carrito";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function Navbar() {
     ? JSON.parse(localStorage.getItem("user"))
     : null;
 
-  const { setUserService, getUser, setUser, setAddOrUpdate } = store();
+  const { setUserService, getUser, setUser, setAddOrUpdate, showCarrito } = store();
 
   useEffect(() => {
     function handleScroll() {
@@ -99,9 +100,7 @@ export default function Navbar() {
               Información
             </button>
             <button 
-             onClick={() => {
-              navigate("/carrito");
-            }}
+            onClick={ showCarrito }
             className="py-4 flex items-center justify-center font-roboto text-slate-700 font-bold text-lg uppercase hover:bg-orange-900 hover:text-white duration-300 px-3 w-full">
               <BiCart className="mr-2" />
               Carrito
@@ -119,6 +118,8 @@ export default function Navbar() {
   }
 
   return (
+    <>
+    <Carrito/>
     <nav
       style={{ backdropFilter: "blur(3px)" }}
       className={`w-full flex justify-between items-center px-10 py-2 absolute left-0 z-40 top-0 transition-all`}
@@ -166,5 +167,7 @@ export default function Navbar() {
         </div>
       )}
     </nav>
+    </>
+    
   );
 }

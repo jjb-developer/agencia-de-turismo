@@ -10,7 +10,7 @@ export default function Publicidad({ isLoggedIn }) {
   return (
     <div>
       {!isLoggedIn ? (
-        <div className="mx-auto mt-24 bg-emerald-200 w-[350px] base:w-[768px] md:w-[1024px] lg:w-[1400px] xl:w-[1800px] h-[200px] md:h-[400px] flex justify-around text-center">
+        <div className="mx-auto mt-24 mb-24 bg-emerald-200 w-[350px] base:w-[768px] md:w-[1024px] lg:w-[1400px] xl:w-[1800px] h-[200px] md:h-[400px] flex justify-around text-center">
           <h1
             className="my-auto mx-auto text-xl md:text-4xl lg:text-3xl font-bold font-roboto "
             style={{ transform: "rotate(-6deg)" }}
@@ -27,7 +27,7 @@ export default function Publicidad({ isLoggedIn }) {
       ) : (
         <>
           {isCliente && (
-            <div className="mx-auto mt-24 bg-orange-200 w-[350px] base:w-[768px] md:w-[1024px] lg:w-[1400px] xl:w-[1800px] h-[200px] md:h-[400px] flex justify-around text-center">
+            <div className="mx-auto mt-24 mb-24 bg-orange-200 w-[350px] base:w-[768px] md:w-[1024px] lg:w-[1400px] xl:w-[1800px] h-[200px] md:h-[400px] flex justify-around text-center">
               <h1
                 className="my-auto mx-auto text-xl md:text-4xl lg:text-3xl font-bold font-roboto "
                 style={{ transform: "rotate(-6deg)" }}

@@ -9,7 +9,7 @@ export let pasajeTren = {
       "service_destination": "Londres, Reino Unido - París, Francia",
       "service_date": "2024-07-10",
       "cost": 90000,
-      "service_code": 1031,
+      "service_code": 5,
       "vendedor_id_vendedor": 1,
       "visited": 40
     },
@@ -22,7 +22,7 @@ export let pasajeTren = {
       "service_destination": "Madrid, España - Barcelona, España",
       "service_date": "2024-08-15",
       "cost": 80000,
-      "service_code": 1032,
+      "service_code": 5,
       "vendedor_id_vendedor": 2,
       "visited": 35
     },
@@ -35,7 +35,7 @@ export let pasajeTren = {
       "service_destination": "Tokio, Japón - Osaka, Japón",
       "service_date": "2024-07-20",
       "cost": 95000,
-      "service_code": 1033,
+      "service_code": 5,
       "vendedor_id_vendedor": 3,
       "visited": 50
     },
@@ -48,7 +48,7 @@ export let pasajeTren = {
       "service_destination": "Zermatt, Suiza - St. Moritz, Suiza",
       "service_date": "2024-09-05",
       "cost": 120000,
-      "service_code": 1034,
+      "service_code": 5,
       "vendedor_id_vendedor": 4,
       "visited": 60
     },
@@ -61,7 +61,7 @@ export let pasajeTren = {
       "service_destination": "Beijing, China - Shanghai, China",
       "service_date": "2024-08-20",
       "cost": 100000,
-      "service_code": 1035,
+      "service_code": 5,
       "vendedor_id_vendedor": 5,
       "visited": 45
     },
@@ -74,7 +74,7 @@ export let pasajeTren = {
       "service_destination": "Roma, Italia - Florencia, Italia",
       "service_date": "2024-08-10",
       "cost": 85000,
-      "service_code": 1036,
+      "service_code": 5,
       "vendedor_id_vendedor": 6,
       "visited": 55
     },
@@ -87,7 +87,7 @@ export let pasajeTren = {
       "service_destination": "París, Francia - Marsella, Francia",
       "service_date": "2024-07-25",
       "cost": 90000,
-      "service_code": 1037,
+      "service_code": 5,
       "vendedor_id_vendedor": 7,
       "visited": 40
     },
@@ -100,7 +100,7 @@ export let pasajeTren = {
       "service_destination": "Madrid, España - Sevilla, España",
       "service_date": "2024-09-15",
       "cost": 95000,
-      "service_code": 1038,
+      "service_code": 5,
       "vendedor_id_vendedor": 8,
       "visited": 35
     },
@@ -113,7 +113,7 @@ export let pasajeTren = {
       "service_destination": "Munich, Alemania - Hamburgo, Alemania",
       "service_date": "2024-08-30",
       "cost": 100000,
-      "service_code": 1039,
+      "service_code": 5,
       "vendedor_id_vendedor": 9,
       "visited": 50
     },
@@ -126,7 +126,7 @@ export let pasajeTren = {
       "service_destination": "Lyon, Francia - Marsella, Francia",
       "service_date": "2024-09-10",
       "cost": 85000,
-      "service_code": 1040,
+      "service_code": 5,
       "vendedor_id_vendedor": 10,
       "visited": 55
     }

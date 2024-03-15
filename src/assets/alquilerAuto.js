@@ -9,7 +9,7 @@ export let alquilerAuto = {
       "service_destination": "Los Angeles, Estados Unidos",
       "service_date": "2024-08-20",
       "cost": 80000,
-      "service_code": 1011,
+      "service_code": 2,
       "vendedor_id_vendedor": 1,
       "visited": 40
     },
@@ -22,7 +22,7 @@ export let alquilerAuto = {
       "service_destination": "Miami, Estados Unidos",
       "service_date": "2024-09-10",
       "cost": 120000,
-      "service_code": 1012,
+      "service_code": 2,
       "vendedor_id_vendedor": 2,
       "visited": 55
     },
@@ -35,7 +35,7 @@ export let alquilerAuto = {
       "service_destination": "Berlín, Alemania",
       "service_date": "2024-07-15",
       "cost": 70000,
-      "service_code": 1013,
+      "service_code": 2,
       "vendedor_id_vendedor": 3,
       "visited": 30
     },
@@ -48,7 +48,7 @@ export let alquilerAuto = {
       "service_destination": "San Francisco, Estados Unidos",
       "service_date": "2024-08-05",
       "cost": 150000,
-      "service_code": 1014,
+      "service_code": 2,
       "vendedor_id_vendedor": 4,
       "visited": 65
     },
@@ -61,7 +61,7 @@ export let alquilerAuto = {
       "service_destination": "Denver, Estados Unidos",
       "service_date": "2024-09-20",
       "cost": 90000,
-      "service_code": 1015,
+      "service_code": 2,
       "vendedor_id_vendedor": 5,
       "visited": 50
     },
@@ -74,7 +74,7 @@ export let alquilerAuto = {
       "service_destination": "Múnich, Alemania",
       "service_date": "2024-08-15",
       "cost": 130000,
-      "service_code": 1016,
+      "service_code": 2,
       "vendedor_id_vendedor": 6,
       "visited": 60
     },
@@ -87,7 +87,7 @@ export let alquilerAuto = {
       "service_destination": "París, Francia",
       "service_date": "2024-07-25",
       "cost": 140000,
-      "service_code": 1017,
+      "service_code": 2,
       "vendedor_id_vendedor": 7,
       "visited": 70
     },
@@ -100,7 +100,7 @@ export let alquilerAuto = {
       "service_destination": "Roma, Italia",
       "service_date": "2024-08-10",
       "cost": 160000,
-      "service_code": 1018,
+      "service_code": 2,
       "vendedor_id_vendedor": 8,
       "visited": 75
     },
@@ -113,7 +113,7 @@ export let alquilerAuto = {
       "service_destination": "Sídney, Australia",
       "service_date": "2024-09-05",
       "cost": 110000,
-      "service_code": 1019,
+      "service_code": 2,
       "vendedor_id_vendedor": 9,
       "visited": 45
     },
@@ -126,7 +126,7 @@ export let alquilerAuto = {
       "service_destination": "Mónaco",
       "service_date": "2024-08-25",
       "cost": 250000,
-      "service_code": 1020,
+      "service_code": 2,
       "vendedor_id_vendedor": 10,
       "visited": 80
     }

@@ -39,12 +39,12 @@ export default function carrito(){
 	return (
 	<>
 	{ isCarrito && 
-		<div className="fixed w-72 p-5 top-0 left-0 z-[100] min-h-screen h-fit overflow-y-scroll bg-zinc-700">
+		<div className="fixed w-72 p-5 top-0 left-0 z-[100] min-h-screen h-fit overflow-y-scroll bg-slate-700">
 			{ getServiceInCarrito.length > 0 ? 
 				( getAllService.filter(sv=>getServiceInCarrito.includes(sv.id_servicio)).map(sv=>(
 					<article key={sv.id_servicio} className='mb-3 bg-zinc-50 rounded p-4 relative'>
 						<h1 className='text-xl capitalize font-bold tracking-tight'>{sv.name}</h1>
-						<p className='mt-3 text-sm'>{sv.service_destination} -> <span>{sv.service_date}</span></p>
+						<p className='mt-3 text-sm'>{sv.service_destination} -`{'>'}`<span>{sv.service_date}</span></p>
 						<p className='mt-3 font-bold'>{sv.cost}$</p>
 						<button 
 							onClick={ ()=> deleteServiceInCarrito(sv.id_servicio) }
@@ -58,7 +58,7 @@ export default function carrito(){
 				className='bg-purple-500 uppercase text-xs font-bold tracking-tight text-purple-950 p-2 px-4 my-3 rounded mx-auto'>vaciar carrito</button>
 			<select 
 				value={methodPayment} 
-				className='mt-3 w-full'
+				className='mt-3 w-full rounded-lg'
 				onChange={(e)=> setMethodPayment(e.target.value)}
 				>
 				<option value='mercado-pago'>mercado pago</option>
@@ -66,7 +66,7 @@ export default function carrito(){
 				<option value='zelle'>zelle</option>
 				<option value='paypal'>paypal</option>
 			</select>
-			<button onClick={ handleSubmitPayment } className='mt-3 bg-orange-500 w-full rounded text-orange-950 py-3 font-bold uppercase text-sm'>comprar</button>
+			<button onClick={ handleSubmitPayment } className='mt-3 bg-orange-500 w-3/4 mx-auto rounded text-orange-950 py-3 hover:bg-orange-950 hover:text-orange-500 border-2 hover:border-orange-400 font-bold uppercase text-sm'>comprar</button>
 		</div> 
 	}
 	</>

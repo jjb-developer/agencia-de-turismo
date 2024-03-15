@@ -10,7 +10,7 @@ export let hotelPorNoche = {
       "service_destination": "Costa del Sol, España",
       "service_date": "2024-07-10",
       "cost": 200000,
-      "service_code": 1001,
+      "service_code": 1,
       "vendedor_id_vendedor": 1,
       "visited": 85
     },
@@ -23,7 +23,7 @@ export let hotelPorNoche = {
       "service_destination": "Montañas Verdes, Canadá",
       "service_date": "2024-06-15",
       "cost": 180000,
-      "service_code": 1002,
+      "service_code": 1,
       "vendedor_id_vendedor": 2,
       "visited": 70
     },
@@ -36,7 +36,7 @@ export let hotelPorNoche = {
       "service_destination": "Ciudad del Viento, Argentina",
       "service_date": "2024-08-01",
       "cost": 220000,
-      "service_code": 1003,
+      "service_code": 1,
       "vendedor_id_vendedor": 3,
       "visited": 95
     },
@@ -49,10 +49,11 @@ export let hotelPorNoche = {
       "service_destination": "Bahía Tranquila, México",
       "service_date": "2024-07-20",
       "cost": 190000,
-      "service_code": 1004,
+      "service_code": 1,
       "vendedor_id_vendedor": 4,
       "visited": 60
     },
+    
     {
       "id_servicio": 5,
       "image": "https://th.bing.com/th/id/R.fc98e733846b514afb3977f8fe606a78?rik=306Yt6SrDfWnEw&pid=ImgRaw&r=0",
@@ -62,7 +63,7 @@ export let hotelPorNoche = {
       "service_destination": "Playa Paraíso, Costa Rica",
       "service_date": "2024-08-10",
       "cost": 210000,
-      "service_code": 1005,
+      "service_code": 1,
       "vendedor_id_vendedor": 5,
       "visited": 75
     },
@@ -75,7 +76,7 @@ export let hotelPorNoche = {
       "service_destination": "Montañas Nevadas, Suiza",
       "service_date": "2024-09-05",
       "cost": 250000,
-      "service_code": 1006,
+      "service_code": 1,
       "vendedor_id_vendedor": 6,
       "visited": 55
     },
@@ -88,7 +89,7 @@ export let hotelPorNoche = {
       "service_destination": "Ciudad Vieja, España",
       "service_date": "2024-07-25",
       "cost": 180000,
-      "service_code": 1007,
+      "service_code": 1,
       "vendedor_id_vendedor": 7,
       "visited": 80
     },
@@ -101,7 +102,7 @@ export let hotelPorNoche = {
       "service_destination": "Centro Urbano, Brasil",
       "service_date": "2024-08-15",
       "cost": 170000,
-      "service_code": 1008,
+      "service_code": 1,
       "vendedor_id_vendedor": 8,
       "visited": 70
     },
@@ -114,7 +115,7 @@ export let hotelPorNoche = {
       "service_destination": "Playa Azul, Grecia",
       "service_date": "2024-08-30",
       "cost": 220000,
-      "service_code": 1009,
+      "service_code": 1,
       "vendedor_id_vendedor": 9,
       "visited": 65
     },
@@ -127,7 +128,7 @@ export let hotelPorNoche = {
       "service_destination": "Isla del Sol, Indonesia",
       "service_date": "2024-09-10",
       "cost": 240000,
-      "service_code": 1010,
+      "service_code": 1,
       "vendedor_id_vendedor": 10,
       "visited": 75
     }

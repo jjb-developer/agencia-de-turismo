@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { registerHandler } from "../../utils/register.js";
 import { useNavigate } from "react-router-dom";
-import { BiShow, BiHide } from 'react-icons/bi'
-import Navbar from '../Nav/Navbar.jsx'
+import { BiShow, BiHide } from 'react-icons/bi';
+import Navbar from '../Nav/Navbar.jsx';
+
 export default function Register() {
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
@@ -15,9 +16,11 @@ export default function Register() {
   const [role, setRole] = useState("cliente");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
   const [job, setJob] = useState("");
   const [salary, setSalary] = useState("");
-  const [viewPass, setViewPass] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
 
   const navigate = useNavigate();
 
@@ -25,8 +28,18 @@ export default function Register() {
     navigate("/login");
   }
 
+  // Función para alternar la visibilidad de la contraseña
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (password !== repeatPassword) {
+      setPasswordError("Las contraseñas no coinciden.");
+      return;
+    }
 
     let data = {
       name,
@@ -63,10 +76,9 @@ export default function Register() {
     }
   }
 
-
   return (
     <section
-      className="bg-sky-500 w-full h-full py-20 pt-40 flex flex-col items-center justify-center"
+      className="bg-sky-500 w-full h-full py-20 pt-20 flex flex-col items-center justify-center"
       style={{
         backgroundImage: "url('/0.webp')",
         backgroundSize: "cover",
@@ -76,12 +88,12 @@ export default function Register() {
     >
       <Navbar/>
       <form
-        className="mt-20 bg-white p-10 rounded shadow-md max-w-[640px] mx-auto"
+        className="mt-20 bg-white p-10 rounded shadow-md max-w-[600px] mx-auto"
         onSubmit={ handleSubmit }
       >
         <div className="flex flex-wrap gap-x-2">
 
-          <div className="w-full flex flex-col h-[100px] md:w-[49.2%] px-2">
+          <div className="w-full flex flex-col h-[100px] md:w-[45%] px-2">
             <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">
               Name
             </label>
@@ -97,7 +109,7 @@ export default function Register() {
             <span className='text-[0.85rem] mt-1 font-medium text-rose-500 opacity-0 hidden peer-focus-visible:opacity-100 peer-invalid:block duration-300'>Solo caracteres alfabeticos.</span>
           </div>
 
-          <div className="w-full flex flex-col h-[100px] md:w-[49.2%] px-2">
+          <div className="w-full flex flex-col h-[100px] md:w-[45%] px-2">
             <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">
               Lastname
             </label>
@@ -113,7 +125,7 @@ export default function Register() {
             <span className='text-[0.85rem] mt-1 font-medium text-rose-500 opacity-0 hidden peer-focus-visible:opacity-100 peer-invalid:block duration-300'>Solo caracteres alfabeticos.</span>
           </div>
 
-          <div className="w-full flex flex-col h-[100px] md:w-[49.2%] px-2">
+          <div className="w-full flex flex-col h-[100px] md:w-[45%] px-2">
             <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">
               address
             </label>
@@ -129,7 +141,7 @@ export default function Register() {
             <span className='text-[0.85rem] mt-1 font-medium text-rose-500 opacity-0 hidden peer-focus-visible:opacity-100 peer-invalid:block duration-300'>Solo caracteres alfabeticos.</span>
           </div>
 
-          <div className="w-full flex flex-col h-[100px] md:w-[49.2%] px-2">
+          <div className="w-full flex flex-col h-[100px] md:w-[45%] px-2">
             <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">
               DNI
             </label>
@@ -145,7 +157,7 @@ export default function Register() {
             <span className='text-[0.85rem] mt-1 font-medium text-rose-500 opacity-0 hidden peer-focus-visible:opacity-100 peer-invalid:block duration-300'>Solo caracteres numericos (min 8, max 9).</span>
           </div>
 
-          <div className="w-full flex flex-col h-[100px] md:w-[49.2%] px-2">
+          <div className="w-full flex flex-col h-[100px] md:w-[45%] px-2">
             <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">
               Birthdate
             </label>
@@ -158,7 +170,7 @@ export default function Register() {
             />
           </div>
 
-          <div className="w-full flex flex-col h-[100px] md:w-[49.2%] px-2">
+          <div className="w-full flex flex-col h-[100px] md:w-[45%] px-2">
             <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">
               Country
             </label>
@@ -174,7 +186,7 @@ export default function Register() {
             <span className='text-[0.85rem] mt-1 font-medium text-rose-500 opacity-0 hidden peer-focus-visible:opacity-100 peer-invalid:block duration-300'>Solo caracteres alfabeticos.</span>
           </div>
 
-          <div className="w-full flex flex-col h-[100px] md:w-[49.2%] px-2">
+          <div className="w-full flex flex-col h-[100px] md:w-[45%] px-2">
             <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">
               Phone
             </label>
@@ -190,7 +202,7 @@ export default function Register() {
             <span className='text-[0.85rem] mt-1 font-medium text-rose-500 opacity-0 hidden peer-focus-visible:opacity-100 peer-invalid:block duration-300'>Solo caracteres numericos (min 8).</span>
           </div>
 
-          <div className="w-full flex flex-col h-[100px] md:w-[49.2%] px-2">
+          <div className="w-full flex flex-col h-[100px] md:w-[45%] px-2">
             <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">
               Email
             </label>
@@ -206,7 +218,7 @@ export default function Register() {
             <span className='text-[0.85rem] mt-1 font-medium text-rose-500 opacity-0 hidden peer-focus-visible:opacity-100 peer-invalid:block duration-300'>Debe empezar minimo con 3 carácteres, contener un @ y terminar en .com.</span>
           </div>
 
-          <div className="w-full flex flex-col h-[100px] md:w-[49.2%] px-2">
+          <div className="w-full flex flex-col h-[100px] md:w-[45%] px-2">
             <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">
               Role
             </label>
@@ -222,7 +234,7 @@ export default function Register() {
 
           {role === "vendedor" && (
             <>
-	          <div className="w-full flex flex-col h-[100px] md:w-[49.2%] px-2">
+	          <div className="w-full flex flex-col h-[100px] md:w-[45%] px-2">
 	            <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">
 	              Job
 	            </label>
@@ -238,7 +250,7 @@ export default function Register() {
 	            <span className='text-[0.85rem] mt-1 font-medium text-rose-500 opacity-0 hidden peer-focus-visible:opacity-100 peer-invalid:block duration-300'>Solo caracteres alfabeticos.</span>
 	          </div>
 
-	          <div className="w-full flex flex-col h-[100px] md:w-[49.2%] px-2">
+	          <div className="w-full flex flex-col h-[100px] md:w-[45%] px-2">
 	            <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">
 	              Salary
 	            </label>
@@ -256,7 +268,7 @@ export default function Register() {
             </>
           )}
 
-          <div className="w-full flex flex-col h-[100px] md:w-[49.2%] px-2">
+          <div className="w-full flex flex-col h-[100px] md:w-[45%] px-2">
             <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">
               Username
             </label>
@@ -271,33 +283,46 @@ export default function Register() {
             />
             <span className='text-[0.85rem] mt-1 font-medium text-rose-500 opacity-0 hidden peer-focus-visible:opacity-100 peer-invalid:block duration-300'>Solo caracteres alfabeticos.</span>
           </div>
-
-          <div className="w-full flex flex-col h-[100px] md:w-[49.2%] px-2">
-            <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">
-              Password
-            </label>
+          <div className="w-full flex flex-col h-[100px] md:w-[45%] px-2 relative">
+            <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">Password</label>
             <input
               required
               pattern="^[0-9A-Za-z]{8,}$"
               placeholder="Escribe tu password..."
-              type={ viewPass ? "text":"password" }
+              type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="outline-none border-none py-2.5 px-2.5 rounded-lg ring-1 ring-zinc-400 focus:ring-green-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400 peer focus:invalid:ring-rose-500 valid:ring-2 valid:ring-green-500"
             />
-            <span className='text-[0.85rem] mt-1 font-medium text-rose-500 opacity-0 hidden peer-focus-visible:opacity-100 peer-invalid:block duration-300'>Solo caracteres alfanumericos (min 8).</span>
-            { viewPass ? 
-              (<BiHide size='20' className='absolute top-9 right-7 cursor-pointer text-zinc-700' onClick={()=> setViewPass(false)}/>)
-              :
-              (<BiShow size='20' className='absolute top-9 right-7 cursor-pointer text-zinc-700' onClick={()=> setViewPass(true)}/>)
-            }
+            <span className="text-[0.85rem] mt-1 font-medium text-rose-500 duration-300">{passwordError}</span>
+            <button
+              type="button"
+              className="absolute top-1/2 transform -translate-y-1/2 right-3"
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? <BiHide size={20} className="text-zinc-700 cursor-pointer" /> : <BiShow size={20} className="text-zinc-700 cursor-pointer" />}
+            </button>
+          </div>
+
+          {/* Campo de repetir contraseña */}
+          <div className="w-full flex flex-col h-[100px] md:w-[45%] px-2">
+            <label className="uppercase my-1.5 text-xs text-zinc-800 font-bold">Repeat Password</label>
+            <input
+              required
+              placeholder="Repite tu contraseña..."
+              type="password"
+              value={repeatPassword}
+              onChange={(e) => setRepeatPassword(e.target.value)}
+              className="outline-none border-none py-2.5 px-2.5 rounded-lg ring-1 ring-zinc-400 focus:ring-green-500 text-zinc-700 text-[0.98rem] duration-300 w-full placeholder:text-zinc-400 peer focus:invalid:ring-rose-500 valid:ring-2 valid:ring-green-500"
+            />
           </div>
         </div>
+
 
         <div className="flex items-center justify-center w-full h-auto mt-7">
           <button
             type="submit"
-            className="bg-orange-500 duration-300 hover:bg-orange-600 text-orange-950 font-bold w-full py-3 rounded-lg uppercase"
+            className= "bg-orange-800 duration-300 hover:bg-orange-600 text-white hover:text-slate-900 text-md  font-playfair font-bold w-full shadow-lg shadow-slate-700 py-3 rounded-md uppercase"
           >
             Registrarse
           </button>
@@ -305,7 +330,7 @@ export default function Register() {
 
         <div className="mt-4 text-sm text-zinc-900 text-center">
           <span>¿Ya estás registrado?</span>
-          <a onClick={HandleClick} className="ml-4  hover:text-sky-500 font-bold duration-300 text-orange-500 cursor-pointer tracking-wide">
+          <a onClick={HandleClick} className="ml-2 font-roboto text-lg font-semibold hover:font-bold hover:text-orange-600 duration-1000 text-sky-700 cursor-pointer">
             Iniciar sesión
           </a>
         </div>

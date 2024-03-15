@@ -9,7 +9,7 @@ export let entradaEventos = {
       "service_destination": "Estadio Wembley, Londres, Reino Unido",
       "service_date": "2024-07-10",
       "cost": 10000,
-      "service_code": 1051,
+      "service_code":7,
       "vendedor_id_vendedor": 1,
       "visited": 40
     },
@@ -22,7 +22,7 @@ export let entradaEventos = {
       "service_destination": "Montreux, Suiza",
       "service_date": "2024-08-15",
       "cost": 8000,
-      "service_code": 1052,
+      "service_code": 7,
       "vendedor_id_vendedor": 2,
       "visited": 35
     },
@@ -35,7 +35,7 @@ export let entradaEventos = {
       "service_destination": "Museo de Arte Moderno, Nueva York, Estados Unidos",
       "service_date": "2024-07-20",
       "cost": 5000,
-      "service_code": 1053,
+      "service_code": 7,
       "vendedor_id_vendedor": 3,
       "visited": 50
     },
@@ -48,7 +48,7 @@ export let entradaEventos = {
       "service_destination": "Camp Nou, Barcelona, España",
       "service_date": "2024-09-05",
       "cost": 12000,
-      "service_code": 1054,
+      "service_code": 7,
       "vendedor_id_vendedor": 4,
       "visited": 60
     },
@@ -61,7 +61,7 @@ export let entradaEventos = {
       "service_destination": "Sambódromo, Río de Janeiro, Brasil",
       "service_date": "2024-08-20",
       "cost": 15000,
-      "service_code": 1055,
+      "service_code": 7,
       "vendedor_id_vendedor": 5,
       "visited": 45
     },
@@ -74,7 +74,7 @@ export let entradaEventos = {
       "service_destination": "Cannes, Francia",
       "service_date": "2024-08-10",
       "cost": 20000,
-      "service_code": 1056,
+      "service_code": 7,
       "vendedor_id_vendedor": 6,
       "visited": 55
     },
@@ -87,7 +87,7 @@ export let entradaEventos = {
       "service_destination": "Austin, Texas, Estados Unidos",
       "service_date": "2024-07-25",
       "cost": 10000,
-      "service_code": 1057,
+      "service_code": 7,
       "vendedor_id_vendedor": 7,
       "visited": 40
     },
@@ -100,7 +100,7 @@ export let entradaEventos = {
       "service_destination": "Indio, California, Estados Unidos",
       "service_date": "2024-09-15",
       "cost": 18000,
-      "service_code": 1058,
+      "service_code": 7,
       "vendedor_id_vendedor": 8,
       "visited": 35
     },
@@ -113,7 +113,7 @@ export let entradaEventos = {
       "service_destination": "Frankfurt, Alemania",
       "service_date": "2024-08-30",
       "cost": 6000,
-      "service_code": 1059,
+      "service_code": 7,
       "vendedor_id_vendedor": 9,
       "visited": 50
     },
@@ -126,9 +126,10 @@ export let entradaEventos = {
       "service_destination": "Museo del Louvre, París, Francia",
       "service_date": "2024-09-10",
       "cost": 7000,
-      "service_code": 1060,
+      "service_code": 7,
       "vendedor_id_vendedor": 10,
       "visited": 55
-    }
+    },
+    
   ]
 }

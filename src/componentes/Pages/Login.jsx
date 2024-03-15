@@ -77,9 +77,9 @@ export default function Login() {
             }}
           />
           { viewPass ? 
-            (<BiHide size='20' className='absolute top-9 right-3 cursor-pointer text-zinc-700' onClick={()=> setViewPass(false)}/>)
+            (<BiShow size='20' className='absolute top-9 right-3 cursor-pointer text-zinc-700' onClick={()=> setViewPass(false)}/>)
             :
-            (<BiShow size='20' className='absolute top-9 right-3 cursor-pointer text-zinc-700' onClick={()=> setViewPass(true)}/>)
+            (<BiHide size='20' className='absolute top-9 right-3 cursor-pointer text-zinc-700' onClick={()=> setViewPass(true)}/>)
           }
         </div>
         <div className="flex items-center justify-center w-full h-auto mt-7">
@@ -90,11 +90,11 @@ export default function Login() {
             Iniciar sesión
           </button>
         </div>
-        <div className="text-xs text-zinc-900 font-bold text-center">
+        <div className="mt-4 text-xs text-zinc-900 font-bold text-center">
           <span>No estas registrado?</span>
           <a
             onClick={registerHandleClick}
-            className="font-roboto text-lg font-semibold hover:font-bold hover:text-orange-600 duration-1000 text-sky-700 cursor-pointer"
+            className="ml-2 font-roboto text-lg font-semibold hover:font-bold hover:text-orange-600 duration-1000 text-sky-700 cursor-pointer"
           >
             Registrarse
           </a>
