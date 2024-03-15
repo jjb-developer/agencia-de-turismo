@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BiUser, BiCart, BiSolidHotel } from "react-icons/bi";
-import { ImAirplane, ImCart } from "react-icons/im";
-import { FaCarAlt, FaBusAlt, FaTrain } from "react-icons/fa";
-import { GiJourney } from "react-icons/gi";
-import { MdEvent } from "react-icons/md";
+import { BiUser, BiCart} from "react-icons/bi";
+
 import Boton from "./componentes/Boton";
 import store from "../../utils/store";
 import Carrito from '../Pages/Carrito'

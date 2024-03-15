@@ -97,22 +97,22 @@ export default function Slider() {
                 <li className="bg-blue-600 text-white text-2xl p-2 inline-block rounded-full">
                   <ImAirplane />
                 </li>
-                <li className="bg-blue-500 text-white text-2xl inline-block p-2 rounded-full">
+                <li className="bg-blue-600 text-white text-2xl inline-block p-2 rounded-full">
                   <FaCarAlt />
                 </li>
-                <li className="bg-blue-400 text-white text-2xl inline-block p-2 rounded-full">
+                <li className="bg-blue-600 text-white text-2xl inline-block p-2 rounded-full">
                   <BiSolidHotel />
                 </li>
-                <li className="bg-yellow-500 text-white text-2xl inline-block p-2 rounded-full">
+                <li className="bg-blue-600 text-white text-2xl inline-block p-2 rounded-full">
                   <FaBusAlt />
                 </li>
-                <li className="bg-orange-500 text-white text-2xl inline-block p-2 rounded-full">
+                <li className="bg-blue-600 text-white text-2xl inline-block p-2 rounded-full">
                   <FaTrain />
                 </li>
-                <li className="bg-orange-600 text-white text-2xl inline-block p-2 rounded-full">
+                <li className="bg-blue-600 text-white text-2xl inline-block p-2 rounded-full">
                   <MdEvent />
                 </li>
-                <li className="bg-green-600 text-white text-2xl inline-block p-2 rounded-full">
+                <li className="bg-blue-600 text-white text-2xl inline-block p-2 rounded-full">
                   <GiJourney />
                 </li>
               </ul>
