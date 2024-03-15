@@ -28,7 +28,8 @@ export default function Login() {
     if(getUser !== null) navigate("/")
   }, [getUser]);
 
-  return (
+  return (<>
+    <Navbar/>
     <main
       className="w-full h-screen flex flex-col items-center justify-center"
       style={{
@@ -39,7 +40,7 @@ export default function Login() {
         opacity: 0.9, //Ajusta este valor según la opacidad deseada
       }}
     >
-      <Navbar/>
+      
       <form
         className="bg-white mt-20 p-10 rounded-md shadow-xl shadow-black w-80"
         onSubmit={handleSubmit}
@@ -101,5 +102,6 @@ export default function Login() {
         </div>
       </form>
     </main>
+    </>
   );
 }

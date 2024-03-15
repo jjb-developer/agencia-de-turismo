@@ -45,13 +45,13 @@ export default function Navbar() {
     <Carrito/>
     <nav
       style={{ backdropFilter: "blur(3px)" }}
-      className={`w-full flex justify-between items-center px-10 py-4 absolute left-0 z-40 top-0 ${
+      className={`w-full flex justify-between px-10 py-4 absolute left-0 z-40 top-0${
         {
           /*navBackground*/
         }
       } transition-all`}
     >
-      <div>
+      <div className="w-full flex justify-between items-center">
         <span
           className={`${textColor} text-4xl flex md:text-6xl mb-5 xl:mb-2 capitalize font-bold tracking-tight"`}
           style={{
