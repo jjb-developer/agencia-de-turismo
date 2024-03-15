@@ -82,18 +82,18 @@ export default function Slider() {
   return (
     imagesLoaded && (
       <article
-        className="w-full h-screen bg-center bg-cover bg-no-repeat relative z-0 p-4 pb-10 overflow-hidden transition-all shadow-lg"
+        className="w-full h-96 pt-10 sm:h-screen bg-center bg-cover bg-no-repeat relative z-0 p-4 pb-10 overflow-hidden transition-all shadow-lg"
         style={{ backgroundImage: `url(${bgImages[currentBgIndex]})` }}
       >
-        <div className="h-full w-full left-1/2 flex items-end justify-end gap-2 overflow-hidden">
-          <div className=" flex flex-col gap-2 min-w-32 max-w-96 self-center backdrop-blur-sm rounded-lg bg-gray-800/30 shadow-lg text-wrap font-semibold text-gray-100 absolute left-10 p-2">
-            <span className="text-3xl text-blue-300">PAQUETES</span>
+        <div className="h-full w-full left-1/2 flex justify-center items-end gap-2 overflow-hidden">
+          <div className=" flex flex-col gap-2 w-full px-4 sm:min-w-32 sm:max-w-96 self-center backdrop-blur-sm rounded-lg bg-gray-800/30 shadow-lg text-wrap font-semibold text-gray-100 absolute sm:left-10 p-2">
+            <span className="text-3xl text-blue-300">Elige tu aventura</span>
             <span className="text-sm">
               ¡Descubre nuestras ofertas exclusivas y elige el paquete perfecto
-              para tus vacaciones! Desde emocionantes combos de pasaje de avión
+              para tus vacaciones! Desde pasajes de avión
               y hotel hasta opciones adicionales para personalizar tu
               experiencia.</span>
-              <ul className="flex items-center justify-center gap-2">
+              <ul className="flex items-center justify-center gap-1">
                 <li className="bg-blue-600 text-white text-2xl p-2 inline-block rounded-full">
                   <ImAirplane />
                 </li>
@@ -128,7 +128,7 @@ export default function Slider() {
             <div
               key={index}
               onClick={() => handleClick(index)}
-              className={`h-24 w-24 top-1/2 right-1/3 bg-center bg-cover rounded-lg ${
+              className={`w-10 h-10 sm:h-24 sm:w-24 top-1/2 right-1/3 bg-center bg-cover rounded-lg ${
                 index === animatingIndex ? "animate-wiggle" : ""
               }${index == currentBgIndex ? "animate-wiggle" : ""}`}
               style={{ backgroundImage: `url(${image})` }}
