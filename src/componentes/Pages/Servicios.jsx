@@ -8,7 +8,7 @@ export default function servicios(){
 
 	useEffect(()=>{
 		const user = JSON.parse(localStorage.getItem('user'))
-		if(user){setUser(getUser.role);
+		if(user){setUser(getUser);
 		}
 		
 	},[]);
@@ -43,7 +43,7 @@ export default function servicios(){
 						<p>{sv.description}</p>
 						<p className="font-bold">{sv.cost}$</p>
 						<p>{sv.service_date}</p>
-						{user=='cliente' &&
+						{user && user.role=='cliente' &&
 						<button 
 						onClick={ ()=>{
 							if(getServiceInCarrito.includes(sv.id_servicio)) console.info('El servicios ya esta agregado!.')
