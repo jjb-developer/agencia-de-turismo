@@ -7,31 +7,36 @@ export default function carrito(){
 	const [methodPayment,setMethodPayment] = useState('mercado-pago')
 
 	async function handleSubmitPayment(){
-
-		const user = JSON.parse(localStorage.getItem("user"))
-
-		const data = {
-			"id_servicios": getServiceInCarrito,
-			"payment_method": methodPayment
+		console.log(getServiceInCarrito)
+		if(getServiceInCarrito.length > 0){
+			const user = JSON.parse(localStorage.getItem("user"))
+		
+			const data = {
+				"id_servicios": getServiceInCarrito,
+				"payment_method": methodPayment
+			}
+	
+			try {
+				const response = await fetch('https://agencia-de-turismo.onrender.com/sales', {
+					method: "POST",
+					headers: {
+					  "content-type": "application/json",
+					  "authorization": `Bearer ${user.token}`,
+					},
+					body: JSON.stringify(data),
+				})
+				if(response.ok){
+					console.info(`Venta realizada exitosamente!.`)
+					const dataResponse = await response.json()
+					console.info(dataResponse.message)
+				} else throw new Error(`No se han podido realizar la venta!.`)
+			} catch (error){
+				console.info(error.message)
+			}
+		}else{
+			console.log('carrito vacio')
 		}
-
-		try {
-			const response = await fetch('https://agencia-de-turismo.onrender.com/sales', {
-				method: "POST",
-				headers: {
-				  "content-type": "application/json",
-				  "authorization": `Bearer ${user.token}`,
-				},
-				body: JSON.stringify(data),
-			})
-			if(response.ok){
-				console.info(`Venta realizada exitosamente!.`)
-				const dataResponse = await response.json()
-				console.info(dataResponse.message)
-			} else throw new Error(`No se han podido realizar la venta!.`)
-		} catch (error){
-			console.info(error.message)
-		}
+		
 	}
 
 
@@ -44,7 +49,7 @@ export default function carrito(){
 				( getAllService.filter(sv=>getServiceInCarrito.includes(sv.id_servicio)).map(sv=>(
 					<article key={sv.id_servicio} className='mb-3 bg-zinc-50 rounded p-4 relative'>
 						<h1 className='text-xl capitalize font-bold tracking-tight'>{sv.name}</h1>
-						<p className='mt-3 text-sm'>{sv.service_destination} -> <span>{sv.service_date}</span></p>
+						<p className='mt-3 text-sm'>{sv.service_destination} =&gt; <span>{sv.service_date}</span></p>
 						<p className='mt-3 font-bold'>{sv.cost}$</p>
 						<button 
 							onClick={ ()=> deleteServiceInCarrito(sv.id_servicio) }

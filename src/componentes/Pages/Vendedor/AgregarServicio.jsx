@@ -5,11 +5,12 @@ import Navbar from '../../Nav/Navbar'
 import { useNavigate } from 'react-router-dom'
 import { updateServiceHandle } from '../../../utils/actualizarServicio.js'
 import { addServiceHandle } from '../../../utils/agregarServicio.js'
+import {loadServiceHandler} from '../../../utils/services.js'
 
 export default function AgregarServicio() {
 
 	const navigate = useNavigate()
-	const { getInitialServiceToAdd, setUserService, setInitialServiceToAdd, getAddOrUpdate, getIdService } = store()
+	const { getInitialServiceToAdd, setUserService, setInitialServiceToAdd, getAddOrUpdate, getIdService,setAllService } = store()
 
 
 	async function handleSubmit(e) {
@@ -34,6 +35,14 @@ export default function AgregarServicio() {
 				if(response){
 					setInitialServiceToAdd(initialStateServicetoAdd)
 					setUserService(null)
+					
+					const resultAllService=await loadServiceHandler();
+					//hacer peticion a all service y guardar la respuesta como estado en...
+					if(resultAllService){
+						
+						setAllService(resultAllService);
+					}
+					
 				}
 			}
 	}
