@@ -26,7 +26,8 @@ export default function Footer() {
       className="flex flex-col items-center justify-center w-full h-80 text-center px-10 mt-12"
       style={{ background: "linear-gradient(to right, #FFA500, #FF6347)" }}
     >
-      <div className="translate-x-[500px] -translate-y-12 bg-orange-900 py-2 px-4 border-2 border-orande-200 hover:bg-orange-600 rounded-md">
+      <div className="md:translate-x-[300px] md:-translate-y-12 mb-3 bg-orange-900 py-2 px-4 border-2 
+      border-orande-200 hover:bg-orange-600 rounded-md">
         <button className="text-sm flex text-orange-200 font-roboto font-bold rounded-xl uppercase" onClick={toggleContactForm}>
         <span className="mr-2"><CommentIcon /></span>Comentarios 
         </button>

@@ -119,55 +119,54 @@ export default function Navbar() {
 
   return (
     <>
-    <Carrito/>
-    <nav
-      style={{ backdropFilter: "blur(3px)" }}
-      className={`w-full flex justify-between items-center px-10 py-2 absolute left-0 z-40 top-0 transition-all`}
-    >
-      <div>
-        <span
-          className={`${textColor} text-4xl flex md:text-6xl mb-5 xl:mb-2 capitalize font-bold tracking-tight`}
-          style={{
-            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
-          }}
-        >
-          <Link to="/" className="cursor-pointer">
-            Agencia de Turismo
-          </Link>
-        </span>
-      </div>
-      {getUser ? (
-        <div className="relative">
-          <div className="flex items-center">
-            <div className="flex flex-col mr-2">
-              <span
-                className={`text-xl capitalize text-slate-900 bg-[#ffffff74] rounded-xl px-1 font-bold ${textUserColor}`}
+      <Carrito/>
+      <nav
+        style={{ backdropFilter: "blur(3px)" }}
+        className={`w-full flex flex-wrap flex-row-reverse md:flex-row justify-between items-center px-10 py-2 absolute left-0 z-40 top-0 transition-all`}
+      >
+        <div>
+          <span
+            className={`${textColor} text-3xl flex md:text-6xl mb-5 xl:mb-2 mr-4 md:mr-auto capitalize font-bold tracking-tight`}
+            style={{
+              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
+            }}
+          >
+            <Link to="/" className="cursor-pointer">
+              Agencia de Turismo
+            </Link>
+          </span>
+        </div>
+        {getUser ? (
+          <div className="relative">
+            <div className="flex items-center mt-3 md:mt-auto">
+              <div className="flex flex-col mr-2">
+                <span
+                  className={`text-xl capitalize text-slate-900 bg-[#ffffff74] rounded-xl px-1 font-bold ${textUserColor}`}
+                >
+                  {getUser.name} {getUser.lastname}
+                </span>
+                <span className="text-right uppercase font-bold text-sm text-orange-500">
+                  {getUser.role}
+                </span>
+              </div>
+              <div
+                className="cursor-pointer"
+                onClick={() => setActiveMenu(!activeMenu)}
               >
-                {getUser.name} {getUser.lastname}
-              </span>
-              <span className="text-right uppercase font-bold text-sm text-orange-500">
-                {getUser.role}
-              </span>
+                {(getUser.role === "vendedor" || getUser.role === "cliente") && (
+                  <BiUser className="text-white bg-orange-500 rounded-full w-10 h-10 p-1.5" />
+                )}
+              </div>
             </div>
-            <div
-              className="cursor-pointer"
-              onClick={() => setActiveMenu(!activeMenu)}
-            >
-              {(getUser.role === "vendedor" || getUser.role === "cliente") && (
-                <BiUser className="text-white bg-orange-500 rounded-full w-10 h-10 p-1.5" />
-              )}
-            </div>
+            {renderMenu()}
           </div>
-          {renderMenu()}
-        </div>
-      ) : (
-        <div className="flex flex-row gap-2">
-          <Boton ruta="/register" name="Register" />
-          <Boton ruta="/login" name="Login" />
-        </div>
-      )}
-    </nav>
+        ) : (
+          <div className="flex  lg:flex-row gap-2 ">
+            <Boton ruta="/register" name="Register" />
+            <Boton ruta="/login" name="Login" />
+          </div>
+        )}
+      </nav>
     </>
-    
   );
 }

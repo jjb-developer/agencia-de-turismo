@@ -80,7 +80,7 @@ export default function infoPersonal() {
         opacity: 0.9, //Ajusta este valor según la opacidad deseada
       }}
     >
-      <div className=" w-96 mx-auto py-6 rounded-lg border-2 border-zinc-500">
+      <div className=" w-full lg:w-96 mx-auto py-6 rounded-lg border-2 border-zinc-500">
         <h3 className="capitalize text-xl font-bold text-slate-700">
           Informacion de vendedor
         </h3>
@@ -88,7 +88,7 @@ export default function infoPersonal() {
         <div className="mt-6 flex flex-col justify-center">
           <form
             onSubmit={handleSubmit}
-            className="w-96 flex flex-col gap-y-2
+            className=" w-72 lg:w-96 flex flex-col gap-y-2
 				"
           >
             <div className="flex items-center gap-x-4 mx-auto">

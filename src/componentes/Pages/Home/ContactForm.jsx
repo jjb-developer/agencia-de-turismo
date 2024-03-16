@@ -37,10 +37,10 @@ function ContactForm() {
   };
 
   return (
-    <div className="flex justify-end text-center rounded-xl absolute translate-x-full">
+    <div className="flex justify-end text-center rounded-xl absolute translate-x-48 lg:translate-x-full">
       {formActive ? (
         formSubmitted ? (
-          <div className="text-lg text-white bg-orange-500 p-4 rounded-xl shadow-lg shadow-black font-bold font-roboto flex text-center translate-x-1/4">
+          <div className="text-lg text-white bg-orange-500 p-4 rounded-xl shadow-lg shadow-black font-bold font-roboto flex text-center -translate-x-80 md:translate-x-1/4">
             ¡Gracias por tu sugerencia! <br />
             Para más información ¡Regístrate!
             <BiX
@@ -50,10 +50,10 @@ function ContactForm() {
           </div>
         ) : (
           <form
-            className="flex flex-col w-80 h-64 bg-orange-200 shadow-lg shadow-slate-900 border-4 border-slate-700 m-8 "
+            className="flex flex-col w-64 h-58 md:w-80 md:h-64 bg-orange-200 shadow-lg shadow-slate-900 border-4 border-slate-700 m-8 -translate-x-80 -translate-y-80 md:translate-y-2 md:translate-x-1/4 "
             onSubmit={handleSubmit}
           >
-            <h1 className=" mt-6 flex mx-auto text-md md:text-lg lg:text-2xl font-bold font-roboto ">
+            <h1 className=" mt-6 flex mx-auto text-sm md:text-lg lg:text-2xl font-bold font-roboto ">
               Envíanos tu sugerencia
             </h1>
 
@@ -77,7 +77,7 @@ function ContactForm() {
             ></textarea>
             <button
               type="submit"
-              className="bg-emerald-700 text-lg w w-1/4 font-roboto  text-center mx-auto mb-4 text-white font-bold py-2 px-4 rounded hover:text-emerald-600 hover:bg-white hover:border-2 hover:border-emerald-600 mt-4"
+              className="bg-emerald-700 text-sm w-1/4 font-roboto  text-center mx-auto mb-4 text-white font-bold py-2 px-4 rounded hover:text-emerald-600 hover:bg-white hover:border-2 hover:border-emerald-600 mt-4"
             >
               Enviar
             </button>

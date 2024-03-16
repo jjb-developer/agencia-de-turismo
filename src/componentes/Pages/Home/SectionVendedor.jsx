@@ -336,59 +336,58 @@ export default function SectionVendedor() {
 
   return (
     <main className="bg-sky-50 p-10 w-[100%] mx-auto relative">
-      <h3 className="capitalize text-5xl text-center mt-36 mb-16 tracking-tight font-bold text-zinc-800 ">
-        Estas son tus publicaciones más visitadas
-      </h3>
-      <section className="mt-5 gap-x-2">
-        <div className="grid grid-cols-2 gap-4">
-          {sortedServices.map((sv, index) => (
-            <div key={index}>
-              <div
-                className="w-[500px] h-80 bg-center bg-cover overflow-hidden flex flex-col content-center items-end group rounded-lg"
-                style={{ backgroundImage: `url(${sv.image})` }}
+    <h3 className="capitalize text-5xl text-center mt-36 mb-16 tracking-tight font-bold text-zinc-800 ">
+      Estas son tus publicaciones más visitadas
+    </h3>
+    <section className="mt-5 gap-x-2">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        {sortedServices.map((sv, index) => (
+          <div key={index}>
+            <div
+              className="w-[300px] md:w-full lg:w-[500px] h-80 bg-center bg-cover overflow-hidden flex flex-col content-center items-end group rounded-lg"
+              style={{ backgroundImage: `url(${sv.image})` }}
+            >
+              <h1
+                className="text-md mx-auto p-1 rounded-xl bg-[#0000003e] text-white uppercase font-bold tracking-tight mb-36 mt-4"
               >
-                <h1
-                  className="text-md mx-auto p-1 rounded-xl bg-[#0000003e] text-white uppercase font-bold tracking-tight mb-36 mt-4
-                "
+                {sv.name}
+              </h1>
+              <p className="mt-4 text-lg text-slate-900 font-bold bg-[#ffff004d] mr-4 rounded-lg border-2 border-yellow-100 p-1">
+                ${sv.cost}
+              </p>
+              <div className="mt-4 flex gap-x-2 mr-4 ">
+                <button
+                  onClick={() => {
+                    setIdService(sv.id_servicio);
+                    setAddOrUpdate("update");
+                    setInitialServiceToAdd({
+                      name: sv.name,
+                      description: sv.description,
+                      service_destination: sv.service_destination,
+                      service_date: sv.service_date,
+                      cost: sv.cost,
+                      service_code: code[sv.name],
+                    });
+                    navigate("/agregarServicio");
+                  }}
+                  className="hover:bg-green-500 hover:text-black  bg-[#030a077b] border-2 border-green-400 text-green-200 font-bold text-md py-1.5 rounded px-5 uppercase"
                 >
-                  {sv.name}
-                </h1>
-                <p className="mt-4 text-lg text-slate-900 font-bold bg-[#ffff004d] mr-4 rounded-lg border-2 border-yellow-100 p-1">
-                  ${sv.cost}
-                </p>
-                  <div className="mt-4 flex gap-x-2 mr-4 ">
-                    <button
-                      onClick={() => {
-                        setIdService(sv.id_servicio);
-                        setAddOrUpdate("update");
-                        setInitialServiceToAdd({
-                          name: sv.name,
-                          description: sv.description,
-                          service_destination: sv.service_destination,
-                          service_date: sv.service_date,
-                          cost: sv.cost,
-                          service_code: code[sv.name],
-                        });
-                        navigate("/agregarServicio");
-                      }}
-                      className="hover:bg-green-500 hover:text-black  bg-[#030a077b] border-2 border-green-400 text-green-200 font-bold text-md py-1.5 rounded px-5 uppercase"
-                    >
-                      Editar
-                    </button>
-                    <button
-                      onClick={() =>
-                        deleteServicioHandler(sv.id_servicio, setUserService)
-                      }
-                      className=" bg-[#030a077b] hover:bg-red-500 hover:text-black border-2 border-red-600 text-red-200 font-bold text-md py-1.5 rounded px-5 uppercase"
-                    >
-                      Eliminar
-                    </button>
-                  </div>
+                  Editar
+                </button>
+                <button
+                  onClick={() =>
+                    deleteServicioHandler(sv.id_servicio, setUserService)
+                  }
+                  className=" bg-[#030a077b] hover:bg-red-500 hover:text-black border-2 border-red-600 text-red-200 font-bold text-md py-1.5 rounded px-5 uppercase"
+                >
+                  Eliminar
+                </button>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-    </main>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
   );
 }

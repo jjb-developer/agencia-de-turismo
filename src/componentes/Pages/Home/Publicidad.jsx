@@ -46,10 +46,10 @@ export default function Publicidad({ isLoggedIn }) {
           {isVendedor && (
             <div className="mx-auto mt-24 bg-orange-200 w-[350px] base:w-[768px] md:w-[1024px] lg:w-[1400px] xl:w-[1800px] h-[200px] md:h-[400px] flex justify-around text-center">
               <h1
-                className="my-auto mx-auto text-xl md:text-4xl lg:text-3xl font-bold font-roboto "
+                className="my-auto mx-auto text-lg md:text-3xl mr-2 md:mr-64 lg:text-3xl font-bold font-roboto "
                 style={{ transform: "rotate(-6deg)" }}
               >
-                Mejora tus ventas Agregando detalles a tus publicaciones 
+                Mejora tus ventas Agregando detalles a tus publicaciones
                 <br /> Gracias por ser parte de nuestro staff
               </h1>
               <img

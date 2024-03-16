@@ -9,3 +9,25 @@
 .label_info {
   @apply h-11 flex items-center border w-56 text-xl px-3 rounded tracking-tight;
 }
+
+::-webkit-scrollbar {
+  width: 12px; /* Ancho del scrollbar */
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color del fondo del scrollbar */
+}
+::-webkit-scrollbar-thumb {
+  background: #0d4645; /* Color del thumb (barra de desplazamiento) */
+  border-radius: 5px; /* Radio de borde del thumb */
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c85f0a; /* Color del thumb al pasar el mouse */
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #0d4645 #eaeaea;
+}
+
+
+

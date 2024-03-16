@@ -1,6 +1,6 @@
 import Header from "../Header/Header";
 import { servicios } from "../../utils/variables.js";
-
+import SectionHome from "./Home/SectionHome.jsx";
 import AgregarServicio from "./Vendedor/AgregarServicio.jsx";
 import store from "../../utils/store";
 import Main from "./Home/Main.jsx";
@@ -27,6 +27,7 @@ export default function Home() {
       {isVendedor && <SectionVendedor />}
       {isCliente && <ServiciosOfrecidos />}
       {!isLoggedIn && <Section />}
+      <SectionHome />
     </div>
   );
 }

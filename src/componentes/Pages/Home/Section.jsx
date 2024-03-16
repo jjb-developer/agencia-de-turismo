@@ -123,8 +123,8 @@ export default function Section() {
   }
 
   return (
-    <section className="mt-8 mb-8 px-4">
-      <h1 className="text-xl md:text-3xl lg:text-5xl  mb-16 mt-24 text-center font-roboto font-bold text-slate-800">
+    <section className="mt-8 mb-8 px-4 pb-8">
+      <h1 className="text-4xl md:text-6xl mb-16 mt-24 text-center font-roboto font-bold text-slate-800">
         Los más vendidos
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -173,33 +173,34 @@ export default function Section() {
                 )}
                 {/* Mostrar descripción solo si está seleccionada */}
                 <div
-                  className={`relative w-[450px] h-16 opacity-90 ${
+                  className={`relative w-[350px] md:w-[450px] h-16 opacity-90 ${
                     index === responseService.length - 1 ||
                     index === responseService.length - 2
-                      ? "-translate-x-80"
-                      : "translate-x-9"
+                      ? "-translate-x-4 md:-translate-x-80"
+                      : "-translate-x-4 md:translate-x-9"
                   }`}
                 >
                   {selectedService === index && (
                     <div
                       className=" p-6 flex flex-col justify-between bg-slate-100 border-4
-                     border-gray-400 shadow-xl shadow-black rounded-xl hover:border-orange-600 -translate-y-1/2"
+                     border-gray-400 shadow-xl shadow-black rounded-xl hover:border-orange-600 -translate-y-3/4
+                      md:-translate-y-1/2"
                     >
                       <div className="text-center">
-                        <h3 className="text-2xl text-gray-700 font-bold font-roboto">
+                        <h3 className="text-lg md:text-2xl text-gray-700 font-bold font-roboto">
                           Destino: "{servicio.service_destination}"
                         </h3>
-                        <p className="text-base text-gray-600 font-bold mb-2 text-center font-playfair">
+                        <p className="text-sm md:text-base text-gray-600 font-bold mb-2 text-center font-playfair">
                           {servicio.description}
                         </p>
-                        <p className="text-lg text-gray-700 font-bold">
+                        <p className="text-sm md:text-lg text-gray-700 font-bold">
                           Costo: ${servicio.cost}
                         </p>
                       </div>
-                      <div className="h-16 flex text-center justify-center">
+                      <div className="h-8 md:h-16 flex text-center justify-center">
                         <button
                           className="text-orange-500 border-2 border-orange-700 p-2 hover:bg-orange-600
-                           hover:text-yellow-50 text-lg rounded-2xl font-semibold mt-auto"
+                           hover:text-yellow-50 text-sm md:text-lg rounded-2xl font-semibold mt-auto"
                           onClick={() => setSelectedService(null)}
                         >
                           Ver menos
