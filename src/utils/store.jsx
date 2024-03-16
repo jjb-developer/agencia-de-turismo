@@ -5,12 +5,14 @@ import { initialStateServicetoAdd } from './variables.js'
 
 const store = create((set) => ({
 	isLogin: null,
+	isCarrito: false,
+	showCarrito: ()=> set((state)=> ({...state, isCarrito: !state.isCarrito })),
+	getTotalCar: 0,
+	setTotalCar: (cost)=>set((state)=>({...state, getTotalCar: state.getTotalCar+cost})),
 	getServiceInCarrito: [],
 	addServiceInCarrito: (id)=> set((state)=>({...state, getServiceInCarrito: [...state.getServiceInCarrito, id]})),
 	deleteServiceInCarrito: (id_servicio)=> set((state)=>({...state, getServiceInCarrito: [...state.getServiceInCarrito.filter( id => id !== id_servicio)]})),
 	cleanCarrito: ()=> set((state)=>({...state, getServiceInCarrito: []})),
-	isCarrito: false,
-	showCarrito: ()=> set((state)=> ({...state, isCarrito: !state.isCarrito })),
 	getServiceFilter: '0',
 	setServiceFilter: (code) => set((state)=>({...state, getServiceFilter: code})),
 	getAllService: null,
