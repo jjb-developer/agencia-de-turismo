@@ -2,14 +2,15 @@ import Navbar from '../Nav/Navbar'
 import store from '../../utils/store'
 import { useEffect, useState } from 'react'
 import { BiHeart, BiCartAdd } from 'react-icons/bi'
+import Filter from './Filter'
 
 export default function servicios(){
 	const[user,setUser]=useState(null);
-	const { getAllService, setServiceFilter, getServiceFilter, getServiceInCarrito, addServiceInCarrito,getUser, setTotalCar } = store()
+	const { getAllService, getServiceInCarrito, addServiceInCarrito,getUser, setTotalCar } = store()
 
 	const [btnAddOrDelete,setBtnAddOrDelete] = useState('add')
-	const [services,setServices] = useState(getAllService)
 
+	const [services,setServices] = useState(getAllService)
 
 	function filterForCost(signo,key,comparador){
 		const sv = getAllService.filter(sv=>{
@@ -23,7 +24,7 @@ export default function servicios(){
 				return sv[key] === comparador
 			}
 		})
-		setServices(sv) //service_date d.split('-')[1]
+		setServices(sv)
 	}
 
 
@@ -39,6 +40,7 @@ export default function servicios(){
 		<main className='pt-48 bg-zinc-200 px-5 sm:px-10 lg:px-20'>
 			<h1 className='mb-7 text-2xl font-medium tracking-tight capitalize'>servicios</h1>
 			<div className='min-h-screen flex'>
+
 				<div className='hidden sm:block sm:w-56'>
 
 					<div>
@@ -102,20 +104,8 @@ export default function servicios(){
 						</ul>
 					</div>
 
-					<div className='mt-10'>
-						<h4 className='text-[15px] uppercase font-medium mb-2'>Pais</h4>
-						<ul className='flex flex-col gap-y-1'>
-							<li className='text-[14px] cursor-pointer font-light'>Italia <span className='text-zinc-500 ml-1'>(25)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>España <span className='text-zinc-500 ml-1'>(103)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Francia <span className='text-zinc-500 ml-1'>(47)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Argentina <span className='text-zinc-500 ml-1'>(61)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Uruguay <span className='text-zinc-500 ml-1'>(32)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Japon <span className='text-zinc-500 ml-1'>(49)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Rusia <span className='text-zinc-500 ml-1'>(18)</span></li>
-						</ul>
-					</div>
-
 				</div>
+
 				<section className='flex flex-col gap-y-2 max-w-2xl w-full mb-20'>
 				{ services?.map((sv)=>(
 						<div 

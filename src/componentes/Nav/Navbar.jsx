@@ -83,7 +83,7 @@ export default function Navbar() {
               </div>
             
               { getUser.role === "vendedor" && activeMenu && (
-              <div className={`${ activeMenu === false ? 'hidden':'flex'} bg-gray-200 flex-col absolute top-24  lg:top-16 sm:left-0`}>
+              <div className={`${ activeMenu === false ? 'hidden':'flex'} bg-gray-800 bg-opacity-90 text-zinc-50 flex-col fixed top-0 left-0 right-0 w-full h-screen pt-20 sm:absolute sm:w-72 sm:h-fit sm:pt-0 sm:-left-32 sm:top-16 lg:top-16 sm:right-0 `}>
                 <button 
                   onClick={()=> {
                     navigate('/infoPersonal')
@@ -99,6 +99,14 @@ export default function Navbar() {
                   }} 
                   className="py-2 hover:bg-orange-500 hover:text-white duration-300 px-3 w-full">
                   Servicios Ofrecidos
+                </button>
+                <button 
+                  onClick={()=> {
+                    navigate('/reporte')
+                    setActiveMenu(false)
+                  }} 
+                  className="py-2 hover:bg-orange-500 hover:text-white duration-300 px-3 w-full">
+                  Reporte
                 </button>
                 <button 
                   onClick={()=> {

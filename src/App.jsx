@@ -6,6 +6,7 @@ import Register from './componentes/Pages/Register'
 import Vendedor from './componentes/Pages/Vendedor'
 import AllServicios from './componentes/Pages/Servicios'
 import Cliente from './componentes/Pages/Cliente'
+import Reporte from './componentes/Pages/Vendedor/Reporte'
 import AgregarServicio from './componentes/Pages/Vendedor/AgregarServicio'
 import ServicioOfrecidos from './componentes/Pages/Vendedor/ServiciosOfrecidos'
 import InfoPersonal from './componentes/Pages/Vendedor/InfoPersonal'
@@ -23,6 +24,7 @@ function App() {
 				<Route path="/cliente" element={<Cliente/>}/>
 				<Route path="/infoPersonal" element={<InfoPersonal/>}/>
 				<Route path="/serviciosOfrecidos" element={<ServicioOfrecidos/>}/>
+				<Route path="/reporte" element={<Reporte/>}/>
 				<Route path="/agregarServicio" element={<AgregarServicio/>}/>
 		   </Routes>
 			<Footer/>
