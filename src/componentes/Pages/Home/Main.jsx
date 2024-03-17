@@ -6,20 +6,30 @@ import store from "../../../utils/store";
 
 export default function Main({ servicios }) {
   const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
-  const [animateShow, setAnimateShow] = useState(true); // Estado para controlar la animación
+  const [animateShow, setAnimateShow] = useState(true);
 
   useEffect(() => {
     // Cuando cambia el índice del servicio actual, activa la animación
     setAnimateShow(true);
 
     // Desactiva la animación después de 1.5 segundos (ajusta según la duración de la animación)
-    const timeout = setTimeout(() => {
+    const animationTimeout = setTimeout(() => {
       setAnimateShow(false);
     }, 1500);
 
     // Limpia el temporizador cuando el componente se desmonta o cuando cambia el índice del servicio actual
-    return () => clearTimeout(timeout);
+    return () => clearTimeout(animationTimeout);
   }, [currentServiceIndex]);
+
+  useEffect(() => {
+    // Iniciar el intervalo para cambiar automáticamente el servicio cada 1 minuto
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000); // 60000 milisegundos = 1 minuto
+
+    // Limpiar el intervalo cuando el componente se desmonta
+    return () => clearInterval(interval);
+  }, [currentServiceIndex]); // Ejecutar el efecto cuando cambie el índice del servicio actual
 
   const handleNext = () => {
     setCurrentServiceIndex((prevIndex) =>
@@ -54,7 +64,7 @@ export default function Main({ servicios }) {
         }}
       >
         <div
-          className={`content absolute top-2/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-roboto font-bold text-base shadow-lg
+          className={`content absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-roboto font-bold text-base shadow-lg
            shadow-black w-[90%] max-w-md bg-slate-600 text-black p-4 opacity-80 rounded-xl ${
             animateShow ? "animate-show" : ""
           }`}
@@ -79,7 +89,7 @@ export default function Main({ servicios }) {
             </div>
           )}
         </div>
-        <div className="secondary-images mb-4 w-100% opacity-90 flex-shrink-0 flex justify-center absolute bottom-8 left-1/2 transform -translate-x-1/2 z-[1] select-none duration-300">
+        <div className="secondary-images mb-8 w-100% opacity-90 flex-shrink-0 flex justify-center absolute bottom-8 left-1/2 transform -translate-x-1/2 z-[1] select-none duration-300">
           {servicios.map((service, index) => (
             <div
               key={index}
@@ -112,7 +122,7 @@ export default function Main({ servicios }) {
             </div>
           ))}
         </div>
-        <div className="nav absolute bottom-8 left-1/2 transform -translate-x-1/2 z-[3] select-none">
+        <div className="nav absolute bottom-1 left-1/2 transform -translate-x-1/2 z-[3] select-none">
           <button
             onClick={handlePrev}
             className="btn prev bg-gray-400 text-black border-2 border-black rounded-lg mx-1 py-1 px-2 hover:bg-gray-900 hover:text-white"

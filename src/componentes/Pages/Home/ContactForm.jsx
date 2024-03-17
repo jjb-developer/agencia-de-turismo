@@ -41,7 +41,7 @@ function ContactForm() {
       {formActive ? (
         formSubmitted ? (
           <div className="text-lg text-white bg-orange-500 p-4 rounded-xl shadow-lg shadow-black font-bold font-roboto flex text-center -translate-x-80 md:translate-x-1/4">
-            ¡Gracias por tu sugerencia! <br />
+            ¡Gracias por su sugerencia! <br />
             Para más información ¡Regístrate!
             <BiX
               className="ml-2 text-white cursor-pointer"

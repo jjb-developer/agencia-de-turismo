@@ -5,6 +5,19 @@ import FlagBolivia from "../../../../public/bolivia.png";
 import FlagIndonesia from "../../../../public/indonesia.png";
 import FlagSingapur from "../../../../public/singapur.png";
 import FlagPeru from "../../../../public/peru.png";
+import FlagAlemania from "../../../../public/alemania.png";
+import FlagAustralia from "../../../../public/australia.png";
+import FlagBrasil from "../../../../public/brasil.png";
+import FlagCanada from "../../../../public/canada.png";
+import FlagChile from "../../../../public/chile.png";
+import FlagChina from "../../../../public/china.png";
+import FlagColombia from "../../../../public/colombia.png";
+import FlagCostaRica from "../../../../public/costa-rica.png";
+import FlagEcuador from "../../../../public/ecuador.png";
+import FlagEstadosUnidos from "../../../../public/eeuu.png";
+import FlagEspaña from "../../../../public/espana.png";
+import FlagFrancia from "../../../../public/francia.png";
+import FlagGrecia from "../../../../public/grecia.png";
 
 const responseService = [
   {
@@ -99,6 +112,19 @@ const countryFlags = {
   indonesia: FlagIndonesia,
   peru: FlagPeru,
   singapur: FlagSingapur,
+  alemania: FlagAlemania,
+  australia: FlagAustralia,
+  brasil: FlagBrasil,
+  canada: FlagCanada,
+  chile: FlagChile,
+  china: FlagChina,
+  colombia: FlagColombia,
+  costa_rica: FlagCostaRica,
+  ecuador: FlagEcuador,
+  estados_unidos: FlagEstadosUnidos,
+  españa: FlagEspaña,
+  francia: FlagFrancia,
+  grecia: FlagGrecia
 };
 
 export default function Section() {

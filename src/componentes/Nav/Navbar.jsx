@@ -72,6 +72,14 @@ export default function Navbar() {
             >
               Servicios Ofrecidos
             </button>
+            <button 
+                  onClick={()=> {
+                    navigate('/reporte')
+                    setActiveMenu(false)
+                  }} 
+                  className="py-4 text-center font-roboto text-slate-700 font-bold text-lg uppercase hover:bg-orange-700 hover:text-white duration-300 px-3 w-full block">
+                  Reporte
+                </button>
             <button
               onClick={() => {
                 navigate("/agregarServicio");
