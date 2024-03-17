@@ -8,13 +8,31 @@ export default function servicios(){
 	const { getAllService, setServiceFilter, getServiceFilter, getServiceInCarrito, addServiceInCarrito,getUser, setTotalCar } = store()
 
 	const [btnAddOrDelete,setBtnAddOrDelete] = useState('add')
+	const [services,setServices] = useState(getAllService)
+
+
+	function filterForCost(signo,key,comparador){
+		const sv = getAllService.filter(sv=>{
+			if(signo === '>'){
+				return sv[key] > comparador
+			} else if(signo === '<='){
+				return sv[key] <= comparador
+			} else if(signo === 'd'){
+				return sv[key].split('-')[1] === comparador
+			} else {
+				return sv[key] === comparador
+			}
+		})
+		setServices(sv) //service_date d.split('-')[1]
+	}
+
 
 	useEffect(()=>{
 		const user = JSON.parse(localStorage.getItem('user'))
-		if(user){setUser(getUser);
-		}
-		
+		if(user) setUser(getUser)
 	},[]);
+
+
 	return (
 	<>
 		<Navbar/>
@@ -22,45 +40,33 @@ export default function servicios(){
 			<h1 className='mb-7 text-2xl font-medium tracking-tight capitalize'>servicios</h1>
 			<div className='min-h-screen flex'>
 				<div className='hidden sm:block sm:w-56'>
-					<select 
-						value={getServiceFilter} 
-						onChange={(e)=> setServiceFilter(e.target.value)}>
-						<option value='0'>todos</option>
-						<option value='1'>hotel por noche</option>
-						<option value='5'>viaje en tren</option>
-						<option value='4'>pasaje en avión</option>
-						<option value='2'>alquiler de auto</option>
-						<option value='3'>Pasajes de colectivo</option>
-						<option value='6'>excursiones</option>
-						<option value='7'>entradas a evento</option>
-					</select>
 
-					<div className='mt-10'>
+					<div>
 						<h4 className='text-[15px] uppercase font-medium mb-2'>Categoria</h4>
 						<ul className='flex flex-col gap-y-1'>
 							<li 
-								onClick={()=>setServiceFilter(1)} 
+								onClick={()=>filterForCost('=','service_code',1)} 
 								className='text-[14px] cursor-pointer font-light'>Hotel por noche <span className='text-zinc-500 ml-1'>(25)</span></li>
 							<li 
-								onClick={()=>setServiceFilter(2)} 
+								onClick={()=>filterForCost('=','service_code',2)} 
 								className='text-[14px] cursor-pointer font-light'>alquiler de auto <span className='text-zinc-500 ml-1'>(61)</span></li>
 							<li 
-								onClick={()=>setServiceFilter(3)} 
+								onClick={()=>filterForCost('=','service_code',3)} 
 								className='text-[14px] cursor-pointer font-light'>pasaje de colectivo <span className='text-zinc-500 ml-1'>(32)</span></li>
 							<li 
-								onClick={()=>setServiceFilter(4)} 
+								onClick={()=>filterForCost('=','service_code',4)} 
 								className='text-[14px] cursor-pointer font-light'>pasaje en avión <span className='text-zinc-500 ml-1'>(47)</span></li>
 							<li 
-								onClick={()=>setServiceFilter(5)} 
+								onClick={()=>filterForCost('=','service_code',5)} 
 								className='text-[14px] cursor-pointer font-light'>pasaje en tren <span className='text-zinc-500 ml-1'>(103)</span></li>
 							<li 
-								onClick={()=>setServiceFilter(6)} 
+								onClick={()=>filterForCost('=','service_code',6)} 
 								className='text-[14px] cursor-pointer font-light'>excursiones <span className='text-zinc-500 ml-1'>(49)</span></li>
 							<li 
-								onClick={()=>setServiceFilter(7)} 
+								onClick={()=>filterForCost('=','service_code',7)} 
 								className='text-[14px] cursor-pointer font-light'>entrada a eventos <span className='text-zinc-500 ml-1'>(18)</span></li>
 							<li 
-								onClick={()=>setServiceFilter(0)} 
+								onClick={()=>setServices(getAllService)} 
 								className='text-[14px] cursor-pointer font-light'>todos</li>
 						</ul>
 					</div>
@@ -68,30 +74,31 @@ export default function servicios(){
 					<div className='mt-10'>
 						<h4 className='text-[15px] uppercase font-medium mb-2'>Precio</h4>
 						<ul className='flex flex-col gap-y-1'>
-							<li className='text-[14px] cursor-pointer font-light'>menos de 100$ <span className='text-zinc-500 ml-1'>(25)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>menos de 250$ <span className='text-zinc-500 ml-1'>(103)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>menos de 500$ <span className='text-zinc-500 ml-1'>(47)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>mayores a 500$ <span className='text-zinc-500 ml-1'>(61)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>mayores a 1000$ <span className='text-zinc-500 ml-1'>(32)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>todos</li>
+							<li onClick={()=>filterForCost('<=','cost',100)} className='text-[14px] cursor-pointer font-light'>menos de 100$ <span className='text-zinc-500 ml-1'>(25)</span></li>
+							<li onClick={()=>filterForCost('<=','cost',250)} className='text-[14px] cursor-pointer font-light'>menos de 250$ <span className='text-zinc-500 ml-1'>(103)</span></li>
+							<li onClick={()=>filterForCost('<=','cost',500)} className='text-[14px] cursor-pointer font-light'>menos de 500$ <span className='text-zinc-500 ml-1'>(47)</span></li>
+							<li onClick={()=>filterForCost('>','cost',500)} className='text-[14px] cursor-pointer font-light'>mayores a 500$ <span className='text-zinc-500 ml-1'>(61)</span></li>
+							<li onClick={()=>filterForCost('>','cost',1000)} className='text-[14px] cursor-pointer font-light'>mayores a 1000$ <span className='text-zinc-500 ml-1'>(32)</span></li>
+							<li onClick={()=>setServices(getAllService)} className='text-[14px] cursor-pointer font-light'>todos</li>
 						</ul>
 					</div>
 
 					<div className='mt-10'>
 						<h4 className='text-[15px] uppercase font-medium mb-2'>Fecha</h4>
 						<ul className='flex flex-col gap-y-1'>
-							<li className='text-[14px] cursor-pointer font-light'>Enero <span className='text-zinc-500 ml-1'>(25)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Febrero <span className='text-zinc-500 ml-1'>(103)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Marzo <span className='text-zinc-500 ml-1'>(47)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Abril <span className='text-zinc-500 ml-1'>(61)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Mayo <span className='text-zinc-500 ml-1'>(32)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Junio <span className='text-zinc-500 ml-1'>(49)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Julio <span className='text-zinc-500 ml-1'>(18)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Agosto <span className='text-zinc-500 ml-1'>(28)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Septiembre <span className='text-zinc-500 ml-1'>(12)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Octubre <span className='text-zinc-500 ml-1'>(44)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Noviembre <span className='text-zinc-500 ml-1'>(24)</span></li>
-							<li className='text-[14px] cursor-pointer font-light'>Diciembre <span className='text-zinc-500 ml-1'>(52)</span></li>
+							<li onClick={()=>filterForCost('d','service_date','01')} className='text-[14px] cursor-pointer font-light'>Enero <span className='text-zinc-500 ml-1'>(25)</span></li>
+							<li onClick={()=>filterForCost('d','service_date','02')} className='text-[14px] cursor-pointer font-light'>Febrero <span className='text-zinc-500 ml-1'>(103)</span></li>
+							<li onClick={()=>filterForCost('d','service_date','03')} className='text-[14px] cursor-pointer font-light'>Marzo <span className='text-zinc-500 ml-1'>(47)</span></li>
+							<li onClick={()=>filterForCost('d','service_date','04')} className='text-[14px] cursor-pointer font-light'>Abril <span className='text-zinc-500 ml-1'>(61)</span></li>
+							<li onClick={()=>filterForCost('d','service_date','05')} className='text-[14px] cursor-pointer font-light'>Mayo <span className='text-zinc-500 ml-1'>(32)</span></li>
+							<li onClick={()=>filterForCost('d','service_date','06')} className='text-[14px] cursor-pointer font-light'>Junio <span className='text-zinc-500 ml-1'>(49)</span></li>
+							<li onClick={()=>filterForCost('d','service_date','07')} className='text-[14px] cursor-pointer font-light'>Julio <span className='text-zinc-500 ml-1'>(18)</span></li>
+							<li onClick={()=>filterForCost('d','service_date','08')} className='text-[14px] cursor-pointer font-light'>Agosto <span className='text-zinc-500 ml-1'>(28)</span></li>
+							<li onClick={()=>filterForCost('d','service_date','09')} className='text-[14px] cursor-pointer font-light'>Septiembre <span className='text-zinc-500 ml-1'>(12)</span></li>
+							<li onClick={()=>filterForCost('d','service_date','10')} className='text-[14px] cursor-pointer font-light'>Octubre <span className='text-zinc-500 ml-1'>(44)</span></li>
+							<li onClick={()=>filterForCost('d','service_date','11')} className='text-[14px] cursor-pointer font-light'>Noviembre <span className='text-zinc-500 ml-1'>(24)</span></li>
+							<li onClick={()=>filterForCost('d','service_date','12')} className='text-[14px] cursor-pointer font-light'>Diciembre <span className='text-zinc-500 ml-1'>(52)</span></li>
+							<li onClick={()=>setServices(getAllService)} className='text-[14px] cursor-pointer font-light'>todos<span className='text-zinc-500 ml-1'>(52)</span></li>
 						</ul>
 					</div>
 
@@ -110,7 +117,7 @@ export default function servicios(){
 
 				</div>
 				<section className='flex flex-col gap-y-2 max-w-2xl w-full mb-20'>
-				{ getAllService?.filter((sv)=>""+sv.service_code === ""+getServiceFilter || ""+getServiceFilter === ""+0).map((sv)=>(
+				{ services?.map((sv)=>(
 						<div 
 							key={sv.id_servicio}
 							className="p-7 bg-white cursor-pointer relative">
