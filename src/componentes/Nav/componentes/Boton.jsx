@@ -7,6 +7,6 @@ export default function Boton({ruta,name}) {
 	const enlace = (r)=> navigate(ruta)
 
   	return (
-		<button onClick={ enlace } className="gap-x-2 px-2 py-1 items-center font-bold bg-blue-600 duration-300 hover:bg-blue-500 text-white text-md  shadow-lg rounded-md hidden sm:flex"><BiUser size='16'/>{name}</button>
+		<button onClick={ enlace } className="flex items-center text-2xl font-medium hover:text-orange-500 tracking-tight text-zinc-50 duration-300 sm:text-base sm:hover:text-white sm:gap-x-2 sm:px-5 sm:py-2 sm:font-bold sm:bg-blue-600 sm:hover:bg-blue-500 sm:text-white sm:text-md sm:shadow-lg sm:rounded-lg "><BiUser size='18'className='hidden sm:block'/>{name}</button>
   	)
 } 

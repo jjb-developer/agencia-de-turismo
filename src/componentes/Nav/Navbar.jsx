@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BiUser, BiCart} from "react-icons/bi";
+import { BiUser, BiCart, BiMenu, BiXCircle } from "react-icons/bi";
 
 import Boton from "./componentes/Boton";
 import store from "../../utils/store";
@@ -10,6 +10,8 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [menu, setMenu] = useState(false);
+
 
   const statusLogin = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
@@ -32,6 +34,9 @@ export default function Navbar() {
   const navBackground = scrollY > 0 ? "bg-gray-50" : "";
   const textColor = scrollY > 0 ? "text-orange-500" : "text-orange-500"; //text-gray-200
   const textUserColor = scrollY > 0 ? "text-gray-600" : "text-gray-50";
+
+
+
   // Función para manejar el login out.
   function handleLoginOut() {
     navigate("/");
@@ -65,7 +70,7 @@ export default function Navbar() {
 
         {getUser ? (
           // Si el usuario está autenticado
-          <div className="flex items-center relative">
+          <div className="flex items-center relative bg-lime-200">
             <div className="flex flex-col ">
               <span className={`text-xl ${textUserColor} `}>
                 {getUser.name} {getUser.lastname}
@@ -75,7 +80,7 @@ export default function Navbar() {
               </span>
             </div>
             <div 
-              className='cursor-pointer '
+              className='cursor-pointer'
               onClick={ ()=> setActiveMenu(!activeMenu)}>
               { getUser.role === "vendedor" && (<BiUser 
                 className="text-white bg-orange-500 rounded-full w-10 h-10 p-1.5"
@@ -127,9 +132,13 @@ export default function Navbar() {
               )}
             {getUser.role === "cliente" && (
               <div className="flex flex-wrap text-center justify-center">
+                <BiUser 
+                  onClick={ ()=> setActiveMenu(!activeMenu)}
+                  className="cursor-pointer text-white bg-orange-500 rounded-full w-10 h-10 p-1.5"
+                />
                 <button
                   onClick={ handleLoginOut }
-                  className="bg-rose-500 max-sm:mb-2 text-rose-50 font-bold text-sm uppercase rounded-lg py-1.5 px-4 hover:text-rose-600 hover:bg-rose-50 hover:border-2 hover:border-rose-500"
+                  className={`${activeMenu ? 'block':'hidden'} absolute top-14 right-0 bg-zinc-800 h-10 bg-opacity-50 w-full`}
                 >
                   Logout
                 </button>
@@ -137,15 +146,21 @@ export default function Navbar() {
                   onClick={ showCarrito }
                   className="bg-blue-500  text-blue-50 font-bold text-sm rounded-lg uppercase py-1.5 px-4 flex items-center gap-x-1 hover:text-blue-600 hover:bg-blue-50 hover:border-2 hover:border-blue-500">
                   <BiCart />
-                  Carrito
+                  Cart
                 </button>
               </div>
             )}
           </div>
         ) : (
-          <div className="flex flex-row gap-2">
-            <Boton ruta="/register" name="Register" />
-            <Boton ruta="/login" name="Login" />
+          <div>
+            <div className='flex'>
+              <div className={`${menu ? 'bg-zinc-800 bg-opacity-80 fixed top-0 left-0 duration-300 w-full h-screen flex flex-col items-center justify-center gap-y-4':'hidden sm:flex sm:flex-row sm:gap-x-2'} `}>
+                <Boton ruta="/register" name="Register" />
+                <Boton ruta="/login" name="Login" />
+                <BiXCircle onClick={()=>setMenu(false)} size='32' className="absolute top-4 right-4 p-0.5 cursor-pointer text-white sm:hidden"/>
+              </div>
+              <BiMenu onClick={()=>setMenu(true)} size='32' className="p-0.5 cursor-pointer sm:hidden"/>
+            </div>
           </div>
         )}
         </div>

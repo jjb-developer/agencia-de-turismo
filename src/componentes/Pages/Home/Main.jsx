@@ -38,7 +38,6 @@ function handleClick(code_service){
                   </div>
                   <span 
                     onClick={()=>{
-                      setServiceFilter(""+servicio.code)
                       navigate('/all_servicios')
                     }} 
                     className="text-3xl text-white p-2"><HiArrowRight/></span>
