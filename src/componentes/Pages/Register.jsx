@@ -77,6 +77,7 @@ export default function Register() {
   }
 
   return (
+    <><Navbar/>
     <section
       className="bg-sky-500 w-full h-full py-20 pt-20 flex flex-col items-center justify-center"
       style={{
@@ -86,7 +87,7 @@ export default function Register() {
         opacity: 0.9, // Ajusta este valor según la opacidad deseada
       }}
     >
-      <Navbar/>
+      
       <form
         className="mt-20 bg-white p-10 rounded shadow-md max-w-[600px] mx-auto"
         onSubmit={ handleSubmit }
@@ -336,5 +337,6 @@ export default function Register() {
         </div>
       </form>
     </section>
+    </>
   )
 }

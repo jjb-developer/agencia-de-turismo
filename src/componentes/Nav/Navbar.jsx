@@ -9,6 +9,8 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [menu, setMenu] = useState(false);
+
 
   const statusLogin = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
