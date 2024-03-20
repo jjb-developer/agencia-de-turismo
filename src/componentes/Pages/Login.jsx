@@ -41,7 +41,7 @@ export default function Login() {
     >
       <Navbar/>
       <form
-        className="bg-white mt-20 p-10 rounded-md shadow-xl shadow-black w-80"
+        className="bg-white mt-36 p-10 rounded-md shadow-xl shadow-black w-80"
         onSubmit={handleSubmit}
         action=""
       >

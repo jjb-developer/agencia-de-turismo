@@ -140,7 +140,7 @@ export default function Navbar() {
             }}
           >
             <Link to="/" className="cursor-pointer">
-              Agencia de Turismo
+              Horizontes Viajeros
             </Link>
           </span>
         </div>
