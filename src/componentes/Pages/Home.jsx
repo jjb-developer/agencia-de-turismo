@@ -19,15 +19,28 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Header />
-      <h1 className="text-4xl md:text-6xl mt-12 mb-6 text-center font-roboto font-bold text-orange-800">
-        Nuestros Servicios
-      </h1>
       <Main servicios={servicios} />
       <Publicidad isLoggedIn={isLoggedIn} />
       {isVendedor && <SectionVendedor />}
       {isCliente && <ServiciosOfrecidos />}
       {!isLoggedIn && <Section />}
       <SectionHome />
+      <div className="text-center">
+        <h2 className="text-4xl md:text-6xl mt-12 mb-6 text-center font-roboto font-bold text-emerald-950">
+          {" "}
+          ¿Listo para comenzar tu próxima aventura?
+        </h2>
+        <h3 className="text-sm md:text-lg mt-12 mx-24 mb-12 text-center font-roboto font-bold text-zinc-800">
+          En Horizontes Viajeros, estamos aquí para hacer realidad tus sueños de
+          viaje. Ya sea que estés planeando unas vacaciones relajantes en la
+          playa, una emocionante expedición de aventura o un viaje cultural en
+          una ciudad vibrante, estamos aquí para ayudarte en cada paso del
+          camino. Nuestro equipo experto está listo para brindarte asistencia
+          personalizada y recomendaciones cuidadosamente seleccionadas para que
+          tu viaje sea único y memorable. No esperes más, ¡contáctanos hoy mismo
+          y comienza a planificar la escapada de tus sueños!
+        </h3>
+      </div>
     </div>
   );
 }

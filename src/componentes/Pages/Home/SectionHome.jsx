@@ -130,11 +130,14 @@ export default function Section() {
 
   return (
     <section className="bg-gray-50 flex flex-wrap flex-col justify-center items-center min-h-screen w-full gap-4 p-4">
-      <div>
-        <h2 className="text-2xl lg:text-5xl font-roboto">
+      <div className="text-center">
+        <h2 className="text-4xl md:text-6xl mt-12 mb-6 text-center font-roboto font-bold text-orange-800">
           {" "}
           &#11088; Servicios estrella &#11088;
         </h2>
+        <h3 className="text-sm md:text-lg mt-12 mx-24 mb-12 text-center font-roboto font-bold text-zinc-800">
+        Descubre nuestros servicios estrella, cuidadosamente seleccionados para ofrecerte experiencias turísticas inigualables. Desde la comodidad de los hoteles hasta la libertad de explorar con alquiler de autos, estos son los servicios que destacan por su calidad y excelencia. Con una atención excepcional al detalle y una pasión por brindar experiencias memorables, nuestros servicios estrella están diseñados para superar tus expectativas y convertir cada viaje en una aventura inolvidable. ¡Embárcate en una experiencia única con nuestros servicios estrella y haz de tu viaje una experiencia inolvidable!
+      </h3>
       </div>
       <div className="flex flex-wrap justify-center items-center w-full h-auto gap-4 p-4">
         {responseService.map((servicio, index) => (

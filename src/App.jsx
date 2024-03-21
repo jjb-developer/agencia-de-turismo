@@ -11,6 +11,7 @@ import AgregarServicio from './componentes/Pages/Vendedor/AgregarServicio'
 import ServicioOfrecidos from './componentes/Pages/Vendedor/ServiciosOfrecidos'
 import InfoPersonal from './componentes/Pages/Vendedor/InfoPersonal'
 import Footer from './componentes/Footer/Footer'
+import Carrito from "./componentes/Pages/Carrito";
 
 function App() {
 	return (

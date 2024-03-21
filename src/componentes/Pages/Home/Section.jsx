@@ -150,9 +150,12 @@ export default function Section() {
 
   return (
     <section className="mt-8 mb-8 px-4 pb-8">
-      <h1 className="text-4xl md:text-6xl mb-16 mt-24 text-center font-roboto font-bold text-slate-800">
+      <h1 className="text-4xl md:text-6xl mt-12 mb-6 text-center font-roboto font-bold text-orange-800">
         Los más vendidos
       </h1>
+      <h3 className="text-sm md:text-lg mt-12 mx-24 mb-16 text-center font-roboto font-bold text-zinc-800">
+      Explora nuestra selección de servicios turísticos más populares que han encantado a nuestros clientes. Desde la comodidad de los hoteles hasta la emoción de las excursiones y eventos exclusivos, estos son los favoritos que no te puedes perder. Descubre por qué estos servicios son los más solicitados y haz tu reserva hoy mismo para asegurar tu lugar en estas experiencias inolvidables. ¡Prepárate para vivir momentos extraordinarios con nuestros servicios turísticos más vendidos!
+      </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         {responseService.map((servicio, index) => (
           <div key={index} className="flex-shrink-0 w-full max-w-md">

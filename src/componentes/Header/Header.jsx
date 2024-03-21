@@ -81,7 +81,7 @@ export default function Header() {
             
           </div>
       <h3
-        className="absolute bottom-7 left-10 text-4xl font-medium tracking-tighter text-emerald-60 capitalize"
+        className="absolute bottom-7 left-10 text-4xl font-medium tracking-tighter text-emerald-60 capitalize hidden md:block lg:block"
         style={{
           textShadow: "2px 2px 2px rgba(255,255, 255, 0.8)",
         }}

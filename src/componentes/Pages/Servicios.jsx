@@ -107,7 +107,7 @@ export default function servicios(){
 				</div>
 
 				<section className='flex flex-col gap-y-2 max-w-2xl w-full mb-20'>
-				{ services?.map((sv)=>(
+				{ services ?.map((sv)=>(
 						<div 
 							key={sv.id_servicio}
 							className="p-7 bg-white cursor-pointer relative">
